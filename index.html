@@ -68,10 +68,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-leetcode-707-设计链表" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-leetcode/700-二叉搜索树中的搜索" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/blog/2019/08/22/leetcode-707-设计链表/" class="article-date">
-  <time datetime="2019-08-22T03:51:42.000Z" itemprop="datePublished">2019-08-22</time>
+    <a href="/blog/2019/08/24/leetcode/700-二叉搜索树中的搜索/" class="article-date">
+  <time datetime="2019-08-24T04:51:42.000Z" itemprop="datePublished">2019-08-24</time>
 </a>
     
   <div class="article-category">
@@ -86,7 +86,160 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/blog/2019/08/22/leetcode-707-设计链表/">leetcode-707-设计链表</a>
+      <a class="article-title" href="/blog/2019/08/24/leetcode/700-二叉搜索树中的搜索/">700-二叉搜索树中的搜索</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>&emsp;&emsp;给定二叉搜索树（BST）的根节点和一个值。你需要在BST中找到节点值等于给定值的节点。返回以该节点为根的子树。如果节点不存在，则返回 NULL。</p>
+<h3 id="例如"><a href="#例如" class="headerlink" title="例如"></a>例如</h3><h4 id="给定二叉搜索树"><a href="#给定二叉搜索树" class="headerlink" title="给定二叉搜索树:"></a>给定二叉搜索树:</h4> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    4  </span><br><span class="line">   / \   </span><br><span class="line">  2   7  </span><br><span class="line"> / \ </span><br><span class="line">1   3</span><br></pre></td></tr></table></figure>
+
+<p><code>和值: 2</code></p>
+<h4 id="你应该返回如下子树"><a href="#你应该返回如下子树" class="headerlink" title="你应该返回如下子树:"></a>你应该返回如下子树:</h4> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  2 </span><br><span class="line"> / \ </span><br><span class="line">1   3</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;在上述示例中，如果要找的值是 5，但因为没有节点值为 5，我们应该返回 NULL。</p>
+<h3 id="解答"><a href="#解答" class="headerlink" title="解答:"></a>解答:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">searchBST</span><span class="params">(TreeNode root, <span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span> (root.val == val)</span><br><span class="line">            <span class="keyword">return</span> root;</span><br><span class="line">        <span class="keyword">if</span> (val &gt; root.val)</span><br><span class="line">            <span class="keyword">return</span> searchBST(root.right, val);</span><br><span class="line">        <span class="keyword">return</span> searchBST(root.left, val);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://caizhichao.github.io/blog/2019/08/24/leetcode/700-二叉搜索树中的搜索/" data-id="cjzngmfad000bm4uo8vna3k52" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode/703-数据流中的第K大元素" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2019/08/23/leetcode/703-数据流中的第K大元素/" class="article-date">
+  <time datetime="2019-08-23T04:51:42.000Z" itemprop="datePublished">2019-08-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2019/08/23/leetcode/703-数据流中的第K大元素/">703-数据流中的第K大元素</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="设计一个找到数据流中第K大元素的类（class）。注意是排序后的第K大元素，不是第K个不同的元素。"><a href="#设计一个找到数据流中第K大元素的类（class）。注意是排序后的第K大元素，不是第K个不同的元素。" class="headerlink" title="设计一个找到数据流中第K大元素的类（class）。注意是排序后的第K大元素，不是第K个不同的元素。"></a>设计一个找到数据流中第K大元素的类（class）。注意是排序后的第K大元素，不是第K个不同的元素。</h3><p>你的 KthLargest 类需要一个同时接收整数 k 和整数数组nums 的构造器，它包含数据流中的初始元素。每次调用 KthLargest.add，返回当前数据流中第K大的元素。</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例:"></a>示例:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> k = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">int</span>[] arr = [<span class="number">4</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">2</span>];</span><br><span class="line">KthLargest kthLargest = <span class="keyword">new</span> KthLargest(<span class="number">3</span>, arr);</span><br><span class="line">kthLargest.add(<span class="number">3</span>);  <span class="comment">// returns 4</span></span><br><span class="line">kthLargest.add(<span class="number">5</span>);  <span class="comment">// returns 5</span></span><br><span class="line">kthLargest.add(<span class="number">10</span>); <span class="comment">// returns 5</span></span><br><span class="line">kthLargest.add(<span class="number">9</span>);  <span class="comment">// returns 8</span></span><br><span class="line">kthLargest.add(<span class="number">4</span>);  <span class="comment">// returns 8</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="说明"><a href="#说明" class="headerlink" title="说明:"></a>说明:</h3><ul>
+<li>你可以假设 nums 的长度≥ k-1 且k ≥ 1。</li>
+</ul>
+<h3 id="解答"><a href="#解答" class="headerlink" title="解答:"></a>解答:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">KthLargest</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> k;</span><br><span class="line">    <span class="keyword">private</span> PriorityQueue&lt;Integer&gt; q;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">KthLargest</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.k = k;</span><br><span class="line">        <span class="keyword">this</span>.q = <span class="keyword">new</span> PriorityQueue&lt;&gt;(k);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> num : nums) &#123;</span><br><span class="line">            <span class="keyword">this</span>.add(num);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.q.size() &lt; k)</span><br><span class="line">            <span class="keyword">this</span>.q.offer(val);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.q.peek() &lt; val) &#123;</span><br><span class="line">            <span class="keyword">this</span>.q.poll();</span><br><span class="line">            <span class="keyword">this</span>.q.offer(val);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.q.peek();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="主要的坑"><a href="#主要的坑" class="headerlink" title="主要的坑"></a>主要的坑</h3><ul>
+<li>用链表不行…很麻烦..</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://caizhichao.github.io/blog/2019/08/23/leetcode/703-数据流中的第K大元素/" data-id="cjzngj6ts0007m4uoz7ul45v0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode/2019-春季高校赛决赛题目-1-有序数组中的缺失元素" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2019/08/23/leetcode/2019-春季高校赛决赛题目-1-有序数组中的缺失元素/" class="article-date">
+  <time datetime="2019-08-23T04:31:42.000Z" itemprop="datePublished">2019-08-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2019/08/23/leetcode/2019-春季高校赛决赛题目-1-有序数组中的缺失元素/">2019-春季高校赛决赛题目-1-有序数组中的缺失元素</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>给出一个有序数组 A，数组中的每个数字都是 独一无二的，找出从数组最左边开始的第 K 个缺失数字。 </p>
+<h4 id="示例-1："><a href="#示例-1：" class="headerlink" title="示例 1："></a>示例 1：</h4><p>输入：<code>A = [4,7,9,10], K = 1</code><br>输出：5<br>解释：<br>第一个缺失数字为 5 。</p>
+<h4 id="示例-2："><a href="#示例-2：" class="headerlink" title="示例 2："></a>示例 2：</h4><p>输入：<code>A = [4,7,9,10], K = 3</code><br>输出：8<br>解释：<br>缺失数字有 [5,6,8,…]，因此第三个缺失数字为 8 。</p>
+<h4 id="示例-3："><a href="#示例-3：" class="headerlink" title="示例 3："></a>示例 3：</h4><p>输入：<code>A = [1,2,4], K = 3</code><br>输出：6<br>解释：<br>缺失数字有 [3,5,6,7,…]，因此第三个缺失数字为 6 。</p>
+<h4 id="提示"><a href="#提示" class="headerlink" title="提示:"></a>提示:</h4><ul>
+<li>1 &lt;= A.length &lt;= 50000</li>
+<li>1 &lt;= A[i] &lt;= 1e7</li>
+<li>1 &lt;= K &lt;= 1e8</li>
+</ul>
+<hr>
+<h4 id="解答"><a href="#解答" class="headerlink" title="解答:"></a>解答:</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">missingElement</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> start = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> tmp = nums[i];</span><br><span class="line">            <span class="keyword">if</span> (tmp == start + <span class="number">1</span>) &#123;</span><br><span class="line">                start++;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">int</span> minusVal = tmp - start -<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span> (minusVal &gt;= k)</span><br><span class="line">                    <span class="keyword">return</span> start + k;</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    k -= minusVal;</span><br><span class="line">                    start = tmp;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> start + k;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> q = <span class="keyword">new</span> q2019_04_21比赛<span class="number">1</span>();</span><br><span class="line">        <span class="keyword">var</span> res1 = q.missingElement(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">4</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">10</span>&#125;, <span class="number">1</span>);</span><br><span class="line">        System.out.println(res1 == <span class="number">5</span>);</span><br><span class="line">        <span class="keyword">var</span> res2 = q.missingElement(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">4</span>,<span class="number">7</span>,<span class="number">9</span>,<span class="number">10</span>&#125;, <span class="number">3</span>);</span><br><span class="line">        System.out.println(res2 == <span class="number">8</span>);</span><br><span class="line">        <span class="keyword">var</span> res3 = q.missingElement(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">4</span>&#125;, <span class="number">3</span>);</span><br><span class="line">        System.out.println(res3 == <span class="number">6</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="注意点"><a href="#注意点" class="headerlink" title="注意点:"></a>注意点:</h4><p>主要判断数组中两个元素中间缺几个数,如果大于等于k,则直接返回结果,否则进入下一个循环判断</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://caizhichao.github.io/blog/2019/08/23/leetcode/2019-春季高校赛决赛题目-1-有序数组中的缺失元素/" data-id="cjznmyvq90000u4uo0w490c2j" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode/707-设计链表" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2019/08/22/leetcode/707-设计链表/" class="article-date">
+  <time datetime="2019-08-22T04:31:42.000Z" itemprop="datePublished">2019-08-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2019/08/22/leetcode/707-设计链表/">707-设计链表</a>
     </h1>
   
 
@@ -120,7 +273,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://caizhichao.github.io/blog/2019/08/22/leetcode-707-设计链表/" data-id="cjzm5otl3000694uobhtccnh0" class="article-share-link">Share</a>
+      <a data-url="http://caizhichao.github.io/blog/2019/08/22/leetcode/707-设计链表/" data-id="cjzm88zv90000ekuouscl8jo6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -130,12 +283,16 @@
 
 
   
-    <article id="post-git不常用但有用命令" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-memo/git不常用但有用命令" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/blog/2019/08/21/git不常用但有用命令/" class="article-date">
+    <a href="/blog/2019/08/21/memo/git不常用但有用命令/" class="article-date">
   <time datetime="2019-08-21T15:29:47.000Z" itemprop="datePublished">2019-08-21</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/memo/">memo</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -144,7 +301,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/blog/2019/08/21/git不常用但有用命令/">git不常用但有用命令</a>
+      <a class="article-title" href="/blog/2019/08/21/memo/git不常用但有用命令/">git不常用但有用命令</a>
     </h1>
   
 
@@ -169,7 +326,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://caizhichao.github.io/blog/2019/08/21/git不常用但有用命令/" data-id="cjzm5gi83000094uoolxnb5kx" class="article-share-link">Share</a>
+      <a data-url="http://caizhichao.github.io/blog/2019/08/21/memo/git不常用但有用命令/" data-id="cjzngh54o0000m4uod8riq3sf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -189,7 +346,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/leetcode/">leetcode</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/leetcode/">leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/memo/">memo</a></li></ul>
     </div>
   </div>
 
@@ -212,11 +369,23 @@
       <ul>
         
           <li>
-            <a href="/blog/2019/08/22/leetcode-707-设计链表/">leetcode-707-设计链表</a>
+            <a href="/blog/2019/08/24/leetcode/700-二叉搜索树中的搜索/">700-二叉搜索树中的搜索</a>
           </li>
         
           <li>
-            <a href="/blog/2019/08/21/git不常用但有用命令/">git不常用但有用命令</a>
+            <a href="/blog/2019/08/23/leetcode/703-数据流中的第K大元素/">703-数据流中的第K大元素</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2019/08/23/leetcode/2019-春季高校赛决赛题目-1-有序数组中的缺失元素/">2019-春季高校赛决赛题目-1-有序数组中的缺失元素</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2019/08/22/leetcode/707-设计链表/">707-设计链表</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2019/08/21/memo/git不常用但有用命令/">git不常用但有用命令</a>
           </li>
         
       </ul>

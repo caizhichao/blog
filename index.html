@@ -107,7 +107,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://caizhichao.github.io/blog/2019/08/24/leetcode/700-二叉搜索树中的搜索/" data-id="cjzngmfad000bm4uo8vna3k52" class="article-share-link">Share</a>
+      <a data-url="http://caizhichao.github.io/blog/2019/08/24/leetcode/700-二叉搜索树中的搜索/" data-id="cjznnvc2b0002dcuok3fpi8z1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -158,7 +158,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://caizhichao.github.io/blog/2019/08/23/leetcode/703-数据流中的第K大元素/" data-id="cjzngj6ts0007m4uoz7ul45v0" class="article-share-link">Share</a>
+      <a data-url="http://caizhichao.github.io/blog/2019/08/23/leetcode/703-数据流中的第K大元素/" data-id="cjznnvc230001dcuoc2teq6i9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -168,14 +168,14 @@
 
 
   
-    <article id="post-leetcode/2019-春季高校赛决赛题目-1-有序数组中的缺失元素" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-leetcode/leetcode-2019春季高校赛初赛/1-易混淆数" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/blog/2019/08/23/leetcode/2019-春季高校赛决赛题目-1-有序数组中的缺失元素/" class="article-date">
+    <a href="/blog/2019/08/23/leetcode/leetcode-2019春季高校赛初赛/1-易混淆数/" class="article-date">
   <time datetime="2019-08-23T04:31:42.000Z" itemprop="datePublished">2019-08-23</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/blog/categories/leetcode/">leetcode</a>
+    <a class="article-category-link" href="/blog/categories/leetcode-2019春季高校赛初赛/">leetcode-2019春季高校赛初赛</a>
   </div>
 
   </div>
@@ -186,7 +186,58 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/blog/2019/08/23/leetcode/2019-春季高校赛决赛题目-1-有序数组中的缺失元素/">2019-春季高校赛决赛题目-1-有序数组中的缺失元素</a>
+      <a class="article-title" href="/blog/2019/08/23/leetcode/leetcode-2019春季高校赛初赛/1-易混淆数/">1-易混淆数</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>给定一个数字 N，当它满足以下条件的时候返回 true：<br>把原数字旋转180°以后得到新的数字。<br>如 0, 1, 6, 8, 9 旋转 180° 以后，得到了新的数字 0, 1, 9, 8, 6 。<br>2, 3, 4, 5, 7 旋转 180° 后,得到的不是数字。<br>易混淆数字 (confusing number) 就是一个数字旋转180°以后，得到和原来不同的数字，且新数字的每一位都是有效的。</p>
+<h4 id="示例-1：9"><a href="#示例-1：9" class="headerlink" title="示例 1：9"></a>示例 1：9</h4><p>输入：6<br>输出：true<br>解释：<br>把 6 旋转 180° 以后得到 9，9 是有效数字且 9!=6 。</p>
+<h4 id="示例-2："><a href="#示例-2：" class="headerlink" title="示例 2："></a>示例 2：</h4><p>输入：89<br>输出：true<br>解释:<br>把 89 旋转 180° 以后得到 68，86 是有效数字且 86!=89 。</p>
+<h4 id="示例-3："><a href="#示例-3：" class="headerlink" title="示例 3："></a>示例 3：</h4><p>输入：11<br>输出：false<br>解释：<br>把 11 旋转 180° 以后得到 11，11 是有效数字但是值保持不变，所以 11 不是易混淆数字。 </p>
+<h4 id="示例-4："><a href="#示例-4：" class="headerlink" title="示例 4："></a>示例 4：</h4><p>输入：25<br>输出：false<br>解释：<br>把 25 旋转 180° 以后得到的不是数字。</p>
+<h4 id="提示："><a href="#提示：" class="headerlink" title="提示："></a>提示：</h4><p>0 &lt;= N &lt;= 10^9<br>可以忽略掉旋转后得到的前导零，例如，如果我们旋转后得到 0008 那么该数字就是 8 。</p>
+<hr>
+<h4 id="解答"><a href="#解答" class="headerlink" title="解答:"></a>解答:</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] easy = &#123;<span class="number">0</span>, <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">9</span>, -<span class="number">1</span>, <span class="number">8</span>, <span class="number">6</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">confusingNumber</span><span class="params">(<span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (N == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">int</span> tmpN = N;</span><br><span class="line">        <span class="keyword">int</span> newNum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> tmp;</span><br><span class="line">        <span class="keyword">while</span> (tmpN != <span class="number">0</span>) &#123;</span><br><span class="line">            newNum *= <span class="number">10</span>;</span><br><span class="line">            tmp = easy[tmpN % <span class="number">10</span>];</span><br><span class="line">            <span class="keyword">if</span> (tmp == -<span class="number">1</span>)</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            newNum += tmp;</span><br><span class="line">            tmpN /= <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> newNum != N;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="注意点"><a href="#注意点" class="headerlink" title="注意点:"></a>注意点:</h4><p>因为需要转换的数字比较少,直接用数组的索引作为映射就行,如果有一个不能转换的直接returnn false , 最后判断转换后的数与原数是否相等.</p>
+<h4 id="其它"><a href="#其它" class="headerlink" title="其它:"></a>其它:</h4><p>这次高校赛服务器异常,重开后有两次初赛</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://caizhichao.github.io/blog/2019/08/23/leetcode/leetcode-2019春季高校赛初赛/1-易混淆数/" data-id="cjznnvc32000ddcuoz14u27s9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode/leetcode-2019春季高校赛初赛/1-有序数组中的缺失元素" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2019/08/23/leetcode/leetcode-2019春季高校赛初赛/1-有序数组中的缺失元素/" class="article-date">
+  <time datetime="2019-08-23T04:31:42.000Z" itemprop="datePublished">2019-08-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/leetcode-2019春季高校赛初赛/">leetcode-2019春季高校赛初赛</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2019/08/23/leetcode/leetcode-2019春季高校赛初赛/1-有序数组中的缺失元素/">1-有序数组中的缺失元素</a>
     </h1>
   
 
@@ -211,7 +262,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://caizhichao.github.io/blog/2019/08/23/leetcode/2019-春季高校赛决赛题目-1-有序数组中的缺失元素/" data-id="cjznmyvq90000u4uo0w490c2j" class="article-share-link">Share</a>
+      <a data-url="http://caizhichao.github.io/blog/2019/08/23/leetcode/leetcode-2019春季高校赛初赛/1-有序数组中的缺失元素/" data-id="cjznnvc33000edcuobztpz8yy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -273,7 +324,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://caizhichao.github.io/blog/2019/08/22/leetcode/707-设计链表/" data-id="cjzm88zv90000ekuouscl8jo6" class="article-share-link">Share</a>
+      <a data-url="http://caizhichao.github.io/blog/2019/08/22/leetcode/707-设计链表/" data-id="cjznnvc2m0004dcuo0332ahf1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -283,14 +334,14 @@
 
 
   
-    <article id="post-memo/git不常用但有用命令" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-备忘录/git不常用但有用命令" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/blog/2019/08/21/memo/git不常用但有用命令/" class="article-date">
+    <a href="/blog/2019/08/21/备忘录/git不常用但有用命令/" class="article-date">
   <time datetime="2019-08-21T15:29:47.000Z" itemprop="datePublished">2019-08-21</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/blog/categories/memo/">memo</a>
+    <a class="article-category-link" href="/blog/categories/备忘录/">备忘录</a>
   </div>
 
   </div>
@@ -301,7 +352,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/blog/2019/08/21/memo/git不常用但有用命令/">git不常用但有用命令</a>
+      <a class="article-title" href="/blog/2019/08/21/备忘录/git不常用但有用命令/">git不常用但有用命令</a>
     </h1>
   
 
@@ -326,7 +377,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://caizhichao.github.io/blog/2019/08/21/memo/git不常用但有用命令/" data-id="cjzngh54o0000m4uod8riq3sf" class="article-share-link">Share</a>
+      <a data-url="http://caizhichao.github.io/blog/2019/08/21/备忘录/git不常用但有用命令/" data-id="cjznnvc2o0005dcuoyhqfjuvu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -346,7 +397,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/leetcode/">leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/memo/">memo</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/leetcode/">leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/leetcode-2019春季高校赛初赛/">leetcode-2019春季高校赛初赛</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/备忘录/">备忘录</a></li></ul>
     </div>
   </div>
 
@@ -377,15 +428,15 @@
           </li>
         
           <li>
-            <a href="/blog/2019/08/23/leetcode/2019-春季高校赛决赛题目-1-有序数组中的缺失元素/">2019-春季高校赛决赛题目-1-有序数组中的缺失元素</a>
+            <a href="/blog/2019/08/23/leetcode/leetcode-2019春季高校赛初赛/1-易混淆数/">1-易混淆数</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2019/08/23/leetcode/leetcode-2019春季高校赛初赛/1-有序数组中的缺失元素/">1-有序数组中的缺失元素</a>
           </li>
         
           <li>
             <a href="/blog/2019/08/22/leetcode/707-设计链表/">707-设计链表</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2019/08/21/memo/git不常用但有用命令/">git不常用但有用命令</a>
           </li>
         
       </ul>

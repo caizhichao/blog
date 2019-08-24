@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>通过JQ的contents往iframe中添加内容 | 大橘学程序</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前提：引用JQ &amp;nbsp;支持JQ的浏览器（不要用ie）     今天被一个很烦人的问题给困扰了很久。就是怎么通过JQ来修改iframe标签的内容，你问我js处理iframe的方法？而且还要处理ie浏览的情况？出门左拐不送。说正经的，通过JQ处理iframe内容的关键是contents()方法。假如我们直接使用如下代码   12$(&quot;#iframeID&quot;).html(&quot;你好&quot;);$(&quot;#ifr">
+<meta name="keywords" content="js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="通过JQ的contents往iframe中添加内容">
+<meta property="og:url" content="http://caizhichao.github.io/blog/2019/08/24/程海迷航/通过JQ的contents往iframe中添加内容/index.html">
+<meta property="og:site_name" content="大橘学程序">
+<meta property="og:description" content="前提：引用JQ &amp;nbsp;支持JQ的浏览器（不要用ie）     今天被一个很烦人的问题给困扰了很久。就是怎么通过JQ来修改iframe标签的内容，你问我js处理iframe的方法？而且还要处理ie浏览的情况？出门左拐不送。说正经的，通过JQ处理iframe内容的关键是contents()方法。假如我们直接使用如下代码   12$(&quot;#iframeID&quot;).html(&quot;你好&quot;);$(&quot;#ifr">
+<meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2019-08-24T01:36:20.899Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="通过JQ的contents往iframe中添加内容">
+<meta name="twitter:description" content="前提：引用JQ &amp;nbsp;支持JQ的浏览器（不要用ie）     今天被一个很烦人的问题给困扰了很久。就是怎么通过JQ来修改iframe标签的内容，你问我js处理iframe的方法？而且还要处理ie浏览的情况？出门左拐不送。说正经的，通过JQ处理iframe内容的关键是contents()方法。假如我们直接使用如下代码   12$(&quot;#iframeID&quot;).html(&quot;你好&quot;);$(&quot;#ifr">
+  
+    <link rel="alternate" href="/blog/atom.xml" title="大橘学程序" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/blog/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">大橘学程序</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/blog/" id="subtitle">南安打工仔</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/blog/">主页</a>
+        
+          <a class="main-nav-link" href="/blog/archives">归档</a>
+        
+          <a class="main-nav-link" href="/blog/关于我">关于我</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://caizhichao.github.io/blog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-程海迷航/通过JQ的contents往iframe中添加内容" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2019/08/24/程海迷航/通过JQ的contents往iframe中添加内容/" class="article-date">
+  <time datetime="2019-08-24T01:32:38.000Z" itemprop="datePublished">2019-08-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/程海迷航/">程海迷航</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      通过JQ的contents往iframe中添加内容
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- wp:paragraph -->
+<p>前提：引用JQ &nbsp;支持JQ的浏览器（不要用ie） </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>今天被一个很烦人的问题给困扰了很久。就是怎么通过JQ来修改iframe标签的内容，你问我js处理iframe的方法？而且还要处理ie浏览的情况？出门左拐不送。说正经的，通过JQ处理iframe内容的关键是contents()方法。假如我们直接使用如下代码</p>
+<!-- /wp:paragraph -->
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"#iframeID"</span>).html(<span class="string">"你好"</span>);</span><br><span class="line">$(<span class="string">"#iframeID"</span>).html(<span class="string">"你好"</span>);&lt;/code&gt;&lt;/pre&gt;</span><br></pre></td></tr></table></figure>
+
+<!-- wp:paragraph -->
+<p>发现都不能修改iframe中的内容，都不好使。</p>
+<!-- /wp:paragraph -->
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="string">"测试者inner"</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="string">"测试者部门inner"</span>;</span><br><span class="line">$(<span class="string">"#container02"</span>).contents().find(<span class="string">"body"</span>).html(<span class="string">"&amp;lt;div&gt;"</span> + <span class="string">"&amp;lt;span&gt;"</span> + a + <span class="string">"&amp;lt;/span&gt;"</span> + <span class="string">"&amp;lt;span&gt;"</span> + b + <span class="string">"&amp;lt;/span&gt;"</span> + <span class="string">"&amp;lt;/div&gt;"</span>); &amp;lt; <span class="regexp">/script&gt;/</span>&lt;/code&gt;&lt;/pre&gt;</span><br></pre></td></tr></table></figure>
+
+<!-- wp:paragraph -->
+<p>则可以顺利的给iframe中添加标签。JQ这contents帮我节约了几小时的生命。。。当然还可以反过来用，通过contents()来获取iframe中的内容然后进行修改。</p>
+<!-- /wp:paragraph -->
+
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    $(<span class="string">"#container02"</span>).contents().find(<span class="string">"span"</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ($(<span class="keyword">this</span>).html() == <span class="string">"测试者inner"</span>) <span class="comment">//使用text()对ie无效</span></span><br><span class="line">        &#123;</span><br><span class="line">            $(<span class="keyword">this</span>).parent(<span class="string">"div"</span>).remove(); <span class="comment">//把包含条件内容的span的父亲div删除</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<!-- wp:paragraph -->
+<p>通过以上来完成检索iframe中所有span标签然后删除盛放这个span的div容器。</p>
+<!-- /wp:paragraph -->
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://caizhichao.github.io/blog/2019/08/24/程海迷航/通过JQ的contents往iframe中添加内容/" data-id="cjzowrjf800181wuocbzicihx" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/js/">js</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/blog/2019/08/24/程海迷航/使用新浪SAE和PHPthink遇到的坑总结/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          使用新浪SAE和PHPthink遇到的坑总结
+        
+      </div>
+    </a>
+  
+  
+    <a href="/blog/2019/08/24/程海迷航/python实现简单验证码识别/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">python实现简单验证码识别</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/leetcode/">leetcode</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/leetcode/2019春季高校赛初赛/">2019春季高校赛初赛</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/备忘录/">备忘录</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/生活/">生活</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/程序英语书/">程序英语书</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/程序英语书/Mastering-EMACS/">Mastering EMACS</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/程海迷航/">程海迷航</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/转载/">转载</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/nodejs/">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/proto/">proto</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/转载/">转载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/验证码识别/">验证码识别</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/js/" style="font-size: 10px;">js</a> <a href="/blog/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/blog/tags/proto/" style="font-size: 10px;">proto</a> <a href="/blog/tags/python/" style="font-size: 10px;">python</a> <a href="/blog/tags/转载/" style="font-size: 10px;">转载</a> <a href="/blog/tags/验证码识别/" style="font-size: 10px;">验证码识别</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/08/">August 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2019/08/24/leetcode/700-二叉搜索树中的搜索/">700-二叉搜索树中的搜索</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2019/08/24/leetcode/696-计数二进制子串/">696-计数二进制子串</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2019/08/24/leetcode/697-数组的度/">697-数组的度</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2019/08/24/leetcode/693-交替位二进制数/">693-交替位二进制数</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2019/08/24/程序英语书/p4-chapter-2-Guiding-Philosoph-LISP/">p4-chapter-2-Guiding-Philosoph-LISP</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 蔡志超<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">主页</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/blog/关于我" class="mobile-nav-link">关于我</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css">
+  <script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/blog/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

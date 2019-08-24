@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>大橘学程序</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="大橘学程序">
+<meta property="og:url" content="http://caizhichao.github.io/blog/page/2/index.html">
+<meta property="og:site_name" content="大橘学程序">
+<meta property="og:locale" content="zh">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="大橘学程序">
+  
+    <link rel="alternate" href="/blog/atom.xml" title="大橘学程序" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/blog/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">大橘学程序</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/blog/" id="subtitle">南安打工仔</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/blog/">主页</a>
+        
+          <a class="main-nav-link" href="/blog/archives">归档</a>
+        
+          <a class="main-nav-link" href="/blog/关于我">关于我</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://caizhichao.github.io/blog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-程海迷航/通过JQ的contents往iframe中添加内容" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2019/08/24/程海迷航/通过JQ的contents往iframe中添加内容/" class="article-date">
+  <time datetime="2019-08-24T01:32:38.000Z" itemprop="datePublished">2019-08-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/程海迷航/">程海迷航</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2019/08/24/程海迷航/通过JQ的contents往iframe中添加内容/">通过JQ的contents往iframe中添加内容</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- wp:paragraph -->
+<p>前提：引用JQ &nbsp;支持JQ的浏览器（不要用ie） </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>今天被一个很烦人的问题给困扰了很久。就是怎么通过JQ来修改iframe标签的内容，你问我js处理iframe的方法？而且还要处理ie浏览的情况？出门左拐不送。说正经的，通过JQ处理iframe内容的关键是contents()方法。假如我们直接使用如下代码</p>
+<!-- /wp:paragraph -->
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"#iframeID"</span>).html(<span class="string">"你好"</span>);</span><br><span class="line">$(<span class="string">"#iframeID"</span>).html(<span class="string">"你好"</span>);&lt;/code&gt;&lt;/pre&gt;</span><br></pre></td></tr></table></figure>
+
+<!-- wp:paragraph -->
+<p>发现都不能修改iframe中的内容，都不好使。</p>
+<!-- /wp:paragraph -->
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="string">"测试者inner"</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="string">"测试者部门inner"</span>;</span><br><span class="line">$(<span class="string">"#container02"</span>).contents().find(<span class="string">"body"</span>).html(<span class="string">"&amp;lt;div&gt;"</span> + <span class="string">"&amp;lt;span&gt;"</span> + a + <span class="string">"&amp;lt;/span&gt;"</span> + <span class="string">"&amp;lt;span&gt;"</span> + b + <span class="string">"&amp;lt;/span&gt;"</span> + <span class="string">"&amp;lt;/div&gt;"</span>); &amp;lt; <span class="regexp">/script&gt;/</span>&lt;/code&gt;&lt;/pre&gt;</span><br></pre></td></tr></table></figure>
+
+<!-- wp:paragraph -->
+<p>则可以顺利的给iframe中添加标签。JQ这contents帮我节约了几小时的生命。。。当然还可以反过来用，通过contents()来获取iframe中的内容然后进行修改。</p>
+<!-- /wp:paragraph -->
+
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    $(<span class="string">"#container02"</span>).contents().find(<span class="string">"span"</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ($(<span class="keyword">this</span>).html() == <span class="string">"测试者inner"</span>) <span class="comment">//使用text()对ie无效</span></span><br><span class="line">        &#123;</span><br><span class="line">            $(<span class="keyword">this</span>).parent(<span class="string">"div"</span>).remove(); <span class="comment">//把包含条件内容的span的父亲div删除</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<!-- wp:paragraph -->
+<p>通过以上来完成检索iframe中所有span标签然后删除盛放这个span的div容器。</p>
+<!-- /wp:paragraph -->
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://caizhichao.github.io/blog/2019/08/24/程海迷航/通过JQ的contents往iframe中添加内容/" data-id="cjzowrjf800181wuocbzicihx" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/js/">js</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-程海迷航/python实现简单验证码识别" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2019/08/24/程海迷航/python实现简单验证码识别/" class="article-date">
+  <time datetime="2019-08-24T01:12:33.000Z" itemprop="datePublished">2019-08-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/程海迷航/">程海迷航</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2019/08/24/程海迷航/python实现简单验证码识别/">python实现简单验证码识别</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- wp:paragraph -->
+<p>
+
+<ol>
+<li>安装python和pip不作介绍，保证打开cmd输入pip和python有反应。需设置环境变量。<a href="https://pan.baidu.com/s/1i51pccl<br>2.参考http://www.jianshu.com/p/9e97c9b7dab6" target="_blank" rel="noopener">python3.6安装包</a></li>
+<li>在cmd中执行以下命令(<a href="https://jingyan.baidu.com/article/046a7b3e67f1e1f9c37fa976.html" target="_blank" rel="noopener">怎么启动cmd</a>)<!-- /wp:paragraph -->
+
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install PIL</span><br><span class="line">pip install Pillow</span><br><span class="line">pip install pytesseract</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><p>目标图片<br><img src="index.png" alt="验证码"></p>
+</li>
+<li><p>识别代码(python3)</p>
+</li>
+</ol>
+</p><p><strong><em>如果出现无法导入需要自己解决依赖问题</em></strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">from</span> pytesseract <span class="keyword">import</span> * </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">im = Image.open(<span class="string">'index.png'</span>)</span><br><span class="line"></span><br><span class="line">im = im.convert(<span class="string">'L'</span>)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">initTable</span><span class="params">(threshold=<span class="number">140</span>)</span>:</span></span><br><span class="line">    table = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">256</span>):</span><br><span class="line">        <span class="keyword">if</span> i &lt; threshold:</span><br><span class="line">            table.append(<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            table.append(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> table</span><br><span class="line"></span><br><span class="line">binaryImage = im.point(initTable(), <span class="string">'1'</span>)</span><br><span class="line"><span class="comment">#binaryImage.show()</span></span><br><span class="line"></span><br><span class="line">print(image_to_string(binaryImage, config=<span class="string">'-psm 7'</span>))</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>结果截图<br><img src="003fKHE6zy7gw43IqODfb690.jpg" alt="结果"></li>
+</ol>
+<h4 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h4><p><a href="http://www.jianshu.com/p/9e97c9b7dab6" target="_blank" rel="noopener">参考链接</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://caizhichao.github.io/blog/2019/08/24/程海迷航/python实现简单验证码识别/" data-id="cjzowrjf0000z1wuoovjjmwf7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/验证码识别/">验证码识别</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-转载/select-poll-epoll详解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2019/08/24/转载/select-poll-epoll详解/" class="article-date">
+  <time datetime="2019-08-24T01:07:22.000Z" itemprop="datePublished">2019-08-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/转载/">转载</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2019/08/24/转载/select-poll-epoll详解/">select、poll、epoll详解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://www.cnblogs.com/zhangxinqi/p/8337207.html" target="_blank" rel="noopener">转载链接</a></p>
+<!-- wp:paragraph -->
+<p>select，poll，epoll都是IO多路复用的机制。I/O多路复用就是通过一种机制使一个进程可以监视多个描述符，一旦某个描述符就绪（一般是读就绪或者写就绪），能够通知程序进行相应的读写操作。</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; select，poll，epoll本质上都是同步I/O，因为他们都需要在读写事件就绪后自己负责进行读写，也就是说这个读写过程是阻塞的</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; 异步I/O则无需自己负责进行读写，异步I/O的实现会负责把数据从内核拷贝到用户空间。</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>&nbsp; sellect、poll、epoll三者的区别 :</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp;&nbsp;<strong>select：</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp;&nbsp;目前支持几乎所有的平台</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp;&nbsp;默认单个进程能够监视的文件描述符的数量存在最大限制，在linux上默认只支持1024个socket</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; &nbsp; 可以通过修改宏定义或重新编译内核（修改系统最大支持的端口数）的方式提升这一限制</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp;&nbsp;内核准备好数据后通知用户有数据了，但不告诉用户是哪个连接有数据，用户只能通过轮询的方式来获取数据</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; &nbsp; 假定select让内核监视100个socket连接，当有1个连接有数据后，内核就通知用户100个连接中有数据了</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; &nbsp; 但是不告诉用户是哪个连接有数据了，此时用户只能通过轮询的方式一个个去检查然后获取数据</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; &nbsp; 这里是假定有100个socket连接，那么如果有上万个，上十万个呢？</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; &nbsp; 那你就得轮询上万次，上十万次，而你所取的结果仅仅就那么1个。这样就会浪费很多没用的开销</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp;&nbsp;只支持水平触发；每次调用select，都需要把fd集合从用户态拷贝到内核态，这个开销在fd很多时会很大</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; 同时每次调用select都需要在内核遍历传递进来的所有fd，这个开销在fd很多时也会很大</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>poll：</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp;&nbsp;与select没有本质上的差别，仅仅是没有了最大文件描述符数量的限制</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; 只支持水平触发</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; 只是一个过渡版本，很少用</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>&nbsp; epoll：</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; Linux2.6才出现的epoll，具备了select和poll的一切优点，公认为性能最好的多路IO就绪通知方法</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; 没有最大文件描述符数量的限制</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; 同时支持水平触发和边缘触发</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; 不支持windows平台</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; 内核准备好数据以后会通知用户哪个连接有数据了</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; IO效率不随fd数目增加而线性下降</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; 使用mmap加速内核与用户空间的消息传递</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>水平触发与边缘触发：</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp;&nbsp;水平触发：将就绪的文件描述符告诉进程后，如果进程没有对其进行IO操作，那么下次调用epoll时将再次报告这些文件描述符，这种方式称为水平触发</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp;&nbsp;边缘触发：只告诉进程哪些文件描述符刚刚变为就绪状态，它只说一遍，如果我们没有采取行动，那么它将不会再次告知，这种方式称为边缘触发</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; 理论上边缘触发的性能要更高一些，但是代码实现相当复杂。</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp;<strong>select和epoll的特点</strong>：</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp;&nbsp;select：</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; select通过一个select()系统调用来监视多个文件描述符的数组，当select()返回后，该数组中就绪的文件描述符便会被内核修改标志位，使得进程可以获得这些文件描述符从而进行后续的读写操作。</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; 由于网络响应时间的延迟使得大量TCP连接处于非活跃状态，但调用select()会对所有socket进行一次线性扫描，所以这也浪费了一定的开销。</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; epoll:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; epoll同样只告知那些就绪的文件描述符，而且当我们调用epoll_wait()获得就绪文件描述符时，返回的不是实际的描述符，而是一个代表就绪描述符数量的值，你只需要去epoll指定的一个数组中依次取得相应数量的文件描述符即可，这里也使用了内存映射（mmap）技术，这样便彻底省掉了这些文件描述符在系统调用时复制的开销。</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; 另一个本质的改进在于epoll采用基于事件的就绪通知方式。在select/poll中，进程只有在调用一定的方法后，内核才对所有监视的文件描述符进行扫描，而epoll事先通过epoll_ctl()来注册一个文件描述符，一旦基于某个文件描述符就绪时，内核会采用类似callback的回调机制，迅速激活这个文件描述符，当进程调用epoll_wait()时便得到通知。</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>select</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>select(rlist,wlist,xlist,timeout=None)</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp;select函数监视的文件描述符分3类，分别是writefds、readfds、和exceptfds。</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp;调用后select函数会阻塞，直到有描述符就绪（有数据可读、可写、或者有except），或者超时（timeout指定等待时间，如果立即返回设为null即可），函数返回。当select函数返回后，可以通过遍历fdset，来找到就绪的描述符。</p>
+<!-- /wp:paragraph -->
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://caizhichao.github.io/blog/2019/08/24/转载/select-poll-epoll详解/" data-id="cjzowrjfa001a1wuop8v6vb45" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/转载/">转载</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-程海迷航/使用ts-protoc-gen编译proto获得typescript提示文件" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2019/08/24/程海迷航/使用ts-protoc-gen编译proto获得typescript提示文件/" class="article-date">
+  <time datetime="2019-08-24T00:46:42.000Z" itemprop="datePublished">2019-08-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/程海迷航/">程海迷航</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2019/08/24/程海迷航/使用ts-protoc-gen编译proto获得typescript提示文件/">使用ts-protoc-gen编译proto获得typescript提示文件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="目的"><a href="#目的" class="headerlink" title="目的:"></a>目的:</h3><p>为了使用typescript语法调用gRPC.</p>
+<h3 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h3><ol>
+<li><p>各种找,也试过用thrift输出typescript代码,各种错误依赖都错.<br>然后尝试用使用gRPC.</p>
+</li>
+<li><p>然后我找到一个名字叫ts-protoc-gen的包,感觉找到了救星<br><a href="https://github.com/agreatfool/grpc_tools_node_protoc_ts" target="_blank" rel="noopener">https://github.com/agreatfool/grpc_tools_node_protoc_ts</a></p>
+</li>
+<li><p>3.官网那个配置是机遇linux操作的在windows10下跑不了,有以下这几种错误<br><img src="12.png" alt></p>
+</li>
+<li><p>官网命令(自己跑不起来)</p>
+<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">npm install grpc_tools_node_protoc_ts --save-dev</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> generate js codes via grpc-tools</span><br><span class="line">grpc_tools_node_protoc \</span><br><span class="line">--js_out=import_style=commonjs,binary:./your_dest_dir \</span><br><span class="line">--grpc_out=./your_dest_dir \</span><br><span class="line">--plugin=protoc-gen-grpc=`which grpc_tools_node_protoc_plugin` \</span><br><span class="line">-I ./proto \</span><br><span class="line">./your_proto_dir/*.proto</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> generate d.ts codes</span><br><span class="line">protoc \</span><br><span class="line">--plugin=protoc-gen-ts=./node_modules/.bin/protoc-gen-ts \</span><br><span class="line">--ts_out=./your_dest_dir \</span><br><span class="line">-I ./proto \</span><br><span class="line">./your_proto_dir/*.proto</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自己修改后的命令(需要你自己修改plugin路径)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">protoc --grpc_out=./   --js_out=import_style=commonjs,binary:./  --plugin=protoc-gen-grpc=D:/comany_project/monster_farm/server/node_modules/.bin/grpc_tools_node_protoc_plugin.cmd index.proto</span><br><span class="line"></span><br><span class="line">protoc --grpc_out=./    --plugin=protoc-gen-grpc=D:/comany_project/monster_farm/server/node_modules/.bin/grpc_tools_node_protoc_ts_plugin.cmd index.proto</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p><code>两条命令使用的插件名不同grpc_tools_node_protoc_ts_plugin.cmd 中间有个ts</code></p>
+<ol start="6">
+<li>坑</li>
+</ol>
+<ul>
+<li>window下 protoc-gen-ts后面要加个cmd, 且–plugin对应的参数要用绝对路径,如果不用绝对路径,则需要使用window特定的相对路径书写方式,例如 .\<strong><em>**\</em></strong>这样.</li>
+</ul>
+<ol start="7">
+<li>环境依赖<br>package.json文件内容:<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="attr">"name"</span>: <span class="string">"ts"</span>,</span><br><span class="line">   <span class="attr">"version"</span>: <span class="string">"1.0.0"</span>,</span><br><span class="line">   <span class="attr">"description"</span>: <span class="string">""</span>,</span><br><span class="line">   <span class="attr">"main"</span>: <span class="string">"index.js"</span>,</span><br><span class="line">   <span class="attr">"scripts"</span>: &#123;</span><br><span class="line">     <span class="attr">"test"</span>: <span class="string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span></span><br><span class="line">   &#125;,</span><br><span class="line">   <span class="attr">"author"</span>: <span class="string">""</span>,</span><br><span class="line">   <span class="attr">"license"</span>: <span class="string">"ISC"</span>,</span><br><span class="line">   <span class="attr">"devDependencies"</span>: &#123;</span><br><span class="line">   &#125;,<span class="attr">"dependencies"</span>: &#123;</span><br><span class="line">     <span class="attr">"google-protobuf"</span>: <span class="string">"^3.0.0"</span>,</span><br><span class="line">     <span class="attr">"grpc"</span>: <span class="string">"^1.11.0"</span></span><br><span class="line">   &#125;,</span><br><span class="line">   <span class="attr">"devDependencies"</span>: &#123;</span><br><span class="line">     <span class="attr">"@types/node"</span>: <span class="string">"^11.11.4"</span>,</span><br><span class="line">     <span class="attr">"grpc-tools"</span>: <span class="string">"latest"</span>,</span><br><span class="line">     <span class="attr">"grpc-tools-ts"</span>: <span class="string">"latest"</span>, </span><br><span class="line">     <span class="attr">"grpc_tools_node_protoc_ts"</span>: <span class="string">"^2.4.2"</span>,</span><br><span class="line">     <span class="attr">"mocha"</span>: <span class="string">"latest"</span>,</span><br><span class="line">     <span class="attr">"ts-node"</span>: <span class="string">"^8.0.3"</span>,</span><br><span class="line">     <span class="attr">"ts-protoc-gen"</span>: <span class="string">"^0.9.0"</span>,</span><br><span class="line">     <span class="attr">"typescript"</span>: <span class="string">"^3.3.4000"</span>,</span><br><span class="line">     <span class="attr">"typings"</span>: <span class="string">"latest"</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>protoc版本<br><a href="https://github.com/protocolbuffers/protobuf/releases/download/v3.7.0/protoc-3.7.0-win64.zip" target="_blank" rel="noopener">protoc-3.7.0-win64</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://caizhichao.github.io/blog/2019/08/24/程海迷航/使用ts-protoc-gen编译proto获得typescript提示文件/" data-id="cjzowrjf200121wuopfuaj7ml" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/proto/">proto</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-生活/厦门公园拍照" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2019/08/24/生活/厦门公园拍照/" class="article-date">
+  <time datetime="2019-08-23T16:33:06.000Z" itemprop="datePublished">2019-08-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/生活/">生活</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2019/08/24/生活/厦门公园拍照/">厦门公园拍照</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="湖边公园"><a href="#湖边公园" class="headerlink" title="湖边公园"></a>湖边公园</h3><p><img src="img_20190315_23545396159420083189862.jpg" alt><br><img src="img_20190317_1530554596416227536371077.jpg" alt><br><img src="img_20190330_2138494072435943762023252.jpg" alt><br><img src="wp-15526649414738827580120475227990.jpg" alt></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://caizhichao.github.io/blog/2019/08/24/生活/厦门公园拍照/" data-id="cjzowrjev000s1wuosd0rbsmb" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode/671-二叉树中第二小的节点" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2019/08/24/leetcode/671-二叉树中第二小的节点/" class="article-date">
+  <time datetime="2019-08-23T16:30:46.000Z" itemprop="datePublished">2019-08-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2019/08/24/leetcode/671-二叉树中第二小的节点/">671-二叉树中第二小的节点</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>给定一个非空特殊的二叉树，每个节点都是正数，并且每个节点的子节点数量只能为 2或 0。如果一个节点有两个子节点的话，那么这个节点的值不大于它的子节点的值。<br>给出这样的一个二叉树，你需要输出所有节点中的第二小的值。如果第二小的值不存在的话，输出 -1 。</p>
+<h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1:"></a>示例 1:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入:      2   </span><br><span class="line">          / \   </span><br><span class="line">         2   5    </span><br><span class="line">        / \    </span><br><span class="line">       5   7 </span><br><span class="line">输出: 5 说明: 最小的值是 2 ，第二小的值是 5 。</span><br></pre></td></tr></table></figure>
+
+<h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2:"></a>示例 2:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入:      2 </span><br><span class="line">          / \  </span><br><span class="line">         2   2 </span><br><span class="line">输出: -1 说明: 最小的值是 2, 但是不存在第二小的值。</span><br></pre></td></tr></table></figure>
+
+
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> min = -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> subMin = -<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findSecondMinimumValue</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (min == -<span class="number">1</span>)</span><br><span class="line">            min = root.val;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> ((subMin==-<span class="number">1</span> &amp;&amp; root.val!=min) ||(root.val &lt; subMin &amp;&amp; root.val &gt; min))</span><br><span class="line">            subMin = root.val;</span><br><span class="line">        findSecondMinimumValue(root.left);</span><br><span class="line">        findSecondMinimumValue(root.right);</span><br><span class="line">        <span class="keyword">return</span> subMin;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这道题一开始我看成求第二大,这里是第二小..<br>根节点肯定最小,所以只要记录根节点值,然后遍历查找,大于根节点的最小值即可..<br>还是笨,边看游戏边写一大早上才一题t.t</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://caizhichao.github.io/blog/2019/08/24/leetcode/671-二叉树中第二小的节点/" data-id="cjzowrje000051wuoxz0rzki9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode/674-最长连续递增序列" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2019/08/24/leetcode/674-最长连续递增序列/" class="article-date">
+  <time datetime="2019-08-23T16:29:13.000Z" itemprop="datePublished">2019-08-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2019/08/24/leetcode/674-最长连续递增序列/">674-最长连续递增序列</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>给定一个未经排序的整数数组，找到最长且连续的的递增序列。</p>
+<h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1:"></a>示例 1:</h3><p>输入: [1,3,5,4,7] 输出: 3 解释: 最长连续递增序列是 [1,3,5], 长度为3。 尽管 [1,3,5,7] 也是升序的子序列, 但它不是连续的，因为5和7在原数组里被4隔开。  </p>
+<h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2:"></a>示例 2:</h3><p>输入: [2,2,2,2,2] 输出: 1 解释: 最长连续递增序列是 [2], 长度为1。 </p>
+<h3 id="注意：数组长度不会超过10000。"><a href="#注意：数组长度不会超过10000。" class="headerlink" title="注意：数组长度不会超过10000。"></a>注意：数组长度不会超过10000。</h3><pre><code class="java"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findLengthOfLCIS</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>{
+        <span class="keyword">if</span>(nums.length&lt;=<span class="number">1</span>)
+            <span class="keyword">return</span> nums.length;
+        <span class="keyword">int</span> maxCnt = <span class="number">0</span>;
+        <span class="keyword">int</span> tmpCnt = <span class="number">1</span>;
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.length; i++) {
+            <span class="keyword">if</span>(nums[i]&gt;nums[i-<span class="number">1</span>])
+                tmpCnt ++;
+            <span class="keyword">else</span>{
+                maxCnt = tmpCnt&gt;maxCnt?tmpCnt:maxCnt;
+                tmpCnt = <span class="number">1</span>;
+            }
+        }
+        maxCnt = tmpCnt&gt;maxCnt?tmpCnt:maxCnt;
+        <span class="keyword">return</span> maxCnt;
+    }
+}</code></pre>
+<p>没注意到切断连续以后 tmpCnt 应该从1开始,错误提交一次.别问为啥这么简单的题也放上来,这不是文章少嘛</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://caizhichao.github.io/blog/2019/08/24/leetcode/674-最长连续递增序列/" data-id="cjzowrje600081wuoaabbyu46" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-编程哲学一百句" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2019/08/24/编程哲学一百句/" class="article-date">
+  <time datetime="2019-08-23T16:24:51.000Z" itemprop="datePublished">2019-08-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2019/08/24/编程哲学一百句/">编程哲学一百句</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>在软件开发领域有这样一句话：计算机科学领域的任何问题都可以通过增加一个间接的中间层来解决。而门面模式就是对于这句话的典型实践。</li>
+</ol>
+<hr>
+<ol start="2">
+<li>面向对象适合解决多态问题，面向过程时候解决线性问题。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://caizhichao.github.io/blog/2019/08/24/编程哲学一百句/" data-id="cjzowrjcb00001wuoo4dyxls9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode/680-验证回文字符串-Ⅱ" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2019/08/24/leetcode/680-验证回文字符串-Ⅱ/" class="article-date">
+  <time datetime="2019-08-23T16:23:20.000Z" itemprop="datePublished">2019-08-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2019/08/24/leetcode/680-验证回文字符串-Ⅱ/">680-验证回文字符串-Ⅱ</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>给定一个非空字符串 s，最多删除一个字符。判断是否能成为回文字符串。</p>
+<h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1:"></a>示例 1:</h3><p>输入: “aba”<br>输出: True </p>
+<h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2:"></a>示例 2:</h3><p>输入: “abca”<br>输出: True </p>
+<p>解释: 你可以删除c字符。 </p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意:"></a>注意:</h3><p>字符串只包含从 a-z 的小写字母。字符串的最大长度是50000。</p>
+<pre><code class="java"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>{
+     <span class="keyword">int</span> chance = <span class="number">1</span>;
+       <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">validPalindrome</span><span class="params">(String s)</span> </span>{
+        chance = <span class="number">1</span>;
+        <span class="keyword">return</span> help(s, <span class="number">0</span>, s.length() - <span class="number">1</span>);
+    }
+
+    <span class="function"><span class="keyword">boolean</span> <span class="title">help</span><span class="params">(String s, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>{
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = left; i &lt; s.length(); i++) {
+            <span class="keyword">if</span> (left &gt;= right)
+                <span class="keyword">break</span>;
+            <span class="keyword">char</span> lc = s.charAt(i);
+            <span class="keyword">char</span> rc = s.charAt(right);
+            <span class="keyword">if</span> (lc == rc) {
+                left++;
+                right--;
+            } <span class="keyword">else</span> {
+                <span class="keyword">if</span> (chance == <span class="number">0</span>)
+                    <span class="keyword">return</span> <span class="keyword">false</span>;
+                chance--;
+                <span class="keyword">boolean</span> leftRes = help(s, left + <span class="number">1</span>, right);
+                <span class="keyword">boolean</span> rightRes = help(s, left, right - <span class="number">1</span>);
+                <span class="keyword">return</span> leftRes || rightRes;
+            }
+        }
+        <span class="keyword">return</span> <span class="keyword">true</span>;
+    }
+}</code></pre>
+<p>本来想着用一个for循环处理,然后两个指针从两边往中间走,如果指向的字符不一致,则尝试移动其中一边的指针,如果移动后一致两个指针就继续一起向中间移动.提交后总有错误,我又没搞懂哪些例子会错.一气之下改成递归的,只取两边同时逼近时彻底相同的情况输出,其他情况就递归查找,然后约束一下递归次数.整体看上去给人清楚多了.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://caizhichao.github.io/blog/2019/08/24/leetcode/680-验证回文字符串-Ⅱ/" data-id="cjzowrje200061wuokhrq83vc" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode/840-矩阵中的幻方" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2019/08/24/leetcode/840-矩阵中的幻方/" class="article-date">
+  <time datetime="2019-08-23T16:20:06.000Z" itemprop="datePublished">2019-08-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2019/08/24/leetcode/840-矩阵中的幻方/">840-矩阵中的幻方</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>3 x 3 的幻方是一个填充有从 1 到 9 的不同数字的 3 x 3 矩阵，其中每行，每列以及两条对角线上的各数之和都相等。<br>给定一个由整数组成的 grid，其中有多少个 3 × 3 的 “幻方” 子矩阵？（每个子矩阵都是连续的）。</p>
+<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><p>输入: [[4,3,8,4],<br>&emsp;&emsp; [9,5,1,9],<br>&emsp;&emsp; [2,7,6,2]]<br>输出: 1 </p>
+<h3 id="解释"><a href="#解释" class="headerlink" title="解释:"></a>解释:</h3><p> 下面的子矩阵是一个 3 x 3 的幻方：<br>      438<br>      951<br>      276<br> 而这一个不是：<br>      384<br>      519<br>      762<br>总的来说，在本示例所给定的矩阵中只有一个 3 x 3 的幻方子矩阵。 </p>
+<h3 id="提示"><a href="#提示" class="headerlink" title="提示:"></a>提示:</h3><p>1 &lt;= grid.length &lt;= 10<br>1 &lt;= grid[0].length &lt;= 10<br>0 &lt;= grid[i][j] &lt;= 15 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numMagicSquaresInside</span><span class="params">(<span class="keyword">int</span>[][] grid)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ret = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">15</span>;</span><br><span class="line">        HashMap&lt;Integer, Integer&gt; hashMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; grid.length - <span class="number">2</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; grid[i].length - <span class="number">2</span>; j++) &#123;</span><br><span class="line">                hashMap.clear();</span><br><span class="line">                <span class="keyword">int</span> a11 = grid[i][j];</span><br><span class="line">                <span class="keyword">int</span> a12 = grid[i][j + <span class="number">1</span>];</span><br><span class="line">                <span class="keyword">int</span> a13 = grid[i][j + <span class="number">2</span>];</span><br><span class="line">                <span class="keyword">int</span> a21 = grid[i + <span class="number">1</span>][j];</span><br><span class="line">                <span class="keyword">int</span> a22 = grid[i + <span class="number">1</span>][j + <span class="number">1</span>];</span><br><span class="line">                <span class="keyword">int</span> a23 = grid[i + <span class="number">1</span>][j + <span class="number">2</span>];</span><br><span class="line">                <span class="keyword">int</span> a31 = grid[i + <span class="number">2</span>][j];</span><br><span class="line">                <span class="keyword">int</span> a32 = grid[i + <span class="number">2</span>][j + <span class="number">1</span>];</span><br><span class="line">                <span class="keyword">int</span> a33 = grid[i + <span class="number">2</span>][j + <span class="number">2</span>];</span><br><span class="line">                <span class="keyword">if</span> (a22 != <span class="number">5</span>)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                hashMap.put(a11, <span class="number">1</span>);</span><br><span class="line">                hashMap.put(a12, <span class="number">1</span>);</span><br><span class="line">                hashMap.put(a13, <span class="number">1</span>);</span><br><span class="line">                hashMap.put(a21, <span class="number">1</span>);</span><br><span class="line">                hashMap.put(a22, <span class="number">1</span>);</span><br><span class="line">                hashMap.put(a23, <span class="number">1</span>);</span><br><span class="line">                hashMap.put(a31, <span class="number">1</span>);</span><br><span class="line">                hashMap.put(a32, <span class="number">1</span>);</span><br><span class="line">                hashMap.put(a33, <span class="number">1</span>);</span><br><span class="line">                <span class="keyword">if</span> (hashMap.size() != <span class="number">9</span>) &#123;</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">boolean</span> flag = <span class="keyword">true</span>;</span><br><span class="line">                <span class="keyword">for</span> (Map.Entry&lt;Integer, Integer&gt; e : hashMap.entrySet()) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (e.getKey() &gt; <span class="number">9</span> || e.getKey() &lt; <span class="number">1</span>) &#123;</span><br><span class="line">                        flag = <span class="keyword">false</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (!flag)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (a11 + a12 + a13 != sum)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (a21 + a22 + a23 != sum)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (a31 + a32 + a33 != sum)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (a11 + a21 + a31 != sum)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (a12 + a22 + a32 != sum)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (a13 + a23 + a33 != sum)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (a11 + a22 + a33 != sum)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (a13 + a22 + a31 != sum)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                ret++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这道题真的是无脑，遍历可以解决的题还扔出来。。。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://caizhichao.github.io/blog/2019/08/24/leetcode/840-矩阵中的幻方/" data-id="cjzowrjer000o1wuot3ajgosu" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/blog/">&laquo; Prev</a><a class="page-number" href="/blog/">1</a><span class="page-number current">2</span><a class="page-number" href="/blog/page/3/">3</a><a class="extend next" rel="next" href="/blog/page/3/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/leetcode/">leetcode</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/leetcode/2019春季高校赛初赛/">2019春季高校赛初赛</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/备忘录/">备忘录</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/生活/">生活</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/程序英语书/">程序英语书</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/程序英语书/Mastering-EMACS/">Mastering EMACS</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/程海迷航/">程海迷航</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/转载/">转载</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/nodejs/">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/proto/">proto</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/转载/">转载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/验证码识别/">验证码识别</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/js/" style="font-size: 10px;">js</a> <a href="/blog/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/blog/tags/proto/" style="font-size: 10px;">proto</a> <a href="/blog/tags/python/" style="font-size: 10px;">python</a> <a href="/blog/tags/转载/" style="font-size: 10px;">转载</a> <a href="/blog/tags/验证码识别/" style="font-size: 10px;">验证码识别</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/08/">August 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2019/08/24/leetcode/700-二叉搜索树中的搜索/">700-二叉搜索树中的搜索</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2019/08/24/leetcode/696-计数二进制子串/">696-计数二进制子串</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2019/08/24/leetcode/697-数组的度/">697-数组的度</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2019/08/24/leetcode/693-交替位二进制数/">693-交替位二进制数</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2019/08/24/程序英语书/p4-chapter-2-Guiding-Philosoph-LISP/">p4-chapter-2-Guiding-Philosoph-LISP</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 蔡志超<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">主页</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/blog/关于我" class="mobile-nav-link">关于我</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css">
+  <script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/blog/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

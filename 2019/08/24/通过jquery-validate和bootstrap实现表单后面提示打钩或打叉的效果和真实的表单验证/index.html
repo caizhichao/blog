@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>通过jquery-validate和bootstrap实现表单后面提示打钩或打叉的效果和真实的表单验证 | 大橘学程序</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="首先，需要下载以下框架的代码，版本没有严格的要求。    一、工具文件准备    1、jquery.js &amp;nbsp;2、bootstrap.css 3、jquery.validate.js    这三个文件非常容易下载，下载然后看看包里有名字跟以上名字一致的就是了。    二、在html中引用css文件和js文件    三、创建一个新的的js文件，这个文件使用来调用jquery.validat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="通过jquery-validate和bootstrap实现表单后面提示打钩或打叉的效果和真实的表单验证">
+<meta property="og:url" content="http://caizhichao.github.io/blog/2019/08/24/通过jquery-validate和bootstrap实现表单后面提示打钩或打叉的效果和真实的表单验证/index.html">
+<meta property="og:site_name" content="大橘学程序">
+<meta property="og:description" content="首先，需要下载以下框架的代码，版本没有严格的要求。    一、工具文件准备    1、jquery.js &amp;nbsp;2、bootstrap.css 3、jquery.validate.js    这三个文件非常容易下载，下载然后看看包里有名字跟以上名字一致的就是了。    二、在html中引用css文件和js文件    三、创建一个新的的js文件，这个文件使用来调用jquery.validat">
+<meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2019-08-24T01:44:29.373Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="通过jquery-validate和bootstrap实现表单后面提示打钩或打叉的效果和真实的表单验证">
+<meta name="twitter:description" content="首先，需要下载以下框架的代码，版本没有严格的要求。    一、工具文件准备    1、jquery.js &amp;nbsp;2、bootstrap.css 3、jquery.validate.js    这三个文件非常容易下载，下载然后看看包里有名字跟以上名字一致的就是了。    二、在html中引用css文件和js文件    三、创建一个新的的js文件，这个文件使用来调用jquery.validat">
+  
+    <link rel="alternate" href="/blog/atom.xml" title="大橘学程序" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/blog/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">大橘学程序</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/blog/" id="subtitle">南安打工仔</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/blog/">主页</a>
+        
+          <a class="main-nav-link" href="/blog/archives">归档</a>
+        
+          <a class="main-nav-link" href="/blog/关于我">关于我</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://caizhichao.github.io/blog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-通过jquery-validate和bootstrap实现表单后面提示打钩或打叉的效果和真实的表单验证" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2019/08/24/通过jquery-validate和bootstrap实现表单后面提示打钩或打叉的效果和真实的表单验证/" class="article-date">
+  <time datetime="2019-08-24T01:41:00.000Z" itemprop="datePublished">2019-08-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/程海迷航/">程海迷航</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      通过jquery-validate和bootstrap实现表单后面提示打钩或打叉的效果和真实的表单验证
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- wp:paragraph -->
+<p>首先，需要下载以下框架的代码，版本没有严格的要求。</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>一、工具文件准备</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>1、jquery.js &nbsp;2、bootstrap.css 3、jquery.validate.js</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>这三个文件非常容易下载，下载然后看看包里有名字跟以上名字一致的就是了。</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>二、在html中引用css文件和js文件</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>三、创建一个新的的js文件，这个文件使用来调用jquery.validate.js中封装的方法的，代码如下</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>
+
+</p><p>以下如error和element等都是jq对象，可以使用jq方法</p>
+<p></p>
+<!-- /wp:paragraph -->
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">$().ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> validaObj = $(<span class="string">"#form_login"</span>).validate(&#123; <span class="comment">//创建一个validate对象，可以自己查询使用一些该对象的衍生方法</span></span><br><span class="line">        rules: &#123;</span><br><span class="line">            username: &#123;</span><br><span class="line">                required: <span class="literal">true</span>,</span><br><span class="line">                minlength: <span class="number">4</span>,</span><br><span class="line">                maxlength: <span class="number">8</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        messages: &#123;</span><br><span class="line">            username: &#123;</span><br><span class="line">                required: <span class="string">""</span>,</span><br><span class="line">                minlength: <span class="string">""</span>,</span><br><span class="line">                maxlength: <span class="string">""</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;,</span><br><span class="line">        success: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123; <span class="comment">//关键方法，该方法会在validate完成该输入框的判断以后进行一次调用并且会取消默认的显示错误的方法（大概会吧）</span></span><br><span class="line">            <span class="comment">//如果进行调试，会方法输入框的class属性会在根据是否合法改变其样式为  "error"和"valid"中的一种，通过判断这个进行判断</span></span><br><span class="line">            <span class="keyword">if</span> (e.prev().hasClass(<span class="string">"valid"</span>)) &#123; <span class="comment">//此处e相当于错误信息这个html标签本身，然后找e的前一个标签是否有"valid"类样式，有则说明当前输入框验证正确</span></span><br><span class="line">                e.removeClass(<span class="string">"glyphicon-remove"</span>); <span class="comment">//boostrap的样式，查手册，bootstrap3的全局样式里的表单里有样式说明，添加了对应样式span标签会变为图形。</span></span><br><span class="line">                <span class="comment">//比如在引入bootstrap.css的情况下 &lt;span class = "glyphicon glyphicon-ok form-control-feedback" &gt;&lt;/span&gt; 就是一个打钩的图案</span></span><br><span class="line">            e.addClass(<span class="string">"glyphicon-ok"</span>);</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">if</span>(e.prev().hasClass(<span class="string">"error"</span>))&#123;  <span class="comment">// 判断输入框里有样式"error"则把打叉换成打钩e.removeClass("glyphicon-ok");</span></span><br><span class="line">                e.addClass(<span class="string">"glyphicon-remove"</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;,</span><br><span class="line">        errorPlacement: <span class="function"><span class="keyword">function</span>(<span class="params">error, element</span>) </span>&#123; <span class="comment">//决定错误信息要放在哪里的方法，error是label对象，element是当前验证的输入框对象</span></span><br><span class="line">            error.addClass(<span class="string">'glyphicon glyphicon-remove form-control-feedback'</span>);</span><br><span class="line">            error.appendTo(element.parent());</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+
+<!-- wp:paragraph -->
+<p>当然使用框架很爽，那些什么点击验证，多少长度什么格式都封装好了，注意逗号的分割规律使用就没什么大问题<br></p>
+<!-- /wp:paragraph -->
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://caizhichao.github.io/blog/2019/08/24/通过jquery-validate和bootstrap实现表单后面提示打钩或打叉的效果和真实的表单验证/" data-id="cjzowrjcp00021wuol9fum6e9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/blog/2019/08/24/程序英语书/p1-chapter-1-Introduction/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          p1-chapter-1-Introduction
+        
+      </div>
+    </a>
+  
+  
+    <a href="/blog/2019/08/24/程海迷航/使用新浪SAE和PHPthink遇到的坑总结/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">使用新浪SAE和PHPthink遇到的坑总结</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/leetcode/">leetcode</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/leetcode/2019春季高校赛初赛/">2019春季高校赛初赛</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/备忘录/">备忘录</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/生活/">生活</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/程序英语书/">程序英语书</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/程序英语书/Mastering-EMACS/">Mastering EMACS</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/程海迷航/">程海迷航</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/转载/">转载</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/nodejs/">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/proto/">proto</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/转载/">转载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/验证码识别/">验证码识别</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/js/" style="font-size: 10px;">js</a> <a href="/blog/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/blog/tags/proto/" style="font-size: 10px;">proto</a> <a href="/blog/tags/python/" style="font-size: 10px;">python</a> <a href="/blog/tags/转载/" style="font-size: 10px;">转载</a> <a href="/blog/tags/验证码识别/" style="font-size: 10px;">验证码识别</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/08/">August 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2019/08/24/leetcode/700-二叉搜索树中的搜索/">700-二叉搜索树中的搜索</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2019/08/24/leetcode/696-计数二进制子串/">696-计数二进制子串</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2019/08/24/leetcode/697-数组的度/">697-数组的度</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2019/08/24/leetcode/693-交替位二进制数/">693-交替位二进制数</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2019/08/24/程序英语书/p4-chapter-2-Guiding-Philosoph-LISP/">p4-chapter-2-Guiding-Philosoph-LISP</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 蔡志超<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">主页</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/blog/关于我" class="mobile-nav-link">关于我</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css">
+  <script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/blog/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

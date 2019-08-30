@@ -68,6 +68,85 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-程海迷航/使用新浪SAE和PHPthink遇到的坑总结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/24/程海迷航/使用新浪SAE和PHPthink遇到的坑总结/" class="article-date">
+  <time datetime="2019-08-24T01:37:56.000Z" itemprop="datePublished">2019-08-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/程海迷航/">程海迷航</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/24/程海迷航/使用新浪SAE和PHPthink遇到的坑总结/">使用新浪SAE和PHPthink遇到的坑总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="纪念用-以前放在新浪博客来着-刚学编程的时候-hx1603-16年的3月报的传一培训"><a href="#纪念用-以前放在新浪博客来着-刚学编程的时候-hx1603-16年的3月报的传一培训" class="headerlink" title="纪念用,以前放在新浪博客来着,刚学编程的时候,hx1603, 16年的3月报的传一培训"></a>纪念用,以前放在新浪博客来着,刚学编程的时候,hx1603, 16年的3月报的传一培训</h4><!-- wp:paragraph -->
+<p>1、使用微信官方的示例复制到代码中进行测试，经常不能产生作用，必要的时候还是要自己打最最简单的代码进行测试。</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>2、新浪sae不支持在服务器上通过代码进行读写，就是那些fopen之类的函数都不能用。</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>3、由于微信端和我方服务器之间的交互基本上依靠xml和json完成，所有使用最简单的字符串拼接会使得代码十分容易理解，少用网上复制的经常会看不懂。</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>4、还有千万写代码的时候要小心，自己曾遇到的坑包括占位符写错（就是这么傻），路径两个斜杠，文件后缀写错，phpthink忘记namespace等等，都是泪啊。</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>5、使用微信jssdk时候，页面的签名一定要做成动态的，因为页面分享以后会自动在后面加入其它代码导致签名错误，动态获取当前页面的url可以使用</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:code -->
+<pre class="wp-block-code"><code>$url = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . '?' . $_SERVER['QUERY_STRING'];来获取。</code></pre>
+<!-- /wp:code -->
+
+<!-- wp:code -->
+<pre class="wp-block-code"><code>6、还有有时会遇到invalid domain的错误提示，这说明你js安全域名不对，注意这里是tm的域名不是url。</code></pre>
+<!-- /wp:code -->
+
+<!-- wp:paragraph -->
+<p>7、微信jssdk有官方demo，挺好用的但是其中一些事件根本不是什么点击事件，我们看看function里面的内容就好了，外面的点击事件不用太关心。</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>8、新浪sae的使用中，有时候需要使用其他应用的数据比如你想建两个应用一个用来处理前台逻辑，一个用来给当做数据管理统计后台，这时候就需要使用新浪sae提供的应用授权功能，完成授权以后，在另外那个应用通过主库地址和数据库名用户名秘密就可以访问了，phpthink是在模块conf文件夹里的config.php里设置就可以了。</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>9、有大量的默认参数在使用新浪sae时会被自动设置，比如comman里的数据库设置一般是无效的，需要通过home或其他自定义模块内的config配置来进行，相关的配置优先级在phpthink手册里都有说。</p>
+<!-- /wp:paragraph -->
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://caizhichao.github.io/2019/08/24/程海迷航/使用新浪SAE和PHPthink遇到的坑总结/" data-id="cjzovmtjv0026k0uor8jyf9qs" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-程海迷航/通过JQ的contents往iframe中添加内容" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/08/24/程海迷航/通过JQ的contents往iframe中添加内容/" class="article-date">
@@ -750,53 +829,6 @@
 
 
   
-    <article id="post-leetcode/840-矩阵中的幻方" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/08/24/leetcode/840-矩阵中的幻方/" class="article-date">
-  <time datetime="2019-08-23T16:20:06.000Z" itemprop="datePublished">2019-08-24</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/24/leetcode/840-矩阵中的幻方/">840-矩阵中的幻方</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>3 x 3 的幻方是一个填充有从 1 到 9 的不同数字的 3 x 3 矩阵，其中每行，每列以及两条对角线上的各数之和都相等。<br>给定一个由整数组成的 grid，其中有多少个 3 × 3 的 “幻方” 子矩阵？（每个子矩阵都是连续的）。</p>
-<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><p>输入: [[4,3,8,4],<br>&emsp;&emsp; [9,5,1,9],<br>&emsp;&emsp; [2,7,6,2]]<br>输出: 1 </p>
-<h3 id="解释"><a href="#解释" class="headerlink" title="解释:"></a>解释:</h3><p> 下面的子矩阵是一个 3 x 3 的幻方：<br>      438<br>      951<br>      276<br> 而这一个不是：<br>      384<br>      519<br>      762<br>总的来说，在本示例所给定的矩阵中只有一个 3 x 3 的幻方子矩阵。 </p>
-<h3 id="提示"><a href="#提示" class="headerlink" title="提示:"></a>提示:</h3><p>1 &lt;= grid.length &lt;= 10<br>1 &lt;= grid[0].length &lt;= 10<br>0 &lt;= grid[i][j] &lt;= 15 </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numMagicSquaresInside</span><span class="params">(<span class="keyword">int</span>[][] grid)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ret = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">15</span>;</span><br><span class="line">        HashMap&lt;Integer, Integer&gt; hashMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; grid.length - <span class="number">2</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; grid[i].length - <span class="number">2</span>; j++) &#123;</span><br><span class="line">                hashMap.clear();</span><br><span class="line">                <span class="keyword">int</span> a11 = grid[i][j];</span><br><span class="line">                <span class="keyword">int</span> a12 = grid[i][j + <span class="number">1</span>];</span><br><span class="line">                <span class="keyword">int</span> a13 = grid[i][j + <span class="number">2</span>];</span><br><span class="line">                <span class="keyword">int</span> a21 = grid[i + <span class="number">1</span>][j];</span><br><span class="line">                <span class="keyword">int</span> a22 = grid[i + <span class="number">1</span>][j + <span class="number">1</span>];</span><br><span class="line">                <span class="keyword">int</span> a23 = grid[i + <span class="number">1</span>][j + <span class="number">2</span>];</span><br><span class="line">                <span class="keyword">int</span> a31 = grid[i + <span class="number">2</span>][j];</span><br><span class="line">                <span class="keyword">int</span> a32 = grid[i + <span class="number">2</span>][j + <span class="number">1</span>];</span><br><span class="line">                <span class="keyword">int</span> a33 = grid[i + <span class="number">2</span>][j + <span class="number">2</span>];</span><br><span class="line">                <span class="keyword">if</span> (a22 != <span class="number">5</span>)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                hashMap.put(a11, <span class="number">1</span>);</span><br><span class="line">                hashMap.put(a12, <span class="number">1</span>);</span><br><span class="line">                hashMap.put(a13, <span class="number">1</span>);</span><br><span class="line">                hashMap.put(a21, <span class="number">1</span>);</span><br><span class="line">                hashMap.put(a22, <span class="number">1</span>);</span><br><span class="line">                hashMap.put(a23, <span class="number">1</span>);</span><br><span class="line">                hashMap.put(a31, <span class="number">1</span>);</span><br><span class="line">                hashMap.put(a32, <span class="number">1</span>);</span><br><span class="line">                hashMap.put(a33, <span class="number">1</span>);</span><br><span class="line">                <span class="keyword">if</span> (hashMap.size() != <span class="number">9</span>) &#123;</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">boolean</span> flag = <span class="keyword">true</span>;</span><br><span class="line">                <span class="keyword">for</span> (Map.Entry&lt;Integer, Integer&gt; e : hashMap.entrySet()) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (e.getKey() &gt; <span class="number">9</span> || e.getKey() &lt; <span class="number">1</span>) &#123;</span><br><span class="line">                        flag = <span class="keyword">false</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (!flag)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (a11 + a12 + a13 != sum)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (a21 + a22 + a23 != sum)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (a31 + a32 + a33 != sum)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (a11 + a21 + a31 != sum)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (a12 + a22 + a32 != sum)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (a13 + a23 + a33 != sum)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (a11 + a22 + a33 != sum)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (a13 + a22 + a31 != sum)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                ret++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这道题真的是无脑，遍历可以解决的题还扔出来。。。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://caizhichao.github.io/2019/08/24/leetcode/840-矩阵中的幻方/" data-id="cjzov0qxk000qk0uo8901mlyy" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -854,6 +886,10 @@
       <ul>
         
           <li>
+            <a href="/2019/08/30/备忘录/编程学习资源/">编程学习资源</a>
+          </li>
+        
+          <li>
             <a href="/2019/08/24/leetcode/700-二叉搜索树中的搜索/">700-二叉搜索树中的搜索</a>
           </li>
         
@@ -867,10 +903,6 @@
         
           <li>
             <a href="/2019/08/24/leetcode/696-计数二进制子串/">696-计数二进制子串</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/24/程序英语书/p4-chapter-2-Guiding-Philosoph-LISP/">p4-chapter-2-Guiding-Philosoph-LISP</a>
           </li>
         
       </ul>

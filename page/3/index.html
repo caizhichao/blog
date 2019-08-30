@@ -68,6 +68,53 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-leetcode/840-矩阵中的幻方" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/24/leetcode/840-矩阵中的幻方/" class="article-date">
+  <time datetime="2019-08-23T16:20:06.000Z" itemprop="datePublished">2019-08-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/24/leetcode/840-矩阵中的幻方/">840-矩阵中的幻方</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>3 x 3 的幻方是一个填充有从 1 到 9 的不同数字的 3 x 3 矩阵，其中每行，每列以及两条对角线上的各数之和都相等。<br>给定一个由整数组成的 grid，其中有多少个 3 × 3 的 “幻方” 子矩阵？（每个子矩阵都是连续的）。</p>
+<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><p>输入: [[4,3,8,4],<br>&emsp;&emsp; [9,5,1,9],<br>&emsp;&emsp; [2,7,6,2]]<br>输出: 1 </p>
+<h3 id="解释"><a href="#解释" class="headerlink" title="解释:"></a>解释:</h3><p> 下面的子矩阵是一个 3 x 3 的幻方：<br>      438<br>      951<br>      276<br> 而这一个不是：<br>      384<br>      519<br>      762<br>总的来说，在本示例所给定的矩阵中只有一个 3 x 3 的幻方子矩阵。 </p>
+<h3 id="提示"><a href="#提示" class="headerlink" title="提示:"></a>提示:</h3><p>1 &lt;= grid.length &lt;= 10<br>1 &lt;= grid[0].length &lt;= 10<br>0 &lt;= grid[i][j] &lt;= 15 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numMagicSquaresInside</span><span class="params">(<span class="keyword">int</span>[][] grid)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ret = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">15</span>;</span><br><span class="line">        HashMap&lt;Integer, Integer&gt; hashMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; grid.length - <span class="number">2</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; grid[i].length - <span class="number">2</span>; j++) &#123;</span><br><span class="line">                hashMap.clear();</span><br><span class="line">                <span class="keyword">int</span> a11 = grid[i][j];</span><br><span class="line">                <span class="keyword">int</span> a12 = grid[i][j + <span class="number">1</span>];</span><br><span class="line">                <span class="keyword">int</span> a13 = grid[i][j + <span class="number">2</span>];</span><br><span class="line">                <span class="keyword">int</span> a21 = grid[i + <span class="number">1</span>][j];</span><br><span class="line">                <span class="keyword">int</span> a22 = grid[i + <span class="number">1</span>][j + <span class="number">1</span>];</span><br><span class="line">                <span class="keyword">int</span> a23 = grid[i + <span class="number">1</span>][j + <span class="number">2</span>];</span><br><span class="line">                <span class="keyword">int</span> a31 = grid[i + <span class="number">2</span>][j];</span><br><span class="line">                <span class="keyword">int</span> a32 = grid[i + <span class="number">2</span>][j + <span class="number">1</span>];</span><br><span class="line">                <span class="keyword">int</span> a33 = grid[i + <span class="number">2</span>][j + <span class="number">2</span>];</span><br><span class="line">                <span class="keyword">if</span> (a22 != <span class="number">5</span>)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                hashMap.put(a11, <span class="number">1</span>);</span><br><span class="line">                hashMap.put(a12, <span class="number">1</span>);</span><br><span class="line">                hashMap.put(a13, <span class="number">1</span>);</span><br><span class="line">                hashMap.put(a21, <span class="number">1</span>);</span><br><span class="line">                hashMap.put(a22, <span class="number">1</span>);</span><br><span class="line">                hashMap.put(a23, <span class="number">1</span>);</span><br><span class="line">                hashMap.put(a31, <span class="number">1</span>);</span><br><span class="line">                hashMap.put(a32, <span class="number">1</span>);</span><br><span class="line">                hashMap.put(a33, <span class="number">1</span>);</span><br><span class="line">                <span class="keyword">if</span> (hashMap.size() != <span class="number">9</span>) &#123;</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">boolean</span> flag = <span class="keyword">true</span>;</span><br><span class="line">                <span class="keyword">for</span> (Map.Entry&lt;Integer, Integer&gt; e : hashMap.entrySet()) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (e.getKey() &gt; <span class="number">9</span> || e.getKey() &lt; <span class="number">1</span>) &#123;</span><br><span class="line">                        flag = <span class="keyword">false</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (!flag)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (a11 + a12 + a13 != sum)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (a21 + a22 + a23 != sum)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (a31 + a32 + a33 != sum)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (a11 + a21 + a31 != sum)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (a12 + a22 + a32 != sum)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (a13 + a23 + a33 != sum)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (a11 + a22 + a33 != sum)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (a13 + a22 + a31 != sum)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                ret++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这道题真的是无脑，遍历可以解决的题还扔出来。。。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://caizhichao.github.io/2019/08/24/leetcode/840-矩阵中的幻方/" data-id="cjzov0qxk000qk0uo8901mlyy" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode/687-最长同值路径" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/08/24/leetcode/687-最长同值路径/" class="article-date">
@@ -254,6 +301,57 @@
 
 
   
+    <article id="post-leetcode/leetcode-2019春季高校赛初赛/1-易混淆数" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/23/leetcode/leetcode-2019春季高校赛初赛/1-易混淆数/" class="article-date">
+  <time datetime="2019-08-23T04:31:42.000Z" itemprop="datePublished">2019-08-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>►<a class="article-category-link" href="/categories/leetcode/2019春季高校赛初赛/">2019春季高校赛初赛</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/23/leetcode/leetcode-2019春季高校赛初赛/1-易混淆数/">1-易混淆数</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>给定一个数字 N，当它满足以下条件的时候返回 true：<br>把原数字旋转180°以后得到新的数字。<br>如 0, 1, 6, 8, 9 旋转 180° 以后，得到了新的数字 0, 1, 9, 8, 6 。<br>2, 3, 4, 5, 7 旋转 180° 后,得到的不是数字。<br>易混淆数字 (confusing number) 就是一个数字旋转180°以后，得到和原来不同的数字，且新数字的每一位都是有效的。</p>
+<h4 id="示例-1：9"><a href="#示例-1：9" class="headerlink" title="示例 1：9"></a>示例 1：9</h4><p>输入：6<br>输出：true<br>解释：<br>把 6 旋转 180° 以后得到 9，9 是有效数字且 9!=6 。</p>
+<h4 id="示例-2："><a href="#示例-2：" class="headerlink" title="示例 2："></a>示例 2：</h4><p>输入：89<br>输出：true<br>解释:<br>把 89 旋转 180° 以后得到 68，86 是有效数字且 86!=89 。</p>
+<h4 id="示例-3："><a href="#示例-3：" class="headerlink" title="示例 3："></a>示例 3：</h4><p>输入：11<br>输出：false<br>解释：<br>把 11 旋转 180° 以后得到 11，11 是有效数字但是值保持不变，所以 11 不是易混淆数字。 </p>
+<h4 id="示例-4："><a href="#示例-4：" class="headerlink" title="示例 4："></a>示例 4：</h4><p>输入：25<br>输出：false<br>解释：<br>把 25 旋转 180° 以后得到的不是数字。</p>
+<h4 id="提示："><a href="#提示：" class="headerlink" title="提示："></a>提示：</h4><p>0 &lt;= N &lt;= 10^9<br>可以忽略掉旋转后得到的前导零，例如，如果我们旋转后得到 0008 那么该数字就是 8 。</p>
+<hr>
+<h4 id="解答"><a href="#解答" class="headerlink" title="解答:"></a>解答:</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] easy = &#123;<span class="number">0</span>, <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">9</span>, -<span class="number">1</span>, <span class="number">8</span>, <span class="number">6</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">confusingNumber</span><span class="params">(<span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (N == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">int</span> tmpN = N;</span><br><span class="line">        <span class="keyword">int</span> newNum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> tmp;</span><br><span class="line">        <span class="keyword">while</span> (tmpN != <span class="number">0</span>) &#123;</span><br><span class="line">            newNum *= <span class="number">10</span>;</span><br><span class="line">            tmp = easy[tmpN % <span class="number">10</span>];</span><br><span class="line">            <span class="keyword">if</span> (tmp == -<span class="number">1</span>)</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            newNum += tmp;</span><br><span class="line">            tmpN /= <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> newNum != N;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="注意点"><a href="#注意点" class="headerlink" title="注意点:"></a>注意点:</h4><p>因为需要转换的数字比较少,直接用数组的索引作为映射就行,如果有一个不能转换的直接returnn false , 最后判断转换后的数与原数是否相等.</p>
+<h4 id="其它"><a href="#其它" class="headerlink" title="其它:"></a>其它:</h4><p>这次高校赛服务器异常,重开后有两次初赛</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://caizhichao.github.io/2019/08/23/leetcode/leetcode-2019春季高校赛初赛/1-易混淆数/" data-id="cjzov0qy9001dk0uoftd58nfn" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode/leetcode-2019春季高校赛初赛/1-有序数组中的缺失元素" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/08/23/leetcode/leetcode-2019春季高校赛初赛/1-有序数组中的缺失元素/" class="article-date">
@@ -298,57 +396,6 @@
     </div>
     <footer class="article-footer">
       <a data-url="http://caizhichao.github.io/2019/08/23/leetcode/leetcode-2019春季高校赛初赛/1-有序数组中的缺失元素/" data-id="cjzov0qyb001ek0uo12hekkox" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode/leetcode-2019春季高校赛初赛/1-易混淆数" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/08/23/leetcode/leetcode-2019春季高校赛初赛/1-易混淆数/" class="article-date">
-  <time datetime="2019-08-23T04:31:42.000Z" itemprop="datePublished">2019-08-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>►<a class="article-category-link" href="/categories/leetcode/2019春季高校赛初赛/">2019春季高校赛初赛</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/23/leetcode/leetcode-2019春季高校赛初赛/1-易混淆数/">1-易混淆数</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>给定一个数字 N，当它满足以下条件的时候返回 true：<br>把原数字旋转180°以后得到新的数字。<br>如 0, 1, 6, 8, 9 旋转 180° 以后，得到了新的数字 0, 1, 9, 8, 6 。<br>2, 3, 4, 5, 7 旋转 180° 后,得到的不是数字。<br>易混淆数字 (confusing number) 就是一个数字旋转180°以后，得到和原来不同的数字，且新数字的每一位都是有效的。</p>
-<h4 id="示例-1：9"><a href="#示例-1：9" class="headerlink" title="示例 1：9"></a>示例 1：9</h4><p>输入：6<br>输出：true<br>解释：<br>把 6 旋转 180° 以后得到 9，9 是有效数字且 9!=6 。</p>
-<h4 id="示例-2："><a href="#示例-2：" class="headerlink" title="示例 2："></a>示例 2：</h4><p>输入：89<br>输出：true<br>解释:<br>把 89 旋转 180° 以后得到 68，86 是有效数字且 86!=89 。</p>
-<h4 id="示例-3："><a href="#示例-3：" class="headerlink" title="示例 3："></a>示例 3：</h4><p>输入：11<br>输出：false<br>解释：<br>把 11 旋转 180° 以后得到 11，11 是有效数字但是值保持不变，所以 11 不是易混淆数字。 </p>
-<h4 id="示例-4："><a href="#示例-4：" class="headerlink" title="示例 4："></a>示例 4：</h4><p>输入：25<br>输出：false<br>解释：<br>把 25 旋转 180° 以后得到的不是数字。</p>
-<h4 id="提示："><a href="#提示：" class="headerlink" title="提示："></a>提示：</h4><p>0 &lt;= N &lt;= 10^9<br>可以忽略掉旋转后得到的前导零，例如，如果我们旋转后得到 0008 那么该数字就是 8 。</p>
-<hr>
-<h4 id="解答"><a href="#解答" class="headerlink" title="解答:"></a>解答:</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] easy = &#123;<span class="number">0</span>, <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">9</span>, -<span class="number">1</span>, <span class="number">8</span>, <span class="number">6</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">confusingNumber</span><span class="params">(<span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (N == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">int</span> tmpN = N;</span><br><span class="line">        <span class="keyword">int</span> newNum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> tmp;</span><br><span class="line">        <span class="keyword">while</span> (tmpN != <span class="number">0</span>) &#123;</span><br><span class="line">            newNum *= <span class="number">10</span>;</span><br><span class="line">            tmp = easy[tmpN % <span class="number">10</span>];</span><br><span class="line">            <span class="keyword">if</span> (tmp == -<span class="number">1</span>)</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            newNum += tmp;</span><br><span class="line">            tmpN /= <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> newNum != N;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="注意点"><a href="#注意点" class="headerlink" title="注意点:"></a>注意点:</h4><p>因为需要转换的数字比较少,直接用数组的索引作为映射就行,如果有一个不能转换的直接returnn false , 最后判断转换后的数与原数是否相等.</p>
-<h4 id="其它"><a href="#其它" class="headerlink" title="其它:"></a>其它:</h4><p>这次高校赛服务器异常,重开后有两次初赛</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://caizhichao.github.io/2019/08/23/leetcode/leetcode-2019春季高校赛初赛/1-易混淆数/" data-id="cjzov0qy9001dk0uoftd58nfn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -459,6 +506,7 @@
 <li>git remote add origin ssh://admin@192.168.1.23:29418/qusouti.git</li>
 <li>git push -u origin master </li>
 </ul>
+<h2 id="远程已经存在分支-将本地推送到那"><a href="#远程已经存在分支-将本地推送到那" class="headerlink" title="远程已经存在分支,将本地推送到那"></a>远程已经存在分支,将本地推送到那</h2><p>git remote set-url origin http://***<br>git push</p>
 
       
     </div>
@@ -530,6 +578,10 @@
       <ul>
         
           <li>
+            <a href="/2019/08/30/备忘录/编程学习资源/">编程学习资源</a>
+          </li>
+        
+          <li>
             <a href="/2019/08/24/leetcode/700-二叉搜索树中的搜索/">700-二叉搜索树中的搜索</a>
           </li>
         
@@ -543,10 +595,6 @@
         
           <li>
             <a href="/2019/08/24/leetcode/696-计数二进制子串/">696-计数二进制子串</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/24/程序英语书/p4-chapter-2-Guiding-Philosoph-LISP/">p4-chapter-2-Guiding-Philosoph-LISP</a>
           </li>
         
       </ul>

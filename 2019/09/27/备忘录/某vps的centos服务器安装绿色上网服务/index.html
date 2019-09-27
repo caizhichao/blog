@@ -5,15 +5,19 @@
   
 
   
-  <title>Archives: 2019 | 大橘学程序</title>
+  <title>git不常用但有用命令 | 大橘学程序</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="大橘学程序">
-<meta property="og:url" content="http://caizhichao.github.io/archives/2019/index.html">
+  <meta name="description" content="yum install -y epel-release yum install -y yum-utils yum-config-manager –enable epel yum install -y python-pip pip install shadowsocks sudo vi /etc/shadowsocks.json 配置信息输入1234567891011&amp;#123;  &quot;server">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git不常用但有用命令">
+<meta property="og:url" content="http://caizhichao.github.io/2019/09/27/备忘录/某vps的centos服务器安装绿色上网服务/index.html">
 <meta property="og:site_name" content="大橘学程序">
+<meta property="og:description" content="yum install -y epel-release yum install -y yum-utils yum-config-manager –enable epel yum install -y python-pip pip install shadowsocks sudo vi /etc/shadowsocks.json 配置信息输入1234567891011&amp;#123;  &quot;server">
 <meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2019-09-27T10:05:54.671Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大橘学程序">
+<meta name="twitter:title" content="git不常用但有用命令">
+<meta name="twitter:description" content="yum install -y epel-release yum install -y yum-utils yum-config-manager –enable epel yum install -y python-pip pip install shadowsocks sudo vi /etc/shadowsocks.json 配置信息输入1234567891011&amp;#123;  &quot;server">
   
     <link rel="alternate" href="/atom.xml" title="大橘学程序" type="application/atom+xml">
   
@@ -66,216 +70,81 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/09/27/资源站/通用资源网站/" class="archive-article-date">
-  <time datetime="2019-09-27T10:50:00.000Z" itemprop="datePublished">Sep 27</time>
+        <section id="main"><article id="post-备忘录/某vps的centos服务器安装绿色上网服务" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/27/备忘录/某vps的centos服务器安装绿色上网服务/" class="article-date">
+  <time datetime="2019-09-27T10:40:47.000Z" itemprop="datePublished">2019-09-27</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/备忘录/">备忘录</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/27/资源站/通用资源网站/">通用资源网站</a>
+    <h1 class="article-title" itemprop="name">
+      git不常用但有用命令
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/09/27/资源站/工具网站/" class="archive-article-date">
-  <time datetime="2019-09-27T10:50:00.000Z" itemprop="datePublished">Sep 27</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/27/资源站/工具网站/">工具网站</a>
-    </h1>
-  
+        <ul>
+<li>yum install -y epel-release</li>
+<li>yum install -y yum-utils</li>
+<li>yum-config-manager –enable epel</li>
+<li>yum install -y python-pip</li>
+<li>pip install shadowsocks</li>
+<li>sudo vi /etc/shadowsocks.json</li>
+<li>配置信息输入<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"server"</span>:<span class="string">"your_server_ip"</span>,</span><br><span class="line">  <span class="attr">"server_port"</span>:<span class="number">12389</span>,</span><br><span class="line">  <span class="attr">"local_address"</span>: <span class="string">"127.0.0.1"</span>,</span><br><span class="line">  <span class="attr">"local_port"</span>:<span class="number">1080</span>,</span><br><span class="line">  <span class="attr">"password"</span>:<span class="string">"yourpassword"</span>,</span><br><span class="line">  <span class="attr">"timeout"</span>:<span class="number">600</span>,</span><br><span class="line">  <span class="attr">"method"</span>:<span class="string">"aes-256-cfb"</span>,</span><br><span class="line">  <span class="attr">"fast_open"</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">"workers"</span>: <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/09/27/备忘录/某vps的centos服务器安装绿色上网服务/" class="archive-article-date">
-  <time datetime="2019-09-27T10:40:47.000Z" itemprop="datePublished">Sep 27</time>
-</a>
+</li>
+</ul>
+<p>编辑后保存</p>
+<ul>
+<li>ssserver -c /etc/shadowsocks.json -d start</li>
+<li>客户端 <a href="https://github.com/shadowsocks/shadowsocks-windows/releases" target="_blank" rel="noopener">https://github.com/shadowsocks/shadowsocks-windows/releases</a></li>
+<li>客户端使用就自己操作了</li>
+</ul>
+
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/27/备忘录/某vps的centos服务器安装绿色上网服务/">git不常用但有用命令</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/08/30/资源站/编程学习资源/" class="archive-article-date">
-  <time datetime="2019-08-30T05:50:00.000Z" itemprop="datePublished">Aug 30</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://caizhichao.github.io/2019/09/27/备忘录/某vps的centos服务器安装绿色上网服务/" data-id="ck11ypxrd0000m4uou18b0tif" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/30/资源站/编程学习资源/">编程学习资源</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/08/24/leetcode/700-二叉搜索树中的搜索/" class="archive-article-date">
-  <time datetime="2019-08-24T04:51:42.000Z" itemprop="datePublished">Aug 24</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/24/leetcode/700-二叉搜索树中的搜索/">700-二叉搜索树中的搜索</a>
-    </h1>
-  
-
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/09/27/资源站/工具网站/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          工具网站
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/08/30/资源站/编程学习资源/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">编程学习资源</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/08/24/leetcode/696-计数二进制子串/" class="archive-article-date">
-  <time datetime="2019-08-24T04:06:42.000Z" itemprop="datePublished">Aug 24</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/24/leetcode/696-计数二进制子串/">696-计数二进制子串</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/08/24/leetcode/697-数组的度/" class="archive-article-date">
-  <time datetime="2019-08-24T04:06:42.000Z" itemprop="datePublished">Aug 24</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/24/leetcode/697-数组的度/">697-数组的度</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/08/24/leetcode/693-交替位二进制数/" class="archive-article-date">
-  <time datetime="2019-08-24T04:06:42.000Z" itemprop="datePublished">Aug 24</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/24/leetcode/693-交替位二进制数/">693-交替位二进制数</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/08/24/程序英语书/p4-chapter-2-Guiding-Philosoph-LISP/" class="archive-article-date">
-  <time datetime="2019-08-24T02:01:06.000Z" itemprop="datePublished">Aug 24</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/24/程序英语书/p4-chapter-2-Guiding-Philosoph-LISP/">p4-chapter-2-Guiding-Philosoph-LISP</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/08/24/程序英语书/p3-chapter-2-Guiding-Philosophy/" class="archive-article-date">
-  <time datetime="2019-08-24T02:00:02.000Z" itemprop="datePublished">Aug 24</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/24/程序英语书/p3-chapter-2-Guiding-Philosophy/">p3-chapter-2-Guiding Philosophy</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2019/page/2/">2</a><a class="page-number" href="/archives/2019/page/3/">3</a><a class="page-number" href="/archives/2019/page/4/">4</a><a class="extend next" rel="next" href="/archives/2019/page/2/">Next &raquo;</a>
-  </nav>
 
 </section>
         

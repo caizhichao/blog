@@ -68,6 +68,123 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-编程哲学一百句" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/24/编程哲学一百句/" class="article-date">
+  <time datetime="2019-08-23T16:24:51.000Z" itemprop="datePublished">2019-08-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/24/编程哲学一百句/">编程哲学一百句</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>在软件开发领域有这样一句话：计算机科学领域的任何问题都可以通过增加一个间接的中间层来解决。而门面模式就是对于这句话的典型实践。</li>
+</ol>
+<hr>
+<ol start="2">
+<li>面向对象适合解决多态问题，面向过程时候解决线性问题。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://caizhichao.github.io/2019/08/24/编程哲学一百句/" data-id="cjzov0qvf0002k0uomkws0ozo" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode/680-验证回文字符串-Ⅱ" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/24/leetcode/680-验证回文字符串-Ⅱ/" class="article-date">
+  <time datetime="2019-08-23T16:23:20.000Z" itemprop="datePublished">2019-08-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/24/leetcode/680-验证回文字符串-Ⅱ/">680-验证回文字符串-Ⅱ</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>给定一个非空字符串 s，最多删除一个字符。判断是否能成为回文字符串。</p>
+<h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1:"></a>示例 1:</h3><p>输入: “aba”<br>输出: True </p>
+<h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2:"></a>示例 2:</h3><p>输入: “abca”<br>输出: True </p>
+<p>解释: 你可以删除c字符。 </p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意:"></a>注意:</h3><p>字符串只包含从 a-z 的小写字母。字符串的最大长度是50000。</p>
+<pre><code class="java"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>{
+     <span class="keyword">int</span> chance = <span class="number">1</span>;
+       <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">validPalindrome</span><span class="params">(String s)</span> </span>{
+        chance = <span class="number">1</span>;
+        <span class="keyword">return</span> help(s, <span class="number">0</span>, s.length() - <span class="number">1</span>);
+    }
+
+    <span class="function"><span class="keyword">boolean</span> <span class="title">help</span><span class="params">(String s, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>{
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = left; i &lt; s.length(); i++) {
+            <span class="keyword">if</span> (left &gt;= right)
+                <span class="keyword">break</span>;
+            <span class="keyword">char</span> lc = s.charAt(i);
+            <span class="keyword">char</span> rc = s.charAt(right);
+            <span class="keyword">if</span> (lc == rc) {
+                left++;
+                right--;
+            } <span class="keyword">else</span> {
+                <span class="keyword">if</span> (chance == <span class="number">0</span>)
+                    <span class="keyword">return</span> <span class="keyword">false</span>;
+                chance--;
+                <span class="keyword">boolean</span> leftRes = help(s, left + <span class="number">1</span>, right);
+                <span class="keyword">boolean</span> rightRes = help(s, left, right - <span class="number">1</span>);
+                <span class="keyword">return</span> leftRes || rightRes;
+            }
+        }
+        <span class="keyword">return</span> <span class="keyword">true</span>;
+    }
+}</code></pre>
+<p>本来想着用一个for循环处理,然后两个指针从两边往中间走,如果指向的字符不一致,则尝试移动其中一边的指针,如果移动后一致两个指针就继续一起向中间移动.提交后总有错误,我又没搞懂哪些例子会错.一气之下改成递归的,只取两边同时逼近时彻底相同的情况输出,其他情况就递归查找,然后约束一下递归次数.整体看上去给人清楚多了.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://caizhichao.github.io/2019/08/24/leetcode/680-验证回文字符串-Ⅱ/" data-id="cjzov0qwv000ak0uohnisyucb" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode/840-矩阵中的幻方" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/08/24/leetcode/840-矩阵中的幻方/" class="article-date">
@@ -536,7 +653,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/2019春季高校赛初赛/">2019春季高校赛初赛</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/备忘录/">备忘录</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/程序英语书/">程序英语书</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/程序英语书/Mastering-EMACS/">Mastering EMACS</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/程海迷航/">程海迷航</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/转载/">转载</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/2019春季高校赛初赛/">2019春季高校赛初赛</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/备忘录/">备忘录</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/程序英语书/">程序英语书</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/程序英语书/Mastering-EMACS/">Mastering EMACS</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/程海迷航/">程海迷航</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/资源站/">资源站</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/转载/">转载</a></li></ul>
     </div>
   </div>
 
@@ -565,7 +682,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li></ul>
     </div>
   </div>
 
@@ -578,7 +695,15 @@
       <ul>
         
           <li>
-            <a href="/2019/08/30/备忘录/编程学习资源/">编程学习资源</a>
+            <a href="/2019/09/27/资源站/工具网站/">工具网站</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/27/资源站/通用资源网站/">通用资源网站</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/30/资源站/编程学习资源/">编程学习资源</a>
           </li>
         
           <li>
@@ -586,15 +711,7 @@
           </li>
         
           <li>
-            <a href="/2019/08/24/leetcode/697-数组的度/">697-数组的度</a>
-          </li>
-        
-          <li>
             <a href="/2019/08/24/leetcode/693-交替位二进制数/">693-交替位二进制数</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/24/leetcode/696-计数二进制子串/">696-计数二进制子串</a>
           </li>
         
       </ul>

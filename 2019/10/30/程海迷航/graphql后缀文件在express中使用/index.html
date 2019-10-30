@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>graphql后缀文件在express中使用 | 大橘学程序</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="安装npm i graphql  创建graphql后缀文件(主流编辑器都有带高亮提示了现在)编写内容如下 12345678910111213141516171819202122232425262728293031type itemRe &amp;#123;    key:String    value:String&amp;#125;type Query &amp;#123;    q_test:String">
+<meta name="keywords" content="graphql,express">
+<meta property="og:type" content="article">
+<meta property="og:title" content="graphql后缀文件在express中使用">
+<meta property="og:url" content="http://caizhichao.github.io/2019/10/30/程海迷航/graphql后缀文件在express中使用/index.html">
+<meta property="og:site_name" content="大橘学程序">
+<meta property="og:description" content="安装npm i graphql  创建graphql后缀文件(主流编辑器都有带高亮提示了现在)编写内容如下 12345678910111213141516171819202122232425262728293031type itemRe &amp;#123;    key:String    value:String&amp;#125;type Query &amp;#123;    q_test:String">
+<meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2019-10-30T04:01:37.562Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="graphql后缀文件在express中使用">
+<meta name="twitter:description" content="安装npm i graphql  创建graphql后缀文件(主流编辑器都有带高亮提示了现在)编写内容如下 12345678910111213141516171819202122232425262728293031type itemRe &amp;#123;    key:String    value:String&amp;#125;type Query &amp;#123;    q_test:String">
+  
+    <link rel="alternate" href="/atom.xml" title="大橘学程序" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">大橘学程序</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">南安打工仔</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">主页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/关于我">关于我</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://caizhichao.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-程海迷航/graphql后缀文件在express中使用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/30/程海迷航/graphql后缀文件在express中使用/" class="article-date">
+  <time datetime="2019-10-30T04:12:10.000Z" itemprop="datePublished">2019-10-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/程海迷航/">程海迷航</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      graphql后缀文件在express中使用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>安装<br>npm i graphql</p>
+</li>
+<li><p>创建graphql后缀文件(主流编辑器都有带高亮提示了现在)<br>编写内容如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">type itemRe &#123;</span><br><span class="line">    key:String</span><br><span class="line">    value:String</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type Query &#123;</span><br><span class="line">    q_test:String</span><br><span class="line">    q_api_login(account:String!, password:String!):Boolean</span><br><span class="line">    q_check_user(account:String!):String</span><br><span class="line">    q_get_item(key:String!, account:String!):[itemRe]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">type Mutation&#123;</span><br><span class="line">    m_test:String</span><br><span class="line">    m_register(account:String!, password:String!):Boolean</span><br><span class="line">    m_modify_password(account:String!, password:String!):Boolean</span><br><span class="line"></span><br><span class="line">    # 输入账号密码发送邮件,当前只支持@qq.com,  @foxmail.com 的邮箱</span><br><span class="line">    m_send_email(fromemail:String!, password:String!, toemail:String!,</span><br><span class="line">        title:String, txt:String, html:String):Boolean</span><br><span class="line"></span><br><span class="line">    # value 最大不超过255个字符</span><br><span class="line">    m_set_item(key:String!, value:String!, account:String!):Boolean,</span><br><span class="line">    m_remove_item(key:String!, account:String!):Boolean,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">schema  &#123;</span><br><span class="line">    query: Query</span><br><span class="line">    mutation: Mutation</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在express框架中使用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> express <span class="keyword">from</span> <span class="string">"express"</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> MApi <span class="keyword">from</span> <span class="string">"./api_define/apilist"</span>;</span><br><span class="line"><span class="keyword">import</span> graphqlHTTP = <span class="built_in">require</span>(<span class="string">"express-graphql"</span>);</span><br><span class="line"><span class="keyword">import</span> &#123;buildSchema,&#125; <span class="keyword">from</span> <span class="string">"graphql"</span>;</span><br><span class="line"><span class="keyword">let</span> path = <span class="built_in">require</span>(<span class="string">"path"</span>);</span><br><span class="line"><span class="keyword">let</span> app = express();</span><br><span class="line"><span class="keyword">let</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);</span><br><span class="line"><span class="keyword">let</span> data = fs.readFileSync(path.resolve(<span class="string">"src/api_define/apidef.graphql"</span>));</span><br><span class="line">data = data.toString();</span><br><span class="line"><span class="keyword">let</span> schema = buildSchema(data);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> root = &#123;</span><br><span class="line">    q_test: <span class="function"><span class="params">()</span> =&gt;</span> <span class="string">"Query test ok"</span>,</span><br><span class="line">    m_test: <span class="function"><span class="params">()</span> =&gt;</span> <span class="string">"Mutation test ok"</span>,</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Query api</span></span><br><span class="line">    q_api_login: <span class="keyword">async</span> (&#123;account, password&#125;) =&gt; <span class="keyword">await</span> MApi.api_login(account, password),</span><br><span class="line">    q_check_user: <span class="keyword">async</span> (&#123;account&#125;) =&gt; <span class="keyword">await</span> MApi.check_user(account),</span><br><span class="line">    q_get_item: <span class="keyword">async</span> (&#123;key, account&#125;) =&gt; <span class="keyword">await</span> MApi.api_get_item(key, account),</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Mutation api</span></span><br><span class="line">    m_register: <span class="keyword">async</span> (&#123;account, password&#125;) =&gt; <span class="keyword">await</span> MApi.api_register(account, password),</span><br><span class="line">    m_modify_password: <span class="keyword">async</span> (&#123;account, password&#125;) =&gt; <span class="keyword">await</span> MApi.api_modify_password(account, password),</span><br><span class="line">    m_send_email: <span class="keyword">async</span> (&#123;fromemail, password, toemail, title, txt, html&#125;) =&gt; <span class="keyword">await</span> MApi.api_send_email(fromemail, password, toemail, title, txt, html),</span><br><span class="line">    m_set_item: <span class="keyword">async</span> (&#123;key, value, account&#125;) =&gt; <span class="keyword">await</span> MApi.api_set_item(key, value, account),</span><br><span class="line">    m_remove_item: <span class="keyword">async</span> (&#123;key, account&#125;) =&gt; <span class="keyword">await</span> MApi.api_remove_item(key, account),</span><br><span class="line">&#125;;</span><br><span class="line">app.use(<span class="string">'/g'</span>, graphqlHTTP(&#123;</span><br><span class="line">    schema: schema,</span><br><span class="line">    rootValue: root,</span><br><span class="line">    graphiql: <span class="literal">true</span>, <span class="comment">//控制显示控制台</span></span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> server = app.listen(<span class="number">8877</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// @ts-ignore</span></span><br><span class="line">    <span class="keyword">let</span> port = server.address().port;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"管理后台，访问地址为 http://127.0.0.1:%s"</span>, port)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://caizhichao.github.io/2019/10/30/程海迷航/graphql后缀文件在express中使用/" data-id="ck2cr3se90012s8uo6wervbtn" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/express/">express</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/graphql/">graphql</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/09/29/转载/中国传统颜色/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">中国传统颜色</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/2019春季高校赛初赛/">2019春季高校赛初赛</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/备忘录/">备忘录</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/程序英语书/">程序英语书</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/程序英语书/Mastering-EMACS/">Mastering EMACS</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/程海迷航/">程海迷航</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/资源站/">资源站</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/转载/">转载</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">express</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graphql/">graphql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/proto/">proto</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/转载/">转载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/验证码识别/">验证码识别</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/graphql/" style="font-size: 10px;">graphql</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/proto/" style="font-size: 10px;">proto</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/转载/" style="font-size: 20px;">转载</a> <a href="/tags/验证码识别/" style="font-size: 10px;">验证码识别</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/10/30/程海迷航/graphql后缀文件在express中使用/">graphql后缀文件在express中使用</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/29/转载/中国传统颜色/">中国传统颜色</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/27/资源站/通用资源网站/">通用资源网站</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/27/资源站/工具网站/">工具网站</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/27/备忘录/某vps的centos服务器安装绿色上网服务/">某vps的centos服务器安装绿色上网服务</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 蔡志超<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">主页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/关于我" class="mobile-nav-link">关于我</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

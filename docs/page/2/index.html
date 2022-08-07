@@ -4,17 +4,17 @@
   <meta charset="utf-8">
   
   
-  <title>Hexo</title>
+  <title>厦门码农记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="厦门码农记">
 <meta property="og:url" content="https://caizhichao.github.io/blog/page/2/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
+<meta property="og:site_name" content="厦门码农记">
+<meta property="og:locale">
+<meta property="article:author" content="蔡志超">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternate" href="/blog/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/blog/atom.xml" title="厦门码农记" type="application/atom+xml">
   
   
     <link rel="shortcut icon" href="/blog/favicon.png">
@@ -42,7 +42,7 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/blog/" id="logo">Hexo</a>
+        <a href="/blog/" id="logo">厦门码农记</a>
       </h1>
       
     </div>
@@ -57,12 +57,12 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml" title="RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Buscar"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://caizhichao.github.io/blog"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Buscar"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://caizhichao.github.io/blog"></form>
       </div>
     </div>
   </div>
@@ -70,6 +70,55 @@
 
       <div class="outer">
         <section id="main">
+  
+    <article id="post-leetcode/696-计数二进制子串" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2019/08/24/leetcode/696-%E8%AE%A1%E6%95%B0%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%AD%90%E4%B8%B2/" class="article-date">
+  <time class="dt-published" datetime="2019-08-24T04:06:42.000Z" itemprop="datePublished">2019-08-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/blog/2019/08/24/leetcode/696-%E8%AE%A1%E6%95%B0%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%AD%90%E4%B8%B2/">696-计数二进制子串</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>给定一个字符串 s，计算具有相同数量0和1的非空(连续)子字符串的数量，并且这些子字符串中的所有0和所有1都是组合在一起的。<br> 重复出现的子串要计算它们出现的次数。</p>
+<h4 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1 :"></a>示例 1 :</h4><p> 输入: “00110011”<br> 输出: 6<br>解释: 有6个子串具有相同数量的连续1和0：“0011”，“01”，“1100”，“10”，“0011” 和 “01”。 请注意，一些重复出现的子串要计算它们出现的次数。 另外，“00110011”不是有效的子串，因为所有的0（和1）没有组合在一起。 </p>
+<h4 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2 :"></a>示例 2 :</h4><p> 输入: “10101”<br>输出: 4<br>解释: 有4个子串：“10”，“01”，“10”，“01”，它们具有相同数量的连续1和0。 </p>
+<h4 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h4><p> s.length 在1到50,000之间。<br> s 只包含“0”或“1”字符。</p>
+<h3 id="解答"><a href="#解答" class="headerlink" title="解答:"></a>解答:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">countBinarySubstrings</span><span class="params">(String s)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (s.length() &lt; <span class="number">2</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">ret</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">last</span> <span class="operator">=</span> s.charAt(<span class="number">0</span>);</span><br><span class="line">        <span class="type">int</span> <span class="variable">zero</span> <span class="operator">=</span> last == <span class="string">&#x27;0&#x27;</span> ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">one</span> <span class="operator">=</span> last == <span class="string">&#x27;1&#x27;</span> ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; s.length(); i++) &#123;</span><br><span class="line">            <span class="type">char</span> <span class="variable">c</span> <span class="operator">=</span> s.charAt(i);</span><br><span class="line">            <span class="keyword">if</span> (c != last) &#123;</span><br><span class="line">                <span class="keyword">if</span> (c == <span class="string">&#x27;1&#x27;</span>)</span><br><span class="line">                    one = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">                    zero = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (c == <span class="string">&#x27;0&#x27;</span>) &#123;</span><br><span class="line">                zero++;</span><br><span class="line">                <span class="keyword">if</span> (one &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                    one--;</span><br><span class="line">                    ret++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (c == <span class="string">&#x27;1&#x27;</span>) &#123;</span><br><span class="line">                one++;</span><br><span class="line">                <span class="keyword">if</span> (zero &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                    zero--;</span><br><span class="line">                    ret++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            last = c;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>主要是发现下面这个规律。<br>000111,连续的3个3个，结果+3.<br>00111,结果+2.<br>00011,结果也+2。<br>所以只要数变换字符以后两边哪边连续字符多一些。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://caizhichao.github.io/blog/2019/08/24/leetcode/696-%E8%AE%A1%E6%95%B0%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%AD%90%E4%B8%B2/" data-id="cl6jc97b0000cxkwkdn8k41u1" data-title="696-计数二进制子串" class="article-share-link">Compartir</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
   
     <article id="post-leetcode/697-数组的度" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
@@ -106,7 +155,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://caizhichao.github.io/blog/2019/08/24/leetcode/697-%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%A6/" data-id="cl6it7qx4000gpkv866ffc6o2" data-title="697-数组的度" class="article-share-link">Share</a>
+      <a data-url="https://caizhichao.github.io/blog/2019/08/24/leetcode/697-%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%A6/" data-id="cl6jc97b1000dxkwk9vd9atre" data-title="697-数组的度" class="article-share-link">Compartir</a>
       
       
       
@@ -172,7 +221,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://caizhichao.github.io/blog/2019/08/24/%E7%A8%8B%E5%BA%8F%E8%8B%B1%E8%AF%AD%E4%B9%A6/p4-chapter-2-Guiding-Philosoph-LISP/" data-id="cl6it7qxj0011pkv8599zb64a" data-title="p4-chapter-2-Guiding-Philosoph-LISP" class="article-share-link">Share</a>
+      <a data-url="https://caizhichao.github.io/blog/2019/08/24/%E7%A8%8B%E5%BA%8F%E8%8B%B1%E8%AF%AD%E4%B9%A6/p4-chapter-2-Guiding-Philosoph-LISP/" data-id="cl6jc97be0011xkwk654y1weg" data-title="p4-chapter-2-Guiding-Philosoph-LISP" class="article-share-link">Compartir</a>
       
       
       
@@ -239,7 +288,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://caizhichao.github.io/blog/2019/08/24/%E7%A8%8B%E5%BA%8F%E8%8B%B1%E8%AF%AD%E4%B9%A6/p3-chapter-2-Guiding-Philosophy/" data-id="cl6it7qxi000zpkv817zg687y" data-title="p3-chapter-2-Guiding Philosophy" class="article-share-link">Share</a>
+      <a data-url="https://caizhichao.github.io/blog/2019/08/24/%E7%A8%8B%E5%BA%8F%E8%8B%B1%E8%AF%AD%E4%B9%A6/p3-chapter-2-Guiding-Philosophy/" data-id="cl6jc97bb000yxkwk3s9326d2" data-title="p3-chapter-2-Guiding Philosophy" class="article-share-link">Compartir</a>
       
       
       
@@ -297,7 +346,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://caizhichao.github.io/blog/2019/08/24/%E7%A8%8B%E5%BA%8F%E8%8B%B1%E8%AF%AD%E4%B9%A6/p2-chapter-2-The-Way-of-Emacs/" data-id="cl6it7qxg000wpkv83yxrdjfu" data-title="p2-chapter-2-The Way of Emacs" class="article-share-link">Share</a>
+      <a data-url="https://caizhichao.github.io/blog/2019/08/24/%E7%A8%8B%E5%BA%8F%E8%8B%B1%E8%AF%AD%E4%B9%A6/p2-chapter-2-The-Way-of-Emacs/" data-id="cl6jc97ba000wxkwkfy1a398w" data-title="p2-chapter-2-The Way of Emacs" class="article-share-link">Compartir</a>
       
       
       
@@ -378,7 +427,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://caizhichao.github.io/blog/2019/08/24/%E7%A8%8B%E5%BA%8F%E8%8B%B1%E8%AF%AD%E4%B9%A6/p1-chapter-1-Introduction/" data-id="cl6it7qxf000upkv8gp3gah7u" data-title="p1-chapter-1-Introduction" class="article-share-link">Share</a>
+      <a data-url="https://caizhichao.github.io/blog/2019/08/24/%E7%A8%8B%E5%BA%8F%E8%8B%B1%E8%AF%AD%E4%B9%A6/p1-chapter-1-Introduction/" data-id="cl6jc97b9000uxkwkfma439o6" data-title="p1-chapter-1-Introduction" class="article-share-link">Compartir</a>
       
       
       
@@ -456,7 +505,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://caizhichao.github.io/blog/2019/08/24/%E9%80%9A%E8%BF%87jquery-validate%E5%92%8Cbootstrap%E5%AE%9E%E7%8E%B0%E8%A1%A8%E5%8D%95%E5%90%8E%E9%9D%A2%E6%8F%90%E7%A4%BA%E6%89%93%E9%92%A9%E6%88%96%E6%89%93%E5%8F%89%E7%9A%84%E6%95%88%E6%9E%9C%E5%92%8C%E7%9C%9F%E5%AE%9E%E7%9A%84%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81/" data-id="cl6it7qwh0001pkv8e8ju5j4j" data-title="通过jquery-validate和bootstrap实现表单后面提示打钩或打叉的效果和真实的表单验证" class="article-share-link">Share</a>
+      <a data-url="https://caizhichao.github.io/blog/2019/08/24/%E9%80%9A%E8%BF%87jquery-validate%E5%92%8Cbootstrap%E5%AE%9E%E7%8E%B0%E8%A1%A8%E5%8D%95%E5%90%8E%E9%9D%A2%E6%8F%90%E7%A4%BA%E6%89%93%E9%92%A9%E6%88%96%E6%89%93%E5%8F%89%E7%9A%84%E6%95%88%E6%9E%9C%E5%92%8C%E7%9C%9F%E5%AE%9E%E7%9A%84%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81/" data-id="cl6jc97ap0001xkwk7le57cas" data-title="通过jquery-validate和bootstrap实现表单后面提示打钩或打叉的效果和真实的表单验证" class="article-share-link">Compartir</a>
       
       
       
@@ -537,7 +586,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://caizhichao.github.io/blog/2019/08/24/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/%E4%BD%BF%E7%94%A8%E6%96%B0%E6%B5%AASAE%E5%92%8CPHPthink%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91%E6%80%BB%E7%BB%93/" data-id="cl6it7qxs001fpkv8gfrx6j85" data-title="使用新浪SAE和PHPthink遇到的坑总结" class="article-share-link">Share</a>
+      <a data-url="https://caizhichao.github.io/blog/2019/08/24/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/%E4%BD%BF%E7%94%A8%E6%96%B0%E6%B5%AASAE%E5%92%8CPHPthink%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91%E6%80%BB%E7%BB%93/" data-id="cl6jc97bk001exkwk4599d7ke" data-title="使用新浪SAE和PHPthink遇到的坑总结" class="article-share-link">Compartir</a>
       
       
       
@@ -606,7 +655,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://caizhichao.github.io/blog/2019/08/24/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/%E9%80%9A%E8%BF%87JQ%E7%9A%84contents%E5%BE%80iframe%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%86%85%E5%AE%B9/" data-id="cl6it7qxw001lpkv81apk4eg7" data-title="通过JQ的contents往iframe中添加内容" class="article-share-link">Share</a>
+      <a data-url="https://caizhichao.github.io/blog/2019/08/24/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/%E9%80%9A%E8%BF%87JQ%E7%9A%84contents%E5%BE%80iframe%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%86%85%E5%AE%B9/" data-id="cl6jc97bm001kxkwkdwsv9cjl" data-title="通过JQ的contents往iframe中添加内容" class="article-share-link">Compartir</a>
       
       
       
@@ -669,7 +718,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://caizhichao.github.io/blog/2019/08/24/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/python%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/" data-id="cl6it7qxl0016pkv8e3nw3d3j" data-title="python实现简单验证码识别" class="article-share-link">Share</a>
+      <a data-url="https://caizhichao.github.io/blog/2019/08/24/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/python%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/" data-id="cl6jc97bg0016xkwkeuo834ku" data-title="python实现简单验证码识别" class="article-share-link">Compartir</a>
       
       
       
@@ -683,223 +732,11 @@
 
 
   
-    <article id="post-转载/select-poll-epoll详解" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/blog/2019/08/24/%E8%BD%AC%E8%BD%BD/select-poll-epoll%E8%AF%A6%E8%A7%A3/" class="article-date">
-  <time class="dt-published" datetime="2019-08-24T01:07:22.000Z" itemprop="datePublished">2019-08-24</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/blog/categories/%E8%BD%AC%E8%BD%BD/">转载</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2019/08/24/%E8%BD%AC%E8%BD%BD/select-poll-epoll%E8%AF%A6%E8%A7%A3/">select、poll、epoll详解</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zhangxinqi/p/8337207.html">转载链接</a></p>
-<!-- wp:paragraph -->
-<p>select，poll，epoll都是IO多路复用的机制。I/O多路复用就是通过一种机制使一个进程可以监视多个描述符，一旦某个描述符就绪（一般是读就绪或者写就绪），能够通知程序进行相应的读写操作。</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>&nbsp; select，poll，epoll本质上都是同步I/O，因为他们都需要在读写事件就绪后自己负责进行读写，也就是说这个读写过程是阻塞的</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>&nbsp; 异步I/O则无需自己负责进行读写，异步I/O的实现会负责把数据从内核拷贝到用户空间。</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p><strong>&nbsp; sellect、poll、epoll三者的区别 :</strong></p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>&nbsp;&nbsp;<strong>select：</strong></p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>&nbsp;&nbsp;目前支持几乎所有的平台</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>&nbsp;&nbsp;默认单个进程能够监视的文件描述符的数量存在最大限制，在linux上默认只支持1024个socket</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>&nbsp; &nbsp; 可以通过修改宏定义或重新编译内核（修改系统最大支持的端口数）的方式提升这一限制</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>&nbsp;&nbsp;内核准备好数据后通知用户有数据了，但不告诉用户是哪个连接有数据，用户只能通过轮询的方式来获取数据</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>&nbsp; &nbsp; 假定select让内核监视100个socket连接，当有1个连接有数据后，内核就通知用户100个连接中有数据了</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>&nbsp; &nbsp; 但是不告诉用户是哪个连接有数据了，此时用户只能通过轮询的方式一个个去检查然后获取数据</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>&nbsp; &nbsp; 这里是假定有100个socket连接，那么如果有上万个，上十万个呢？</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>&nbsp; &nbsp; 那你就得轮询上万次，上十万次，而你所取的结果仅仅就那么1个。这样就会浪费很多没用的开销</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>&nbsp;&nbsp;只支持水平触发；每次调用select，都需要把fd集合从用户态拷贝到内核态，这个开销在fd很多时会很大</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>&nbsp; 同时每次调用select都需要在内核遍历传递进来的所有fd，这个开销在fd很多时也会很大</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p><strong>poll：</strong></p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>&nbsp;&nbsp;与select没有本质上的差别，仅仅是没有了最大文件描述符数量的限制</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>&nbsp; 只支持水平触发</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>&nbsp; 只是一个过渡版本，很少用</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p><strong>&nbsp; epoll：</strong></p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>&nbsp; Linux2.6才出现的epoll，具备了select和poll的一切优点，公认为性能最好的多路IO就绪通知方法</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>&nbsp; 没有最大文件描述符数量的限制</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>&nbsp; 同时支持水平触发和边缘触发</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>&nbsp; 不支持windows平台</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>&nbsp; 内核准备好数据以后会通知用户哪个连接有数据了</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>&nbsp; IO效率不随fd数目增加而线性下降</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>&nbsp; 使用mmap加速内核与用户空间的消息传递</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p><strong>水平触发与边缘触发：</strong></p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>&nbsp;&nbsp;水平触发：将就绪的文件描述符告诉进程后，如果进程没有对其进行IO操作，那么下次调用epoll时将再次报告这些文件描述符，这种方式称为水平触发</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>&nbsp;&nbsp;边缘触发：只告诉进程哪些文件描述符刚刚变为就绪状态，它只说一遍，如果我们没有采取行动，那么它将不会再次告知，这种方式称为边缘触发</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>&nbsp; 理论上边缘触发的性能要更高一些，但是代码实现相当复杂。</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>&nbsp;<strong>select和epoll的特点</strong>：</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>&nbsp;&nbsp;select：</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>&nbsp; select通过一个select()系统调用来监视多个文件描述符的数组，当select()返回后，该数组中就绪的文件描述符便会被内核修改标志位，使得进程可以获得这些文件描述符从而进行后续的读写操作。</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>&nbsp; 由于网络响应时间的延迟使得大量TCP连接处于非活跃状态，但调用select()会对所有socket进行一次线性扫描，所以这也浪费了一定的开销。</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>&nbsp; epoll:</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>&nbsp; epoll同样只告知那些就绪的文件描述符，而且当我们调用epoll_wait()获得就绪文件描述符时，返回的不是实际的描述符，而是一个代表就绪描述符数量的值，你只需要去epoll指定的一个数组中依次取得相应数量的文件描述符即可，这里也使用了内存映射（mmap）技术，这样便彻底省掉了这些文件描述符在系统调用时复制的开销。</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>&nbsp; 另一个本质的改进在于epoll采用基于事件的就绪通知方式。在select/poll中，进程只有在调用一定的方法后，内核才对所有监视的文件描述符进行扫描，而epoll事先通过epoll_ctl()来注册一个文件描述符，一旦基于某个文件描述符就绪时，内核会采用类似callback的回调机制，迅速激活这个文件描述符，当进程调用epoll_wait()时便得到通知。</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>select</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>select(rlist,wlist,xlist,timeout=None)</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>&nbsp;select函数监视的文件描述符分3类，分别是writefds、readfds、和exceptfds。</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>&nbsp;调用后select函数会阻塞，直到有描述符就绪（有数据可读、可写、或者有except），或者超时（timeout指定等待时间，如果立即返回设为null即可），函数返回。当select函数返回后，可以通过遍历fdset，来找到就绪的描述符。</p>
-<!-- /wp:paragraph -->
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://caizhichao.github.io/blog/2019/08/24/%E8%BD%AC%E8%BD%BD/select-poll-epoll%E8%AF%A6%E8%A7%A3/" data-id="cl6it7qy3001zpkv87e1ghp6z" data-title="select、poll、epoll详解" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E8%BD%AC%E8%BD%BD/" rel="tag">转载</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/blog/">&laquo; Prev</a><a class="page-number" href="/blog/">1</a><span class="page-number current">2</span><a class="page-number" href="/blog/page/3/">3</a><a class="page-number" href="/blog/page/4/">4</a><a class="extend next" rel="next" href="/blog/page/3/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/blog/">&laquo; Previo</a><a class="page-number" href="/blog/">1</a><span class="page-number current">2</span><a class="page-number" href="/blog/page/3/">3</a><a class="page-number" href="/blog/page/4/">4</a><a class="extend next" rel="next" href="/blog/page/3/">Siguiente &raquo;</a>
   </nav>
 
 </section>
@@ -908,7 +745,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
+    <h3 class="widget-title">Categorías</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/leetcode/">leetcode</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/leetcode/2019%E6%98%A5%E5%AD%A3%E9%AB%98%E6%A0%A1%E8%B5%9B%E5%88%9D%E8%B5%9B/">2019春季高校赛初赛</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E5%A4%87%E5%BF%98%E5%BD%95/">备忘录</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E7%94%9F%E6%B4%BB/">生活</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E7%A8%8B%E5%BA%8F%E8%8B%B1%E8%AF%AD%E4%B9%A6/">程序英语书</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E7%A8%8B%E5%BA%8F%E8%8B%B1%E8%AF%AD%E4%B9%A6/Mastering-EMACS/">Mastering EMACS</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/">程海迷航</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E8%B5%84%E6%BA%90%E7%AB%99/">资源站</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E8%BD%AC%E8%BD%BD/">转载</a></li></ul>
     </div>
@@ -920,7 +757,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/express/" rel="tag">express</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/graphql/" rel="tag">graphql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/ip/" rel="tag">ip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/js/" rel="tag">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/nodejs/" rel="tag">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/proto/" rel="tag">proto</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/uniapp/" rel="tag">uniapp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%8F%8C%E5%87%BB%E6%94%BE%E5%A4%A7/" rel="tag">双击放大</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%9B%BE%E7%89%87%E9%A2%84%E8%A7%88%E5%99%A8/" rel="tag">图片预览器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E7%A6%BB%E7%BA%BF%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">离线数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E8%BD%AC%E8%BD%BD/" rel="tag">转载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/" rel="tag">验证码识别</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/express/" rel="tag">express</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/graphql/" rel="tag">graphql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/ip/" rel="tag">ip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/js/" rel="tag">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/nodejs/" rel="tag">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/proto/" rel="tag">proto</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/uniapp/" rel="tag">uniapp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%8F%8C%E5%87%BB%E6%94%BE%E5%A4%A7/" rel="tag">双击放大</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%9B%BE%E7%89%87%E9%A2%84%E8%A7%88%E5%99%A8/" rel="tag">图片预览器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%9C%89%E7%A9%B7%E8%87%AA%E5%8A%A8%E6%9C%BA/" rel="tag">有穷自动机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E7%A6%BB%E7%BA%BF%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">离线数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" rel="tag">编译原理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E8%BD%AC%E8%BD%BD/" rel="tag">转载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/" rel="tag">验证码识别</a></li></ul>
     </div>
   </div>
 
@@ -928,18 +765,18 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
+    <h3 class="widget-title">Nube de Tags</h3>
     <div class="widget tagcloud">
-      <a href="/blog/tags/express/" style="font-size: 10px;">express</a> <a href="/blog/tags/graphql/" style="font-size: 10px;">graphql</a> <a href="/blog/tags/ip/" style="font-size: 10px;">ip</a> <a href="/blog/tags/js/" style="font-size: 10px;">js</a> <a href="/blog/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/blog/tags/proto/" style="font-size: 10px;">proto</a> <a href="/blog/tags/python/" style="font-size: 10px;">python</a> <a href="/blog/tags/uniapp/" style="font-size: 10px;">uniapp</a> <a href="/blog/tags/%E5%8F%8C%E5%87%BB%E6%94%BE%E5%A4%A7/" style="font-size: 10px;">双击放大</a> <a href="/blog/tags/%E5%9B%BE%E7%89%87%E9%A2%84%E8%A7%88%E5%99%A8/" style="font-size: 10px;">图片预览器</a> <a href="/blog/tags/%E7%A6%BB%E7%BA%BF%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">离线数据库</a> <a href="/blog/tags/%E8%BD%AC%E8%BD%BD/" style="font-size: 20px;">转载</a> <a href="/blog/tags/%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/" style="font-size: 10px;">验证码识别</a>
+      <a href="/blog/tags/express/" style="font-size: 10px;">express</a> <a href="/blog/tags/graphql/" style="font-size: 10px;">graphql</a> <a href="/blog/tags/ip/" style="font-size: 10px;">ip</a> <a href="/blog/tags/js/" style="font-size: 10px;">js</a> <a href="/blog/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/blog/tags/proto/" style="font-size: 10px;">proto</a> <a href="/blog/tags/python/" style="font-size: 10px;">python</a> <a href="/blog/tags/uniapp/" style="font-size: 10px;">uniapp</a> <a href="/blog/tags/%E5%8F%8C%E5%87%BB%E6%94%BE%E5%A4%A7/" style="font-size: 10px;">双击放大</a> <a href="/blog/tags/%E5%9B%BE%E7%89%87%E9%A2%84%E8%A7%88%E5%99%A8/" style="font-size: 10px;">图片预览器</a> <a href="/blog/tags/%E6%9C%89%E7%A9%B7%E8%87%AA%E5%8A%A8%E6%9C%BA/" style="font-size: 10px;">有穷自动机</a> <a href="/blog/tags/%E7%A6%BB%E7%BA%BF%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">离线数据库</a> <a href="/blog/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" style="font-size: 10px;">编译原理</a> <a href="/blog/tags/%E8%BD%AC%E8%BD%BD/" style="font-size: 20px;">转载</a> <a href="/blog/tags/%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/" style="font-size: 10px;">验证码识别</a>
     </div>
   </div>
 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archivos</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/08/">August 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/08/">August 2019</a></li></ul>
     </div>
   </div>
 
@@ -947,9 +784,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Posts recientes</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/blog/2022/08/07/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E6%9C%89%E7%A9%B7%E8%87%AA%E5%8A%A8%E6%9C%BA-%E5%AE%9E%E8%B7%B5/">编译原理-有穷自动机-实践</a>
+          </li>
         
           <li>
             <a href="/blog/2020/01/05/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/%E7%A6%BB%E7%BA%BF%E5%AE%9E%E7%8E%B0ip%E6%9F%A5%E8%AF%A2%E5%8A%9F%E8%83%BD/">离线实现ip查询功能</a>
@@ -967,10 +808,6 @@
             <a href="/blog/2019/09/29/%E8%BD%AC%E8%BD%BD/%E4%B8%AD%E5%9B%BD%E4%BC%A0%E7%BB%9F%E9%A2%9C%E8%89%B2/">中国传统颜色</a>
           </li>
         
-          <li>
-            <a href="/blog/2019/09/27/%E8%B5%84%E6%BA%90%E7%AB%99/%E5%B7%A5%E5%85%B7%E7%BD%91%E7%AB%99/">工具网站</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -984,8 +821,8 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       
-      &copy; 2022 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+      &copy; 2022 蔡志超<br>
+      Construido por <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>

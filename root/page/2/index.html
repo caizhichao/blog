@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/page/2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-leetcode/697-数组的度" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/08/24/leetcode/697-%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%A6/" class="article-date">
+  <time class="dt-published" datetime="2019-08-24T04:06:42.000Z" itemprop="datePublished">2019-08-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/08/24/leetcode/697-%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%A6/">697-数组的度</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="给定一个非空且只包含非负数的整数数组-nums-数组的度的定义是指数组里任一元素出现频数的最大值。"><a href="#给定一个非空且只包含非负数的整数数组-nums-数组的度的定义是指数组里任一元素出现频数的最大值。" class="headerlink" title="给定一个非空且只包含非负数的整数数组 nums, 数组的度的定义是指数组里任一元素出现频数的最大值。"></a>给定一个非空且只包含非负数的整数数组 nums, 数组的度的定义是指数组里任一元素出现频数的最大值。</h3><p> 你的任务是找到与 nums 拥有相同大小的度的最短连续子数组，返回其长度。</p>
+<h4 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1:"></a>示例 1:</h4><p> 输入: [1, 2, 2, 3, 1]<br>输出: 2<br>解释:  输入数组的度是2，因为元素1和2的出现频数最大，均为2. 连续子数组里面拥有相同度的有如下所示: [1, 2, 2, 3, 1], [1, 2, 2, 3], [2, 2, 3, 1], [1, 2, 2], [2, 2, 3], [2, 2] 最短连续子数组[2, 2]的长度为2，所以返回2. </p>
+<h4 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2:"></a>示例 2:</h4><p> 输入: [1,2,2,3,1,4,2]<br>输出: 6 </p>
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意:"></a>注意:</h4><p> nums.length 在1到50,000区间范围内。<br> nums[i] 是一个在0到49,999范围内的整数。</p>
+<h3 id="解答"><a href="#解答" class="headerlink" title="解答:"></a>解答:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">findShortestSubArray</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        HashMap&lt;Integer, Integer&gt; intStartIndex = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;(),</span><br><span class="line">                intLastIndex = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;(),</span><br><span class="line">                intCnt = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        List&lt;Integer&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="type">int</span> <span class="variable">max</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="type">Integer</span> <span class="variable">n</span> <span class="operator">=</span> nums[i];</span><br><span class="line">            <span class="keyword">if</span> (!intStartIndex.containsKey(n))</span><br><span class="line">                intStartIndex.put(n, i);</span><br><span class="line">            intLastIndex.put(n, i);</span><br><span class="line">            intCnt.put(n, intCnt.getOrDefault(n, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">            <span class="type">int</span> <span class="variable">cnt</span> <span class="operator">=</span> intCnt.get(n);</span><br><span class="line">            <span class="keyword">if</span> (cnt &gt; max) &#123;</span><br><span class="line">                max = cnt;</span><br><span class="line">                list.clear();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (cnt == max)</span><br><span class="line">                list.add(n);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> <span class="variable">ret</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; list.size(); i++) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">tmp</span> <span class="operator">=</span> list.get(i);</span><br><span class="line">            <span class="type">int</span> <span class="variable">candidate</span> <span class="operator">=</span> intLastIndex.get(tmp) - intStartIndex.get(tmp) + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (candidate &lt; ret || ret == <span class="number">0</span>)</span><br><span class="line">                ret = candidate;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/08/24/leetcode/697-%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%A6/" data-id="cl6it7qx4000gpkv866ffc6o2" data-title="697-数组的度" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-程序英语书/p4-chapter-2-Guiding-Philosoph-LISP" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/08/24/%E7%A8%8B%E5%BA%8F%E8%8B%B1%E8%AF%AD%E4%B9%A6/p4-chapter-2-Guiding-Philosoph-LISP/" class="article-date">
+  <time class="dt-published" datetime="2019-08-24T02:01:06.000Z" itemprop="datePublished">2019-08-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%A8%8B%E5%BA%8F%E8%8B%B1%E8%AF%AD%E4%B9%A6/">程序英语书</a>►<a class="article-category-link" href="/categories/%E7%A8%8B%E5%BA%8F%E8%8B%B1%E8%AF%AD%E4%B9%A6/Mastering-EMACS/">Mastering EMACS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/08/24/%E7%A8%8B%E5%BA%8F%E8%8B%B1%E8%AF%AD%E4%B9%A6/p4-chapter-2-Guiding-Philosoph-LISP/">p4-chapter-2-Guiding-Philosoph-LISP</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Emacs is powered by its own LISP implementation called<br>Emacs Lisp or just elisp. Many are put off or intimidated by<br>this esoteric language; that’s a shame, because it’s a practical<br>and fun way to learn LISP in an editor built up around the<br>idea of LISP. Every part of Emacs can be inspected, evaluated<br>or modified because the editor is approximately 95 percent<br>elisp and 5 percent C code. It’s also a practical way to learn<br>a radical paradigm: that code and data are interchangeable<br>and malleable; that the language, owing to its simple syntax,<br>is trivially extensible with macros.</p>
+<p><em>啥是LISP</em><br>Emacs是靠它自己的LISP解释器支持的。很多人被劝退，或者被这门神秘的<br>语言吓到。这样就太可惜了，因为在围绕着LISP方法的编辑器中学LISP<br>这才是有效和有趣的学习LISP的方式。Emacs的每一部分都可以被审查，评价，<br>和修改，因为这个编辑器由95%的elisp代码和5%的c代码组成。这也是学习本质<br>范例的一个方法，数据交换，代码适应性，这语言还拥有简单的语法，和琐细<br>的宏扩展。</p>
+<p>Unfortunately, there’s no getting around learning elisp at<br>some point. In this book, I will talk about the Customize in-<br>terface: a dynamically generated interface of customizable<br>options in Emacs. However, something as simple as rebind-<br>ing a key means you’ll have to interact with elisp. But it’s<br>not all bad. Most of the problems you’re likely to encounter<br>have already been solved by someone else a long time ago;<br>it’s a simple matter of searching the Internet for a solution<br>to your problems.</p>
+<p>不幸的是，我们不谈学习Emacs。在这书里，我将讨论自定义接口：Emacs中<br>一个动态创建自定义接口的选项。然而，像重新绑定快捷键则不得不需要你<br>与elisp交互。这也不全是坏消息。大部分你可能遇到的问题已经在很久以前<br>就被人解决了。到互联网上搜索你要解决的问题是件很容易的事情。</p>
+<p>Despite the relative unpopularity of elisp versus more “mod-<br>ern” languages like Python, Ruby and JavaScript, I doubt<br>Emacs would have had the same power of extensibility if<br>a more traditional imperative&#x2F;object-oriented language had<br>been used. What makes LISP such a fantastic language is that<br>source code and data structures are intrinsically one and the<br>same: the LISP source code you read as a human is almost<br>identical to how the code is manipulated as a data structure<br>by LISP — the distinction between the questions “What is<br>data?” and “What is code?” are nil.</p>
+<p>尽管elisp相对与大多数主流语言例如Python，Ruby，js，来说不太流行。<br>我怀疑Emacs跟传统命令式&#x2F;面向对象语言相比是否具有一样的扩展能力。<br>数据结构和代码本质上是一样的这点让LISP很令人惊讶。LISP源码读起来让人<br>感觉在通过LISP修改数据结构。关于什么是数据什么是代码这个问题，没有答案。</p>
+<p>The data-as-code, the macro system and the ability to “advise”<br> arbitrary functions – meaning you can modify the be-<br>havior of existing code without copying and modifying the<br>original – give you an unprecedented ability to alter Emacs<br>to suit your needs. What would in most software projects<br>be considered code smells or poor architecture is actually a<br>major benefit in Emacs: you can hook, replace or alter existing<br> routines in Emacs to suit your needs without rewriting<br>large swathes of someone else’s source code.</p>
+<p>数据也是代码，这个宏系统“推荐”函数作为参数，这意味着你不需要修改复制<br>源码就能修改代码的表现。这给了你前所未有的能力去修改Emacs来适应你的需求。<br>绝大部分项目中会在乎代码味道和少的结构,而这两点正是Emacs的优势.你可以<br>挂钩子,替换,修改现存的常规Emacs代码区适应你的需求,而不需要为此重写捆绑<br>在一起的大量别人的源码.</p>
+<p>This book will not teach elisp in any great detail: Emacs has<br>a built-in elisp introduction<a target="_blank" rel="noopener" href="https://www.gnu.org/software/emacs/manual/eintr.html">3</a> and I highly recommend it if<br>you are curious — and honestly you should be. LISP is fun<br>and this is a great way to learn and use a powerful language<br>in a practical environment. Don’t let the parentheses scare<br>you; they are actually its greatest strength.</p>
+<p>这本书不会详细的教elisp,Emacs有个内置的elisp介绍.我高度推荐它,<br>如果你有任何困惑的话–老实说如果你有的话. LISP 时有趣的,用Emacs<br>是个绝佳的学习实践这门语言的机会.别让括号吓到你,这其实是它的优点.</p>
+<p><em>Emacs as an Operating System</em></p>
+<p>When you run Emacs you are in fact launching a tiny C<br>core responsible for the low-level interactions with your operating<br>system’s ABI. That includes mundane things like filesystem<br>And network access; drawing things to the screen or<br>printing control codes to the terminal.</p>
+<p><em>Emacs当作一个操作系统</em></p>
+<p>当你运行Emacs时,你其实是登录了一个微型C内核,这个内核可以跟你系统的ABI<br>接口进行底层交互.包括通常的文件系统和网络使用权,在屏幕上绘制东西,或者<br>打印控制命令到命令行.</p>
+<p>The cornerstone of Emacs though is the elisp interpreter<br>without it, there is no Emacs. The interpreter is creaky and<br>old; it’s struggling. Modern Emacs users expect a lot from<br>their humble interpreter: speed and asynchrony are the two<br>main issues. The interpreter runs in a single thread and intensive<br>tasks will lock the UI thread. But there are workarounds;<br>the issues, manifold though they are, do not deter people<br>from writing ever-more sophisticated packages.</p>
+<p>Emacs的基石是elisp解释器,如果没有它,就没有Emacs.这个解释器是<br>破旧的.苦苦挣扎.现代Emacs用户对这个简陋的解释器有所期待:主要<br>有快速异步.这个解释器跑在单线程上,密集的任务将会锁住ui线程.<br>但是有解决方法了,虽然这些问题多种多样,但是仍然挡不住人们继续<br>写越来越复杂的包</p>
+<p>When you write elisp you are not just writing snippets of<br>code run in a sandbox, isolated from everything — you are<br>altering a living system; an operating system running on an<br>operating system. Every variable you alter and every func-<br>tion you call is carried out by the very same interpreter you<br>use when you edit text.</p>
+<p>当你开始写elisp,你并不是在修改沙盒中的一小段代码,而是在修改一个<br>时时的系统.一个运行在操作系统之上的操作系统.你可以修改每个变量<br>每个你调用的函数,他们被搭载在你编辑文本用的这个编辑器上.</p>
+<p>Emacs is a hacker’s dream because it is one giant, mutable<br>state. Its simplicity is both a blessing and a curse. You can<br>re-define live functions; change variables left and right; and<br>you can query the system for its state at any time — state that<br>changes with every key stroke as Emacs responds to events<br>from your keyboard to your network stack. Emacs is selfdocumenting<br>because it is the document. There are no other<br>editors that can do that. No editor comes close.</p>
+<p>Emacs是一个极客的梦幻,因为它是一个伟大的可变的状态.它的简单特点,<br>既是祝福也是诅咒.你可以重新定义时时函数,彻底改变变量.可以在任何时间<br>查询系统的状态.每一帧的状态改变都是Emacs在响应你的键盘事件或网络事件.<br>Emacs又是自文档的编辑器.没有其它编辑器能做到这个,甚至接近.</p>
+<p>And yet Emacs never crashes — not really, anyway. Emacs<br>has an uptime counter to prove that it doesn’t (M-x emacsuptime)<br>— multi-month uptimes are not uncommon.</p>
+<p>Emacs从来没有崩溃过,无论真假.Emacs有个运行时间计数器来证明这不是虚的<br>比如几个月的运行时间并不奇怪.</p>
+<p>So when you ask Emacs a question – as I will show you how<br>to do later – you are asking your Emacs what its state is. Because<br>of this, Emacs has an excellent elisp debugger and unlimited<br>access to every facet of Emacs’s own interpreter and<br>state — so it has excellent code completion too. Any time<br>you encounter a LISP expression you can tell Emacs to evaluate<br>it, and it will: from adding numbers to setting variables<br>to downloading packages.</p>
+<p>当你问Emacs问题时,你是向Emacs询问现在的state是什么,这正如我演示的.<br>因为这样,Emacs有一个聪明的elisp调试器和无限制的访问Emacs自己的解释器<br>的所有方面,也有一个杰出的编码自动完成功能.任何时候你遇到一个LISP表达式,<br>你都能让Emacs解析它,无论是从数字加法到设置变量到下载扩展包.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/08/24/%E7%A8%8B%E5%BA%8F%E8%8B%B1%E8%AF%AD%E4%B9%A6/p4-chapter-2-Guiding-Philosoph-LISP/" data-id="cl6it7qxj0011pkv8599zb64a" data-title="p4-chapter-2-Guiding-Philosoph-LISP" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-程序英语书/p3-chapter-2-Guiding-Philosophy" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/08/24/%E7%A8%8B%E5%BA%8F%E8%8B%B1%E8%AF%AD%E4%B9%A6/p3-chapter-2-Guiding-Philosophy/" class="article-date">
+  <time class="dt-published" datetime="2019-08-24T02:00:02.000Z" itemprop="datePublished">2019-08-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%A8%8B%E5%BA%8F%E8%8B%B1%E8%AF%AD%E4%B9%A6/">程序英语书</a>►<a class="article-category-link" href="/categories/%E7%A8%8B%E5%BA%8F%E8%8B%B1%E8%AF%AD%E4%B9%A6/Mastering-EMACS/">Mastering EMACS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/08/24/%E7%A8%8B%E5%BA%8F%E8%8B%B1%E8%AF%AD%E4%B9%A6/p3-chapter-2-Guiding-Philosophy/">p3-chapter-2-Guiding Philosophy</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Emacs is a tinkerer’s editor. Plain and simple. People who<br>hack on Emacs do it because almost every facet of it is<br>extensible. It is the original extensible, customizable, selfdocumenting<br>editor. If you come from other text editors,<br>the idea of being able to change anything may seem like an<br>unnecessary distraction from your work – and indeed, a<br>lot of Emacs hacking does happen at the expense of one’s<br>real job – but once you realize that you can shape your<br>editor to do what you want it to do, it opens up a world of<br>possibilities.</p>
+<p>Emacs是一个多面手的编辑器.平文本并且简单.之所以Emacs被用来hack编程,<br>是因为它几乎所有层面上的可扩展性.它是一个本身可扩展,可定制,自文档的<br>编辑器.如果你从别的文本编辑器过来,这种改变所有事的想法看起来没有必要,<br>只是分散你对工作的注意力.事实上，很多的Emacs神操作确实很消耗工作时间，<br>但是只要你认识到你可以把你的编辑器改造成任何你想要的样子的时候，新世界<br>大门就向你敞开了。</p>
+<p>That means you can truly rebind all of Emacs’s keys to your<br>liking; you are not hidebound by your IDE’s undocumented<br>and buggy  API nor the limitations that would follow if you<br>did change things — such as your custom navigation keys<br>not working in, say, the search &amp; replace window or in the<br>internal help files. Truly, in Emacs, you can change every-<br>thing — and people do. Vim users are migrating to Emacs<br>because, well, Emacs is often a better Vim than Vim.</p>
+<p>你可以重新绑定所有快捷键。你不用被包裹在ide的无文档或者一车车的api中，<br>例如你设置的快捷键不生效，如说明，或搜索替换窗口，或内部帮助文件。<br>确实，你在Emacs中你能改变任何事情，正如人们做的那样。Vim用户会想要<br>迁移到Emacs中，毕竟，Emacs是一个更加Vim的Vim。</p>
+<p>Emacs pulls you in. Once you start using Emacs for the edit-<br>ing, you realize that using Emacs for IRC, email, database ac-<br>cess, command-line shells, compiling your code or surfing the<br> Internet is just as easy as editing text – and you get to<br>keep your key bindings, theme and all the power of Emacs<br>and elisp to configure or alter the behavior of everything.</p>
+<p>Emacs把你拉入进来。只要你开始使用Emacs去编辑，你会意识到使用Emacs进行，<br>IRC，email，数据库访问，命令行，编译你的代码，或者在Internet上冲浪，<br>都会像编辑文本一样简单。你可以保持你的快捷键，主题，所有Emacs能量和使用<br>elisp来配置和修改任何事的表现。</p>
+<p>And when everything is seamlessly tied together you avoid<br>the usual context switches of going from application to ap-<br>plication: most Emacs users use little more than the editor,<br>a browser and maybe a dedicated terminal application.</p>
+<p>当任何事都无缝的绑定在一起，你可以避免通常的从一个应用到另外一个应用的<br>文本切换，大部分Emacs使用者使用编辑器，浏览器，或许还有一个命令行。</p>
+<pre><code> Emacs’s history
+ Emacs’s source code repository (now in Git)
+ stretches back over 30 years and has more than
+ 130,000 commits and nearly 600 committers.
+
+ Emacs的历史。
+ Emacs的源码仓库（现在在github）可以追溯到30年前，并且有超过
+ 130,000次提交，以及将近600个贡献者。
+</code></pre>
+<p>If you want to modify Emacs, or any of the myriad pack-<br>ages available to you, Emacs Lisp (also known informally as<br>elisp) is what you will have to write. There have been a few<br>attempts to graft other languages onto elisp and Emacs but<br>with no lasting effect. As it turns out, LISP is actually a per-<br>fect abstraction for a very advanced tool like Emacs. And<br>most modern languages wouldn’t necessarily stand the test<br>of time: TCL was briefly considered in the 90s as it was popu-<br>lar at the time — but that has the distinction of being even<br>more obscure than LISP, nowadays.</p>
+<p>假如你想修改Emacs，或者大量提供给你的包，你需要写elisp语言。<br>有些人尝试把其他语言移植到elisp和Emacs中，但没有效果。事实证明，<br>LISP是对高级工具Emacs的完美抽象。其他大多数语言没法经过时间的考验，<br>TCL曾短暂的被认为考虑在它流行的1990年代，但是它跟Emacs相比有些区别，<br>从今天看来它甚至更难以理解。</p>
+<p>The only downside is that fiddling with your Emacs config-<br>uration is something you will have to learn to live with (and<br>in LISP no less, but as I explain in the next part that’s actually<br>a good thing.) That’s why I reinforced the point that it’s a<br>tinkerer’s editor. If you hate the idea of tweaking anything<br>and want everything out of the box, you have two options<br>left:</p>
+<p>唯一的缺陷是，摆弄你的Emacs配置是你不得不学会的(只有Lisp，但是我在<br>下一部分会解释，这或许是一件好事)这也是我强调的那一点，这是一个思考者<br>的编辑器。如果你讨厌配置任何东西，并且想要开箱即用，你有两个选项：</p>
+<p><em>Use a starter kit</em> There are many free starter kits that come<br>equipped with additional packages and what the<br>author thinks are sensible default settings. They can<br>be a good way to start out but with the caveat that<br>you don’t know where Emacs ends and the starter<br>kits’ added functionality begins.<br>I recommend you look at one of the following starter<br>kits widely used:<br>• Steve Purcell’s .emacs.d<br><a target="_blank" rel="noopener" href="https://github.com/purcell/emacs.d">https://github.com/purcell/emacs.d</a><br>• Bozhidar Batzov’s Prelude<br><a target="_blank" rel="noopener" href="https://github.com/bbatsov/prelude">https://github.com/bbatsov/prelude</a></p>
+<p><em>一、使用启动工具箱</em> 有很多启动工具箱已经装备了很多额外的包和作者<br>认为明智的默认配置。但是请小心，你不知道Emacs的来源和启动工具箱在<br>哪里添加了启动函数。我建议你查看这下面的两个被广泛使用的工具包。</p>
+<p><em>Use the defaults</em> Certainly an option but Emacs, I would<br>say, is rather lacking out of the box. You are expected<br>to configure Emacs to your liking or use a starter kit.<br>For an editor that is so radically different from main-<br>stream editors, the maintainers are surprisingly conservative<br>about changing the defaults for fear of upsetting<br>the old guard (who, of all people, should know how to<br>configure Emacs.)</p>
+<p><em>二、使用默认配置</em> 这确实是一个选择，但我必须说这缺少很多开箱即用<br>的东西。你需要配置Emacs或用工具箱。从编辑器的角度，它跟主流的编辑器<br>有本质区别，维护者是保守主义者，不愿意修改默认配置，因为害怕令那些<br>老同志失望。（可这群老同志都知道怎么配置Emacs）</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/08/24/%E7%A8%8B%E5%BA%8F%E8%8B%B1%E8%AF%AD%E4%B9%A6/p3-chapter-2-Guiding-Philosophy/" data-id="cl6it7qxi000zpkv817zg687y" data-title="p3-chapter-2-Guiding Philosophy" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-程序英语书/p2-chapter-2-The-Way-of-Emacs" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/08/24/%E7%A8%8B%E5%BA%8F%E8%8B%B1%E8%AF%AD%E4%B9%A6/p2-chapter-2-The-Way-of-Emacs/" class="article-date">
+  <time class="dt-published" datetime="2019-08-24T01:58:35.000Z" itemprop="datePublished">2019-08-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%A8%8B%E5%BA%8F%E8%8B%B1%E8%AF%AD%E4%B9%A6/">程序英语书</a>►<a class="article-category-link" href="/categories/%E7%A8%8B%E5%BA%8F%E8%8B%B1%E8%AF%AD%E4%B9%A6/Mastering-EMACS/">Mastering EMACS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/08/24/%E7%A8%8B%E5%BA%8F%E8%8B%B1%E8%AF%AD%E4%B9%A6/p2-chapter-2-The-Way-of-Emacs/">p2-chapter-2-The Way of Emacs</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>The Way of Emacs</p>
+<p>Emacs的套路</p>
+<p>“The purpose of a windowing system is to put some amusing fluff<br>around your one almighty emacs window.”– Mark, gnu.emacs.help.</p>
+<p>一个emacs窗口的目的是把一些可笑的杂毛放在窗口的周围。</p>
+<p>If you imagine the span of the modern computing era be-<br>ginninginth 1960s,then Emacs has been there longer than<br>just about everything else. It was first written by Richard<br>Stallman as a set of macros on top of another editor, called<br>TECO, back in 1976.<a target="_blank" rel="noopener" href="https://www.gnu.org/software/emacs/manual/html_mono/efaq.html#Origin-of-the-term-Emacs">1</a> TECO is now mostly remembered for be-<br>ing even more obtuse and hard to understand than Emacs<br>and DOS-era WordPerfect combined. Since then, there have<br>been many competing implementations of Emacs but today<br>you’re only likely to encounter XEmacs and GNU Emacs.</p>
+<p>你可以想象一下现代计算机时代开始于1960年，然鹅，Emacs比所有已有的东西<br>更加的古老。Richard Stallman撰写了Emacs的第一版，这是另一个顶级<br>编辑器TECO的宏的集合。TECO最为人所记住的是它比Emacs加DOS时代的WordPrefect<br>加一块还更让人难以理解和困惑.自那时起,出现了很多互相竞争的Emacs实现,但是<br>你现在只要世道XEmacs和GNU Emacs就行.</p>
+<p>This book will only concern iteself with GNU Emacs. Once upon a time<br>XEmacs was the more advanced and feature rich editor, but this is no<br>longer the case: from Emacs 22 onwards GNU Emacs is the best Emacs<br>out there.The history of XEmacs and GNU Emacs is an interesting one.<br>It was one of the first major forks<a target="_blank" rel="noopener" href="http://www.jwz.org/doc/lemacs.html">2</a> in a free software project and<br>both XEmacs and GNU Emacs are developed in parallel to this day.</p>
+<p>这本书只涉及GNU Emacs.曾经在一段时间上,XEmacs层是最高级和特性丰富的编辑器,<br>但是这已经过去了,从Emacs 22 开始GNU Emacs就是最好的Emacs了.XEmacs和GNU Emacs<br>的历史也是一件趣事.他俩曾是一个开源项目的第一个主要两条分支,他俩并行开发到<br>现在.</p>
+<p>Note<br>To almost everyone, the word Emacs refers specifically<br>to GNU Emacs. I will only spell out the full<br>name when I am distinguishing between different<br>implementations. When I mention Emacs, I<br>always talk about GNU Emacs.</p>
+<p>Note<br>对大多数人来说,Emacs这个词就是指GNU Emacs. 在我要区分两个不同的Emacs实现时,<br>我会完整的拼出这个名字.但当我提到Emacs,我一直是在说GNU Emacs.</p>
+<p>Because of Emacs’s age there are a number of… oddities.<br>Weird choices of terminology and historical anachronisms<br>persist because in most cases Emacs was ahead of the editor-<br>IDE curve for many decades and thus had to invent its own<br>terminology for things. There are talks of replacing Emacs’s<br>own vernacular with words familiar to everyone, but that<br>is still a long way off.</p>
+<p>因为Emacs的出现时代,它带有很多怪异的东西.历史原因导致的意识和术语上的<br>怪异选择仍然存在,因为Emacs在一定的时间里在IDE这条线上是领先的,所以不得不为<br>很多事创建术语.有讨论说要用更让人熟悉的词语替换Emacs的术语方言,但这条<br>路还很长.</p>
+<p>Despite the lack of marketing, a small core of Emacs developers,<br>the anachronisms and terminology that predqates the<br>modern Personal Computing-era, there are many people<br>out there who just love using Emacs. When Sublime Text<br>showed off its mini-map feature (a miniature display of the<br>source code) someone immediately coded up a minimap<br>package doing the same thing in Emacs. In fact, it is this<br>extensibility that attracts some to – and repels others from<br>– Emacs.</p>
+<p>除了市场缺失,一小部分核心Emacs开发者,早于现代个人PC时代的历史错误和术语外,<br>还是有很多人无视这些而只是单纯的喜欢使用Emacs.当Sublime展示了它对源码的<br>缩略图功能后,有人可以开发了一个缩略图的包给Emacs用.事实上,就是这种扩展性<br>吸引了哪些排斥其他死板编辑器的人.<br>-来自Emacs</p>
+<p>This chapter will talk about the Way of Emacs: the terminology<br>and what Emacs means to a lot of people, and why understanding<br>where Emacs comes from will make it easier to<br>adopt it.</p>
+<p>这一章将讨论Way of Emacs这个标题:<br>通过讨论术语和对大多数人来说Emacs意味着什么,和为什么知道Emacs的来源<br>会让你更容易采用它.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/08/24/%E7%A8%8B%E5%BA%8F%E8%8B%B1%E8%AF%AD%E4%B9%A6/p2-chapter-2-The-Way-of-Emacs/" data-id="cl6it7qxg000wpkv83yxrdjfu" data-title="p2-chapter-2-The Way of Emacs" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-程序英语书/p1-chapter-1-Introduction" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/08/24/%E7%A8%8B%E5%BA%8F%E8%8B%B1%E8%AF%AD%E4%B9%A6/p1-chapter-1-Introduction/" class="article-date">
+  <time class="dt-published" datetime="2019-08-24T01:46:41.000Z" itemprop="datePublished">2019-08-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%A8%8B%E5%BA%8F%E8%8B%B1%E8%AF%AD%E4%B9%A6/">程序英语书</a>►<a class="article-category-link" href="/categories/%E7%A8%8B%E5%BA%8F%E8%8B%B1%E8%AF%AD%E4%B9%A6/Mastering-EMACS/">Mastering EMACS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/08/24/%E7%A8%8B%E5%BA%8F%E8%8B%B1%E8%AF%AD%E4%B9%A6/p1-chapter-1-Introduction/">p1-chapter-1-Introduction</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Chapter 1<br>Introduction<br>“I’m using Linux. A library that emacs uses to<br>communicate with Intel hardware.”<br>– Erwin, #emacs,Freenode.</p>
+<p>我在用linux，一个emacs用来连接互联网的的库</p>
+<p>Thank You<br>Thank you for purchasing Mastering Emacs. This book has<br>been a long time coming. When I started my blog, Master-<br>ing Emacs, in 2010, it was at the recommendation of a good<br>friend, Lee, who suggested that I share my thoughts on<br>Emacs and work flow in Emacs. At the time I had accrued<br>in an org mode file titled blogideas.org a large but random<br>assortment of ideas and concepts that I’d learned about and<br>wished someone had taught me. The end result of that file<br>is the blog and now this book.</p>
+<p>感谢你买了这本Mastering Emacs.这本书的到来可以追溯到很久之前。<br>在我开始写博客那时候，有个朋友建议我分享自己关于emacs的思考，<br>和在emacs中工作的流程。当时我积累了一个名为blogideas.org的文件，<br>里面随机分类了大量的想法和我学会的概念，或者希望别人教我的东西。<br>这个org文件最后变成了这个博客和这本书。</p>
+<p>Special Thanks<br>I would like to thank the following people for<br>their encouragement, advice, suggestions and<br>critiques:<br>Akira Kitada, Alvaro Ramirez, Arialdo Mar-<br>tini, Bob Koss, Catherine Mongrain, Chandan<br>Rajendra, Christopher Lee, Daniel Hannaske,<br>Edwin Ong, Evan Misshula, Friedrich Paetzke,<br>Gabriela Hajduk, Gabriele Lana, Greg Sieranski,<br>Holger Pirk, John Mastro, John Kitchin, Jonas<br>Enlund, Konstantin Nazarenko, Lee Cullip,<br>Luis Gerhorst, Lukas Pukenis, Manuel Uberti,<br>Marcin Borkowski, Mark Kocera, Matt Wilbur,<br>Matthew Daly, Michael Reid, Nanci Bonfim,<br>Oliver Martell, Patrick Mosby, Patrick Martin,<br>Sebastian Garcia Anderman, Stephen Nelson-<br>Smith, Steve Mayer, Tariq Master, Travis<br>Jefferson, Travis Hartwell.</p>
+<p>我要感谢以下这些人的鼓励，建议，见解，评论。</p>
+<p>Like a lot of people, I was thrust into the world of Emacs<br>without knowing anything about it; in my case it was in<br>my first year of University where the local computer soci-<br>ety was made up primarily of Vim users. It was explained<br>to me, in no uncertain terms, that “you use Vim — that’s<br>it.” Not wanting to be told what to do, I picked the polar<br>opposite of Vim and went with Emacs.</p>
+<p>和很多人一样，我在对EMACS毫不知情的情况下，被推入到EMACS的世界里。<br>在大学的第一年里，当地的电脑社团全是Vim用户。有人对我解释，<br>不需要理由，你给我用Vim。并且不想告诉我为什么要这么做，<br>于是我选择了一个一个完全相反的一极，走向EMACS。</p>
+<p>Emacs proved to be a stable and reliable editor in all those<br>years, but it was a tough one to get to know. Despite the<br>extensive user documentation, it never helped me to learn<br>and understand Emacs.</p>
+<p>Emacs这些年被证明是一个稳定可靠编辑器，但理解这一点还是很难。<br>尽管有着广泛的文档存在，但这并不能帮助我学习理解Emacs。</p>
+<p>As it turns out, Emacs is a philosophy or even a religion. So,<br>the joke about the “Church of Emacs” is eerily accurate in<br>many ways, as you will find out in the next chapter.</p>
+<p>事实证明，Emacs是一种哲学，甚至是一种宗教。所以，在很多情况下，<br>Emacs教会这个玩笑说的很准确，这点你可以在下一章找到例证。</p>
+<p>Intended Audience<br>目标受众</p>
+<p>It’s a bit weird talking about the intended audience when<br>you’ve already bought the book on the subject. But it bears<br>mentioning anyway so no matter your Emacs skill level you<br>will get something out of this book.</p>
+<p>讲目标受众这个东西很奇怪，因为毕竟你们已经买了这本书。<br>但还是要提下，不管你Emacs是什么水平，你还是能从这本书里得到些东西。</p>
+<p>The first and (most obvious) audience are people new to<br>Emacs. If you’ve never used Emacs before in your life, you<br>will hopefully find this book very useful. However, if<br>you’re new to Emacs and non-technical, then you’re going<br>to have a harder time. Emacs, despite being suitable for<br>much more than just programming, is squarely aimed at<br>computer-savvy people. Although it’s perfectly possible<br>to use Emacs anyway, this book will assume that you’re<br>technically inclined, but not necessarily a programmer.</p>
+<p>最首要的受众是那些Emacs新手。如果你从来没用过Emacs，<br>你会发现这本书非常有用。然而，如果你是Emacs新手并且不是技术人员，<br>你会经历一段痛苦的时期。Emasc，不仅适用于编程人员，<br>同时也适用于喜欢捣鼓电脑的人。任何情况下都使用Emacs是可能的，<br>这本书假设你是有技术倾向的人，但是不是专业的程序人员。</p>
+<p>If you’ve tried Emacs before but given up, then I hope this<br>book is what convinces you to stick with it. But it’s fine if<br>you don’t; some languages or environments don’t (contrary<br>to what a lot of Emacs users would claim) work well with<br>Emacs. If you’re primarily a Microsoft Windows developer<br>working with Visual Studio, using Emacs is going to be a<br>case of two steps forward, one step back: you gain unprece-<br>dented text editing and tool integration but lose all the ben-<br>efits a unified IDE would give you.</p>
+<p>假如你曾经尝试过Emacs但放弃了，希望这本书能说服你坚持下去。<br>但是你不坚持也ok。因为一些语言和环境（很多Emacs声称）不能在<br>Emacs中很好的工作。如果你使用Visual Studio工作，使用Emacs将会<br>给你带来前所未有的编辑和工具集成体验，但会丧失集成开发工具带来<br>的好处。</p>
+<p>If you’re a Vim refugee, then welcome to the dark side! If<br>your primary objective is to use Emacs’s Vim emulation lay-<br>ers, then some of this book is redundant; it concerns itself<br>with the default Emacs bindings and it teaches “the Emacs<br>way”of doing things.But not to worry:a lot of the tips and<br>advice herein are still applicable, and who knows — maybe<br>you’ll switch away from Evil mode in time.</p>
+<p>假如你是一个Vim难民，欢迎来到黑暗的另一面。假如你的主要目的是<br>使用Emacs中的Vim仿真，那么这本书对你来说是多于的。这本书主要关注<br>Emacs绑定按键和Emacs做事的方式。这有很多提示和建议仍然很实用，<br>谁知道呢，也许你会半路转到Evil模式。</p>
+<p>And finally, if you’re an existing Emacs user but struggling<br>to take it to the next level,or maybe you just need a refresher<br>course “from the ground up,” then this book is also for you.</p>
+<p>最后，徦如你已经是一个Emacs用户，挣扎着想提高自己的Emacs水平，<br>或者只是想来个复习，这本书都适合你。</p>
+<p>What You’ll Learn<br>你将学到什么？</p>
+<p>Covering all of Emacs in just one book would be a Sisyphean<br>task.Instead,I aim to teach you what you need to be produc-<br>tive in Emacs, which is just a small subset of Emacs’s capabil-<br>ity. Hopefully, by the end of this book, and with practice,<br>you will know enough about Emacs to seek out and answer<br>questions you have about the editor.</p>
+<p>覆盖所有Emacs知识在一本书里是徒劳的任务。相反，我想教你在Emacs中<br>生产需要的东西，这会是Emacs能力的一部分。希望，到了这本书的最后，<br>并通过练习，你能对Emacs有足够多的了解来解决关于这个编辑器相关的问题。</p>
+<p>To be more specific, I will teach you, in broad terms, six<br>things:<br>更具体的，我将教你以下六点。</p>
+<p>What Emacs is about: A thorough explanation of impor-<br>tant terminology and conventions that Emacs uses<br>which in many cases differs greatly from other editors.<br>You will also learn what the philosophy of Emacs is,<br>and why a text editor even has a philosophy. I will<br>also talk about Vim briefly and the Editor Wars and<br>what the deal is with all those different keys.</p>
+<p>什么是Emacs，Emacs就是一套贯穿始终的术语和在很多方面<br>区别于其他编辑器的约定。你还会学到什么是Emacs的哲学，<br>和为什么一个编辑器会有哲学。我简单的聊下vim，以及编辑器之争，<br>。。。</p>
+<p>Getting started with Emacs How to install Emacs,how to<br>run it, and how to ensure you’re using a reasonably<br>new version of Emacs. I explain how to modify Emacs and<br>what you need to do to make your changes permanent.<br>I will introduce the Customize interface and how to load<br>a color theme. And finally,I’ll talk about the user interface<br>of Emacs and some handy tips in case you get stuck.</p>
+<p>首先从怎么安装Emacs，怎么运行它，怎么确认是最新版的Emacs。<br>我会解释怎么修改Emacs和怎么让你的修改常驻。我会介绍个性化<br>界面，和怎么加载一个顔色主题。最后，我会讲讲Emacs的用户界面，<br>和一些便利的提示来防止你卡住。</p>
+<p>Discovering Emacs Emacs is self-documenting; but what<br>does it mean and how can you leverage that aspect<br>to discover more about Emacs or answer questions<br>you have about particular features? I will show you<br>what I do when I have to learn how to use a new<br>mode or feature in Emacs, and how you can use the<br>self-documenting nature of Emacs to find things for<br>which you’re looking.</p>
+<p>发现Emacs，Emacs是一个自文档的。但是，这意味什么以及你怎么<br>利用这个特点来挖掘Emacs或回答你遇到的特别问题。我会向你<br>展示当我使用Emacs的一个新模式或特性时会怎么做，以及当你<br>在查找东西时怎么利用Emacs的自文档特性。</p>
+<p>Movement How to move around in Emacs.At first glance a<br>simple thing to do, but in Emacs there are many ways<br>of going from where you are to where you need to<br>go in the fewest possible keystrokes. Moving around<br>is probably half the battle for a developer and know-<br>ing how to do it quickly will make you more efficient.<br>Some of the things you’ll learn: moving by syntactic<br>units, and what exactly syntactic units are; using win-<br>dows and buffers; searching and indexing text; select-<br>ing text and using the mark.</p>
+<p>怎么在Emacs中移动。首先，找个简单的来试，但其实Emacs中<br>有很多简单有效的快捷键来移动。移动方式几乎占了开发者一半<br>的争论点，以及知道怎么快速移动可以让你更高效。你将会学习：<br>通过语法单元移动、什么是语法单元、使用窗口和缓存、搜索和<br>索引文档、选择文本和使用标记。</p>
+<p>Editing As in the chapter on movement, I will show you<br>how to edit text using a variety of tools offered to you<br>by Emacs. This includes things like editing text by bal-<br>anced expressions, words, lines, paragraphs; creating<br>keyboard macros to automate repetitive tasks;<br>search-ing and replacing; registers; multi-file editing;<br> abbreviations; remote file editing; and more.</p>
+<p>。。。 我将会向你展示怎么使用Emacs提供的一系列工具进行文本编辑。<br>包括表达、词语、行、段落的操作。创建宏来自动化重复任务：<br>搜索、替换、登记；多文件编辑、缩写、远程文件编辑；其他。</p>
+<p>Productivity Emacs can do more than just edit text and this<br>chapter is only a taste of what attracts so many people<br>to Emacs: its tight integration with hundreds of exter-<br>nal tools.I will whet your appetit eand show you some<br>of the more interesting things you can do when you<br>choreograph Emacs’s movement and editing.</p>
+<p>Emacs的生产效率不仅仅包括文本编辑，这节将尝试说明Emacs吸引这么<br>多人的原因：与大量的扩展工具有紧密结合。我将会打磨你的兴趣，并向你<br>展示当你编排Emacs的移动和编辑时你可以做些什么。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/08/24/%E7%A8%8B%E5%BA%8F%E8%8B%B1%E8%AF%AD%E4%B9%A6/p1-chapter-1-Introduction/" data-id="cl6it7qxf000upkv8gp3gah7u" data-title="p1-chapter-1-Introduction" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-通过jquery-validate和bootstrap实现表单后面提示打钩或打叉的效果和真实的表单验证" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/08/24/%E9%80%9A%E8%BF%87jquery-validate%E5%92%8Cbootstrap%E5%AE%9E%E7%8E%B0%E8%A1%A8%E5%8D%95%E5%90%8E%E9%9D%A2%E6%8F%90%E7%A4%BA%E6%89%93%E9%92%A9%E6%88%96%E6%89%93%E5%8F%89%E7%9A%84%E6%95%88%E6%9E%9C%E5%92%8C%E7%9C%9F%E5%AE%9E%E7%9A%84%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81/" class="article-date">
+  <time class="dt-published" datetime="2019-08-24T01:41:00.000Z" itemprop="datePublished">2019-08-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/">程海迷航</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/08/24/%E9%80%9A%E8%BF%87jquery-validate%E5%92%8Cbootstrap%E5%AE%9E%E7%8E%B0%E8%A1%A8%E5%8D%95%E5%90%8E%E9%9D%A2%E6%8F%90%E7%A4%BA%E6%89%93%E9%92%A9%E6%88%96%E6%89%93%E5%8F%89%E7%9A%84%E6%95%88%E6%9E%9C%E5%92%8C%E7%9C%9F%E5%AE%9E%E7%9A%84%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81/">通过jquery-validate和bootstrap实现表单后面提示打钩或打叉的效果和真实的表单验证</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!-- wp:paragraph -->
+<p>首先，需要下载以下框架的代码，版本没有严格的要求。</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>一、工具文件准备</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>1、jquery.js &nbsp;2、bootstrap.css 3、jquery.validate.js</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>这三个文件非常容易下载，下载然后看看包里有名字跟以上名字一致的就是了。</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>二、在html中引用css文件和js文件</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>三、创建一个新的的js文件，这个文件使用来调用jquery.validate.js中封装的方法的，代码如下</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>
+
+<p>以下如error和element等都是jq对象，可以使用jq方法</p>
+</p>
+<!-- /wp:paragraph -->
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">$().<span class="title function_">ready</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> validaObj = $(<span class="string">&quot;#form_login&quot;</span>).<span class="title function_">validate</span>(&#123; <span class="comment">//创建一个validate对象，可以自己查询使用一些该对象的衍生方法</span></span><br><span class="line">        <span class="attr">rules</span>: &#123;</span><br><span class="line">            <span class="attr">username</span>: &#123;</span><br><span class="line">                <span class="attr">required</span>: <span class="literal">true</span>,</span><br><span class="line">                <span class="attr">minlength</span>: <span class="number">4</span>,</span><br><span class="line">                <span class="attr">maxlength</span>: <span class="number">8</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">messages</span>: &#123;</span><br><span class="line">            <span class="attr">username</span>: &#123;</span><br><span class="line">                <span class="attr">required</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">                <span class="attr">minlength</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">                <span class="attr">maxlength</span>: <span class="string">&quot;&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">success</span>: <span class="keyword">function</span>(<span class="params">e</span>) &#123; <span class="comment">//关键方法，该方法会在validate完成该输入框的判断以后进行一次调用并且会取消默认的显示错误的方法（大概会吧）</span></span><br><span class="line">            <span class="comment">//如果进行调试，会方法输入框的class属性会在根据是否合法改变其样式为  &quot;error&quot;和&quot;valid&quot;中的一种，通过判断这个进行判断</span></span><br><span class="line">            <span class="keyword">if</span> (e.<span class="title function_">prev</span>().<span class="title function_">hasClass</span>(<span class="string">&quot;valid&quot;</span>)) &#123; <span class="comment">//此处e相当于错误信息这个html标签本身，然后找e的前一个标签是否有&quot;valid&quot;类样式，有则说明当前输入框验证正确</span></span><br><span class="line">                e.<span class="title function_">removeClass</span>(<span class="string">&quot;glyphicon-remove&quot;</span>); <span class="comment">//boostrap的样式，查手册，bootstrap3的全局样式里的表单里有样式说明，添加了对应样式span标签会变为图形。</span></span><br><span class="line">                <span class="comment">//比如在引入bootstrap.css的情况下 &lt;span class = &quot;glyphicon glyphicon-ok form-control-feedback&quot; &gt;&lt;/span&gt; 就是一个打钩的图案</span></span><br><span class="line">            e.<span class="title function_">addClass</span>(<span class="string">&quot;glyphicon-ok&quot;</span>);</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">if</span>(e.<span class="title function_">prev</span>().<span class="title function_">hasClass</span>(<span class="string">&quot;error&quot;</span>))&#123;  <span class="comment">// 判断输入框里有样式&quot;error&quot;则把打叉换成打钩e.removeClass(&quot;glyphicon-ok&quot;);</span></span><br><span class="line">                e.<span class="title function_">addClass</span>(<span class="string">&quot;glyphicon-remove&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">errorPlacement</span>: <span class="keyword">function</span>(<span class="params">error, element</span>) &#123; <span class="comment">//决定错误信息要放在哪里的方法，error是label对象，element是当前验证的输入框对象</span></span><br><span class="line">            error.<span class="title function_">addClass</span>(<span class="string">&#x27;glyphicon glyphicon-remove form-control-feedback&#x27;</span>);</span><br><span class="line">            error.<span class="title function_">appendTo</span>(element.<span class="title function_">parent</span>());</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+
+<!-- wp:paragraph -->
+<p>当然使用框架很爽，那些什么点击验证，多少长度什么格式都封装好了，注意逗号的分割规律使用就没什么大问题<br></p>
+<!-- /wp:paragraph -->
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/08/24/%E9%80%9A%E8%BF%87jquery-validate%E5%92%8Cbootstrap%E5%AE%9E%E7%8E%B0%E8%A1%A8%E5%8D%95%E5%90%8E%E9%9D%A2%E6%8F%90%E7%A4%BA%E6%89%93%E9%92%A9%E6%88%96%E6%89%93%E5%8F%89%E7%9A%84%E6%95%88%E6%9E%9C%E5%92%8C%E7%9C%9F%E5%AE%9E%E7%9A%84%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81/" data-id="cl6it7qwh0001pkv8e8ju5j4j" data-title="通过jquery-validate和bootstrap实现表单后面提示打钩或打叉的效果和真实的表单验证" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-程海迷航/使用新浪SAE和PHPthink遇到的坑总结" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/08/24/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/%E4%BD%BF%E7%94%A8%E6%96%B0%E6%B5%AASAE%E5%92%8CPHPthink%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91%E6%80%BB%E7%BB%93/" class="article-date">
+  <time class="dt-published" datetime="2019-08-24T01:37:56.000Z" itemprop="datePublished">2019-08-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/">程海迷航</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/08/24/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/%E4%BD%BF%E7%94%A8%E6%96%B0%E6%B5%AASAE%E5%92%8CPHPthink%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91%E6%80%BB%E7%BB%93/">使用新浪SAE和PHPthink遇到的坑总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h4 id="纪念用-以前放在新浪博客来着-刚学编程的时候-hx1603-16年的3月报的传一培训"><a href="#纪念用-以前放在新浪博客来着-刚学编程的时候-hx1603-16年的3月报的传一培训" class="headerlink" title="纪念用,以前放在新浪博客来着,刚学编程的时候,hx1603, 16年的3月报的传一培训"></a>纪念用,以前放在新浪博客来着,刚学编程的时候,hx1603, 16年的3月报的传一培训</h4><!-- wp:paragraph -->
+<p>1、使用微信官方的示例复制到代码中进行测试，经常不能产生作用，必要的时候还是要自己打最最简单的代码进行测试。</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>2、新浪sae不支持在服务器上通过代码进行读写，就是那些fopen之类的函数都不能用。</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>3、由于微信端和我方服务器之间的交互基本上依靠xml和json完成，所有使用最简单的字符串拼接会使得代码十分容易理解，少用网上复制的经常会看不懂。</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>4、还有千万写代码的时候要小心，自己曾遇到的坑包括占位符写错（就是这么傻），路径两个斜杠，文件后缀写错，phpthink忘记namespace等等，都是泪啊。</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>5、使用微信jssdk时候，页面的签名一定要做成动态的，因为页面分享以后会自动在后面加入其它代码导致签名错误，动态获取当前页面的url可以使用</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:code -->
+<pre class="wp-block-code"><code>$url = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . '?' . $_SERVER['QUERY_STRING'];来获取。</code></pre>
+<!-- /wp:code -->
+
+<!-- wp:code -->
+<pre class="wp-block-code"><code>6、还有有时会遇到invalid domain的错误提示，这说明你js安全域名不对，注意这里是tm的域名不是url。</code></pre>
+<!-- /wp:code -->
+
+<!-- wp:paragraph -->
+<p>7、微信jssdk有官方demo，挺好用的但是其中一些事件根本不是什么点击事件，我们看看function里面的内容就好了，外面的点击事件不用太关心。</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>8、新浪sae的使用中，有时候需要使用其他应用的数据比如你想建两个应用一个用来处理前台逻辑，一个用来给当做数据管理统计后台，这时候就需要使用新浪sae提供的应用授权功能，完成授权以后，在另外那个应用通过主库地址和数据库名用户名秘密就可以访问了，phpthink是在模块conf文件夹里的config.php里设置就可以了。</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>9、有大量的默认参数在使用新浪sae时会被自动设置，比如comman里的数据库设置一般是无效的，需要通过home或其他自定义模块内的config配置来进行，相关的配置优先级在phpthink手册里都有说。</p>
+<!-- /wp:paragraph -->
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/08/24/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/%E4%BD%BF%E7%94%A8%E6%96%B0%E6%B5%AASAE%E5%92%8CPHPthink%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91%E6%80%BB%E7%BB%93/" data-id="cl6it7qxs001fpkv8gfrx6j85" data-title="使用新浪SAE和PHPthink遇到的坑总结" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-程海迷航/通过JQ的contents往iframe中添加内容" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/08/24/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/%E9%80%9A%E8%BF%87JQ%E7%9A%84contents%E5%BE%80iframe%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%86%85%E5%AE%B9/" class="article-date">
+  <time class="dt-published" datetime="2019-08-24T01:32:38.000Z" itemprop="datePublished">2019-08-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/">程海迷航</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/08/24/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/%E9%80%9A%E8%BF%87JQ%E7%9A%84contents%E5%BE%80iframe%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%86%85%E5%AE%B9/">通过JQ的contents往iframe中添加内容</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!-- wp:paragraph -->
+<p>前提：引用JQ &amp;nbsp;支持JQ的浏览器（不要用ie） </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>今天被一个很烦人的问题给困扰了很久。就是怎么通过JQ来修改iframe标签的内容，你问我js处理iframe的方法？而且还要处理ie浏览的情况？出门左拐不送。说正经的，通过JQ处理iframe内容的关键是contents()方法。假如我们直接使用如下代码</p>
+<!-- /wp:paragraph -->
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;#iframeID&quot;</span>).<span class="title function_">html</span>(<span class="string">&quot;你好&quot;</span>);</span><br><span class="line">$(<span class="string">&quot;#iframeID&quot;</span>).<span class="title function_">html</span>(<span class="string">&quot;你好&quot;</span>);&lt;<span class="regexp">/code&gt;&lt;/</span>pre&gt;</span><br></pre></td></tr></table></figure>
+<!-- wp:paragraph -->
+<p>发现都不能修改iframe中的内容，都不好使。</p>
+<!-- /wp:paragraph -->
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="string">&quot;测试者inner&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="string">&quot;测试者部门inner&quot;</span>;</span><br><span class="line">$(<span class="string">&quot;#container02&quot;</span>).<span class="title function_">contents</span>().<span class="title function_">find</span>(<span class="string">&quot;body&quot;</span>).<span class="title function_">html</span>(<span class="string">&quot;&amp;lt;div&gt;&quot;</span> + <span class="string">&quot;&amp;lt;span&gt;&quot;</span> + a + <span class="string">&quot;&amp;lt;/span&gt;&quot;</span> + <span class="string">&quot;&amp;lt;span&gt;&quot;</span> + b + <span class="string">&quot;&amp;lt;/span&gt;&quot;</span> + <span class="string">&quot;&amp;lt;/div&gt;&quot;</span>); &amp;lt; <span class="regexp">/script&gt;/</span>&lt;<span class="regexp">/code&gt;&lt;/</span>pre&gt;</span><br></pre></td></tr></table></figure>
+
+
+<!-- wp:paragraph -->
+<p>则可以顺利的给iframe中添加标签。JQ这contents帮我节约了几小时的生命。。。当然还可以反过来用，通过contents()来获取iframe中的内容然后进行修改。</p>
+<!-- /wp:paragraph -->
+
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    $(<span class="string">&quot;#container02&quot;</span>).<span class="title function_">contents</span>().<span class="title function_">find</span>(<span class="string">&quot;span&quot;</span>).<span class="title function_">each</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> ($(<span class="variable language_">this</span>).<span class="title function_">html</span>() == <span class="string">&quot;测试者inner&quot;</span>) <span class="comment">//使用text()对ie无效</span></span><br><span class="line">        &#123;</span><br><span class="line">            $(<span class="variable language_">this</span>).<span class="title function_">parent</span>(<span class="string">&quot;div&quot;</span>).<span class="title function_">remove</span>(); <span class="comment">//把包含条件内容的span的父亲div删除</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+<!-- wp:paragraph -->
+<p>通过以上来完成检索iframe中所有span标签然后删除盛放这个span的div容器。</p>
+<!-- /wp:paragraph -->
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/08/24/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/%E9%80%9A%E8%BF%87JQ%E7%9A%84contents%E5%BE%80iframe%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%86%85%E5%AE%B9/" data-id="cl6it7qxw001lpkv81apk4eg7" data-title="通过JQ的contents往iframe中添加内容" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/" rel="tag">js</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-程海迷航/python实现简单验证码识别" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/08/24/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/python%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/" class="article-date">
+  <time class="dt-published" datetime="2019-08-24T01:12:33.000Z" itemprop="datePublished">2019-08-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/">程海迷航</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/08/24/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/python%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/">python实现简单验证码识别</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!-- wp:paragraph -->
+<p>
+
+<ol>
+<li>安装python和pip不作介绍，保证打开cmd输入pip和python有反应。需设置环境变量。<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1i51pccl%3Cbr%3E2.%E5%8F%82%E8%80%83http://www.jianshu.com/p/9e97c9b7dab6">python3.6安装包</a></li>
+<li>在cmd中执行以下命令(<a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/046a7b3e67f1e1f9c37fa976.html">怎么启动cmd</a>)<!-- /wp:paragraph --></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install PIL</span><br><span class="line">pip install Pillow</span><br><span class="line">pip install pytesseract</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><p>目标图片<br><img src="/index.png" alt="验证码"></p>
+</li>
+<li><p>识别代码(python3)<br><em><strong>如果出现无法导入需要自己解决依赖问题</strong></em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">from</span> pytesseract <span class="keyword">import</span> * </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">im = Image.<span class="built_in">open</span>(<span class="string">&#x27;index.png&#x27;</span>)</span><br><span class="line"></span><br><span class="line">im = im.convert(<span class="string">&#x27;L&#x27;</span>)</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">initTable</span>(<span class="params">threshold=<span class="number">140</span></span>):</span><br><span class="line">    table = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">256</span>):</span><br><span class="line">        <span class="keyword">if</span> i &lt; threshold:</span><br><span class="line">            table.append(<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            table.append(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> table</span><br><span class="line"></span><br><span class="line">binaryImage = im.point(initTable(), <span class="string">&#x27;1&#x27;</span>)</span><br><span class="line"><span class="comment">#binaryImage.show()</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(image_to_string(binaryImage, config=<span class="string">&#x27;-psm 7&#x27;</span>))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>结果截图<br><img src="/003fKHE6zy7gw43IqODfb690.jpg" alt="结果"></p>
+</li>
+</ol>
+<h4 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h4><p><a target="_blank" rel="noopener" href="http://www.jianshu.com/p/9e97c9b7dab6">参考链接</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/08/24/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/python%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/" data-id="cl6it7qxl0016pkv8e3nw3d3j" data-title="python实现简单验证码识别" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/" rel="tag">验证码识别</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-转载/select-poll-epoll详解" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/08/24/%E8%BD%AC%E8%BD%BD/select-poll-epoll%E8%AF%A6%E8%A7%A3/" class="article-date">
+  <time class="dt-published" datetime="2019-08-24T01:07:22.000Z" itemprop="datePublished">2019-08-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%BD%AC%E8%BD%BD/">转载</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/08/24/%E8%BD%AC%E8%BD%BD/select-poll-epoll%E8%AF%A6%E8%A7%A3/">select、poll、epoll详解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zhangxinqi/p/8337207.html">转载链接</a></p>
+<!-- wp:paragraph -->
+<p>select，poll，epoll都是IO多路复用的机制。I/O多路复用就是通过一种机制使一个进程可以监视多个描述符，一旦某个描述符就绪（一般是读就绪或者写就绪），能够通知程序进行相应的读写操作。</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; select，poll，epoll本质上都是同步I/O，因为他们都需要在读写事件就绪后自己负责进行读写，也就是说这个读写过程是阻塞的</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; 异步I/O则无需自己负责进行读写，异步I/O的实现会负责把数据从内核拷贝到用户空间。</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>&nbsp; sellect、poll、epoll三者的区别 :</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp;&nbsp;<strong>select：</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp;&nbsp;目前支持几乎所有的平台</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp;&nbsp;默认单个进程能够监视的文件描述符的数量存在最大限制，在linux上默认只支持1024个socket</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; &nbsp; 可以通过修改宏定义或重新编译内核（修改系统最大支持的端口数）的方式提升这一限制</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp;&nbsp;内核准备好数据后通知用户有数据了，但不告诉用户是哪个连接有数据，用户只能通过轮询的方式来获取数据</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; &nbsp; 假定select让内核监视100个socket连接，当有1个连接有数据后，内核就通知用户100个连接中有数据了</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; &nbsp; 但是不告诉用户是哪个连接有数据了，此时用户只能通过轮询的方式一个个去检查然后获取数据</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; &nbsp; 这里是假定有100个socket连接，那么如果有上万个，上十万个呢？</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; &nbsp; 那你就得轮询上万次，上十万次，而你所取的结果仅仅就那么1个。这样就会浪费很多没用的开销</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp;&nbsp;只支持水平触发；每次调用select，都需要把fd集合从用户态拷贝到内核态，这个开销在fd很多时会很大</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; 同时每次调用select都需要在内核遍历传递进来的所有fd，这个开销在fd很多时也会很大</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>poll：</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp;&nbsp;与select没有本质上的差别，仅仅是没有了最大文件描述符数量的限制</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; 只支持水平触发</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; 只是一个过渡版本，很少用</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>&nbsp; epoll：</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; Linux2.6才出现的epoll，具备了select和poll的一切优点，公认为性能最好的多路IO就绪通知方法</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; 没有最大文件描述符数量的限制</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; 同时支持水平触发和边缘触发</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; 不支持windows平台</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; 内核准备好数据以后会通知用户哪个连接有数据了</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; IO效率不随fd数目增加而线性下降</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; 使用mmap加速内核与用户空间的消息传递</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>水平触发与边缘触发：</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp;&nbsp;水平触发：将就绪的文件描述符告诉进程后，如果进程没有对其进行IO操作，那么下次调用epoll时将再次报告这些文件描述符，这种方式称为水平触发</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp;&nbsp;边缘触发：只告诉进程哪些文件描述符刚刚变为就绪状态，它只说一遍，如果我们没有采取行动，那么它将不会再次告知，这种方式称为边缘触发</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; 理论上边缘触发的性能要更高一些，但是代码实现相当复杂。</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp;<strong>select和epoll的特点</strong>：</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp;&nbsp;select：</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; select通过一个select()系统调用来监视多个文件描述符的数组，当select()返回后，该数组中就绪的文件描述符便会被内核修改标志位，使得进程可以获得这些文件描述符从而进行后续的读写操作。</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; 由于网络响应时间的延迟使得大量TCP连接处于非活跃状态，但调用select()会对所有socket进行一次线性扫描，所以这也浪费了一定的开销。</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; epoll:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; epoll同样只告知那些就绪的文件描述符，而且当我们调用epoll_wait()获得就绪文件描述符时，返回的不是实际的描述符，而是一个代表就绪描述符数量的值，你只需要去epoll指定的一个数组中依次取得相应数量的文件描述符即可，这里也使用了内存映射（mmap）技术，这样便彻底省掉了这些文件描述符在系统调用时复制的开销。</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp; 另一个本质的改进在于epoll采用基于事件的就绪通知方式。在select/poll中，进程只有在调用一定的方法后，内核才对所有监视的文件描述符进行扫描，而epoll事先通过epoll_ctl()来注册一个文件描述符，一旦基于某个文件描述符就绪时，内核会采用类似callback的回调机制，迅速激活这个文件描述符，当进程调用epoll_wait()时便得到通知。</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>select</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>select(rlist,wlist,xlist,timeout=None)</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp;select函数监视的文件描述符分3类，分别是writefds、readfds、和exceptfds。</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp;调用后select函数会阻塞，直到有描述符就绪（有数据可读、可写、或者有except），或者超时（timeout指定等待时间，如果立即返回设为null即可），函数返回。当select函数返回后，可以通过遍历fdset，来找到就绪的描述符。</p>
+<!-- /wp:paragraph -->
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/08/24/%E8%BD%AC%E8%BD%BD/select-poll-epoll%E8%AF%A6%E8%A7%A3/" data-id="cl6it7qy3001zpkv87e1ghp6z" data-title="select、poll、epoll详解" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AC%E8%BD%BD/" rel="tag">转载</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/2019%E6%98%A5%E5%AD%A3%E9%AB%98%E6%A0%A1%E8%B5%9B%E5%88%9D%E8%B5%9B/">2019春季高校赛初赛</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98%E5%BD%95/">备忘录</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BA%8F%E8%8B%B1%E8%AF%AD%E4%B9%A6/">程序英语书</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BA%8F%E8%8B%B1%E8%AF%AD%E4%B9%A6/Mastering-EMACS/">Mastering EMACS</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/">程海迷航</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B5%84%E6%BA%90%E7%AB%99/">资源站</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AC%E8%BD%BD/">转载</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/" rel="tag">express</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graphql/" rel="tag">graphql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ip/" rel="tag">ip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/" rel="tag">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/proto/" rel="tag">proto</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uniapp/" rel="tag">uniapp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8C%E5%87%BB%E6%94%BE%E5%A4%A7/" rel="tag">双击放大</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E7%89%87%E9%A2%84%E8%A7%88%E5%99%A8/" rel="tag">图片预览器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A6%BB%E7%BA%BF%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">离线数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AC%E8%BD%BD/" rel="tag">转载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/" rel="tag">验证码识别</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/graphql/" style="font-size: 10px;">graphql</a> <a href="/tags/ip/" style="font-size: 10px;">ip</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/proto/" style="font-size: 10px;">proto</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/uniapp/" style="font-size: 10px;">uniapp</a> <a href="/tags/%E5%8F%8C%E5%87%BB%E6%94%BE%E5%A4%A7/" style="font-size: 10px;">双击放大</a> <a href="/tags/%E5%9B%BE%E7%89%87%E9%A2%84%E8%A7%88%E5%99%A8/" style="font-size: 10px;">图片预览器</a> <a href="/tags/%E7%A6%BB%E7%BA%BF%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">离线数据库</a> <a href="/tags/%E8%BD%AC%E8%BD%BD/" style="font-size: 20px;">转载</a> <a href="/tags/%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/" style="font-size: 10px;">验证码识别</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/01/05/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/%E7%A6%BB%E7%BA%BF%E5%AE%9E%E7%8E%B0ip%E6%9F%A5%E8%AF%A2%E5%8A%9F%E8%83%BD/">离线实现ip查询功能</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/12/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/uniapp%E5%85%BC%E5%AE%B9%E6%89%8B%E6%9C%BA%E7%BD%91%E9%A1%B5%E7%9A%84%E5%9B%BE%E7%89%87%E9%A2%84%E8%A7%88%E4%BB%A3%E7%A0%81-%E5%8F%8C%E5%87%BB%E6%94%BE%E5%A4%A7/">uniapp兼容手机网页的图片预览代码-双击放大</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/30/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/graphql%E5%90%8E%E7%BC%80%E6%96%87%E4%BB%B6%E5%9C%A8express%E4%B8%AD%E4%BD%BF%E7%94%A8/">graphql后缀文件在express中使用</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/29/%E8%BD%AC%E8%BD%BD/%E4%B8%AD%E5%9B%BD%E4%BC%A0%E7%BB%9F%E9%A2%9C%E8%89%B2/">中国传统颜色</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/27/%E8%B5%84%E6%BA%90%E7%AB%99/%E5%B7%A5%E5%85%B7%E7%BD%91%E7%AB%99/">工具网站</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

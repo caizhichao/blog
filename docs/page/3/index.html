@@ -57,12 +57,12 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml" title="RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Buscar"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Buscar"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://caizhichao.github.io/blog"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://caizhichao.github.io/blog"></form>
       </div>
     </div>
   </div>
@@ -70,6 +70,140 @@
 
       <div class="outer">
         <section id="main">
+  
+    <article id="post-程海迷航/通过JQ的contents往iframe中添加内容" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2019/08/24/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/%E9%80%9A%E8%BF%87JQ%E7%9A%84contents%E5%BE%80iframe%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%86%85%E5%AE%B9/" class="article-date">
+  <time class="dt-published" datetime="2019-08-24T01:32:38.000Z" itemprop="datePublished">2019-08-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/">程海迷航</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/blog/2019/08/24/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/%E9%80%9A%E8%BF%87JQ%E7%9A%84contents%E5%BE%80iframe%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%86%85%E5%AE%B9/">通过JQ的contents往iframe中添加内容</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!-- wp:paragraph -->
+<p>前提：引用JQ &amp;nbsp;支持JQ的浏览器（不要用ie） </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>今天被一个很烦人的问题给困扰了很久。就是怎么通过JQ来修改iframe标签的内容，你问我js处理iframe的方法？而且还要处理ie浏览的情况？出门左拐不送。说正经的，通过JQ处理iframe内容的关键是contents()方法。假如我们直接使用如下代码</p>
+<!-- /wp:paragraph -->
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;#iframeID&quot;</span>).<span class="title function_">html</span>(<span class="string">&quot;你好&quot;</span>);</span><br><span class="line">$(<span class="string">&quot;#iframeID&quot;</span>).<span class="title function_">html</span>(<span class="string">&quot;你好&quot;</span>);&lt;<span class="regexp">/code&gt;&lt;/</span>pre&gt;</span><br></pre></td></tr></table></figure>
+<!-- wp:paragraph -->
+<p>发现都不能修改iframe中的内容，都不好使。</p>
+<!-- /wp:paragraph -->
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="string">&quot;测试者inner&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="string">&quot;测试者部门inner&quot;</span>;</span><br><span class="line">$(<span class="string">&quot;#container02&quot;</span>).<span class="title function_">contents</span>().<span class="title function_">find</span>(<span class="string">&quot;body&quot;</span>).<span class="title function_">html</span>(<span class="string">&quot;&amp;lt;div&gt;&quot;</span> + <span class="string">&quot;&amp;lt;span&gt;&quot;</span> + a + <span class="string">&quot;&amp;lt;/span&gt;&quot;</span> + <span class="string">&quot;&amp;lt;span&gt;&quot;</span> + b + <span class="string">&quot;&amp;lt;/span&gt;&quot;</span> + <span class="string">&quot;&amp;lt;/div&gt;&quot;</span>); &amp;lt; <span class="regexp">/script&gt;/</span>&lt;<span class="regexp">/code&gt;&lt;/</span>pre&gt;</span><br></pre></td></tr></table></figure>
+
+
+<!-- wp:paragraph -->
+<p>则可以顺利的给iframe中添加标签。JQ这contents帮我节约了几小时的生命。。。当然还可以反过来用，通过contents()来获取iframe中的内容然后进行修改。</p>
+<!-- /wp:paragraph -->
+
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    $(<span class="string">&quot;#container02&quot;</span>).<span class="title function_">contents</span>().<span class="title function_">find</span>(<span class="string">&quot;span&quot;</span>).<span class="title function_">each</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> ($(<span class="variable language_">this</span>).<span class="title function_">html</span>() == <span class="string">&quot;测试者inner&quot;</span>) <span class="comment">//使用text()对ie无效</span></span><br><span class="line">        &#123;</span><br><span class="line">            $(<span class="variable language_">this</span>).<span class="title function_">parent</span>(<span class="string">&quot;div&quot;</span>).<span class="title function_">remove</span>(); <span class="comment">//把包含条件内容的span的父亲div删除</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+<!-- wp:paragraph -->
+<p>通过以上来完成检索iframe中所有span标签然后删除盛放这个span的div容器。</p>
+<!-- /wp:paragraph -->
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://caizhichao.github.io/blog/2019/08/24/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/%E9%80%9A%E8%BF%87JQ%E7%9A%84contents%E5%BE%80iframe%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%86%85%E5%AE%B9/" data-id="cl6jc97bm001kxkwkdwsv9cjl" data-title="通过JQ的contents往iframe中添加内容" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/js/" rel="tag">js</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-程海迷航/python实现简单验证码识别" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2019/08/24/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/python%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/" class="article-date">
+  <time class="dt-published" datetime="2019-08-24T01:12:33.000Z" itemprop="datePublished">2019-08-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/">程海迷航</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/blog/2019/08/24/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/python%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/">python实现简单验证码识别</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!-- wp:paragraph -->
+<p>
+
+<ol>
+<li>安装python和pip不作介绍，保证打开cmd输入pip和python有反应。需设置环境变量。<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1i51pccl%3Cbr%3E2.%E5%8F%82%E8%80%83http://www.jianshu.com/p/9e97c9b7dab6">python3.6安装包</a></li>
+<li>在cmd中执行以下命令(<a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/046a7b3e67f1e1f9c37fa976.html">怎么启动cmd</a>)<!-- /wp:paragraph --></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install PIL</span><br><span class="line">pip install Pillow</span><br><span class="line">pip install pytesseract</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><p>目标图片<br><img src="/blog/2019/08/24/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/python%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/index.png" alt="验证码"></p>
+</li>
+<li><p>识别代码(python3)<br><em><strong>如果出现无法导入需要自己解决依赖问题</strong></em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">from</span> pytesseract <span class="keyword">import</span> * </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">im = Image.<span class="built_in">open</span>(<span class="string">&#x27;index.png&#x27;</span>)</span><br><span class="line"></span><br><span class="line">im = im.convert(<span class="string">&#x27;L&#x27;</span>)</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">initTable</span>(<span class="params">threshold=<span class="number">140</span></span>):</span><br><span class="line">    table = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">256</span>):</span><br><span class="line">        <span class="keyword">if</span> i &lt; threshold:</span><br><span class="line">            table.append(<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            table.append(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> table</span><br><span class="line"></span><br><span class="line">binaryImage = im.point(initTable(), <span class="string">&#x27;1&#x27;</span>)</span><br><span class="line"><span class="comment">#binaryImage.show()</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(image_to_string(binaryImage, config=<span class="string">&#x27;-psm 7&#x27;</span>))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>结果截图<br><img src="/blog/2019/08/24/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/python%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/003fKHE6zy7gw43IqODfb690.jpg" alt="结果"></p>
+</li>
+</ol>
+<h4 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h4><p><a target="_blank" rel="noopener" href="http://www.jianshu.com/p/9e97c9b7dab6">参考链接</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://caizhichao.github.io/blog/2019/08/24/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/python%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/" data-id="cl6jc97bg0016xkwkeuo834ku" data-title="python实现简单验证码识别" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/python/" rel="tag">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/" rel="tag">验证码识别</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
   
     <article id="post-转载/select-poll-epoll详解" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
@@ -269,7 +403,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://caizhichao.github.io/blog/2019/08/24/%E8%BD%AC%E8%BD%BD/select-poll-epoll%E8%AF%A6%E8%A7%A3/" data-id="cl6jc97bq001yxkwkglrieh9t" data-title="select、poll、epoll详解" class="article-share-link">Compartir</a>
+      <a data-url="https://caizhichao.github.io/blog/2019/08/24/%E8%BD%AC%E8%BD%BD/select-poll-epoll%E8%AF%A6%E8%A7%A3/" data-id="cl6jc97bq001yxkwkglrieh9t" data-title="select、poll、epoll详解" class="article-share-link">Share</a>
       
       
       
@@ -338,7 +472,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://caizhichao.github.io/blog/2019/08/24/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/%E4%BD%BF%E7%94%A8ts-protoc-gen%E7%BC%96%E8%AF%91proto%E8%8E%B7%E5%BE%97typescript%E6%8F%90%E7%A4%BA%E6%96%87%E4%BB%B6/" data-id="cl6jc97bj001cxkwkc81y4mz2" data-title="使用ts-protoc-gen编译proto获得typescript提示文件" class="article-share-link">Compartir</a>
+      <a data-url="https://caizhichao.github.io/blog/2019/08/24/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/%E4%BD%BF%E7%94%A8ts-protoc-gen%E7%BC%96%E8%AF%91proto%E8%8E%B7%E5%BE%97typescript%E6%8F%90%E7%A4%BA%E6%96%87%E4%BB%B6/" data-id="cl6jc97bj001cxkwkc81y4mz2" data-title="使用ts-protoc-gen编译proto获得typescript提示文件" class="article-share-link">Share</a>
       
       
       
@@ -383,7 +517,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://caizhichao.github.io/blog/2019/08/24/%E7%94%9F%E6%B4%BB/%E5%8E%A6%E9%97%A8%E5%85%AC%E5%9B%AD%E6%8B%8D%E7%85%A7/" data-id="cl6jc97b6000pxkwk68jegy6e" data-title="厦门公园拍照" class="article-share-link">Compartir</a>
+      <a data-url="https://caizhichao.github.io/blog/2019/08/24/%E7%94%9F%E6%B4%BB/%E5%8E%A6%E9%97%A8%E5%85%AC%E5%9B%AD%E6%8B%8D%E7%85%A7/" data-id="cl6jc97b6000pxkwk68jegy6e" data-title="厦门公园拍照" class="article-share-link">Share</a>
       
       
       
@@ -432,7 +566,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://caizhichao.github.io/blog/2019/08/24/leetcode/671-%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E7%AC%AC%E4%BA%8C%E5%B0%8F%E7%9A%84%E8%8A%82%E7%82%B9/" data-id="cl6jc97ar0002xkwk55xy3q4l" data-title="671-二叉树中第二小的节点" class="article-share-link">Compartir</a>
+      <a data-url="https://caizhichao.github.io/blog/2019/08/24/leetcode/671-%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E7%AC%AC%E4%BA%8C%E5%B0%8F%E7%9A%84%E8%8A%82%E7%82%B9/" data-id="cl6jc97ar0002xkwk55xy3q4l" data-title="671-二叉树中第二小的节点" class="article-share-link">Share</a>
       
       
       
@@ -480,7 +614,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://caizhichao.github.io/blog/2019/08/24/leetcode/674-%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E9%80%92%E5%A2%9E%E5%BA%8F%E5%88%97/" data-id="cl6jc97at0004xkwkhi2u8xlw" data-title="674-最长连续递增序列" class="article-share-link">Compartir</a>
+      <a data-url="https://caizhichao.github.io/blog/2019/08/24/leetcode/674-%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E9%80%92%E5%A2%9E%E5%BA%8F%E5%88%97/" data-id="cl6jc97at0004xkwkhi2u8xlw" data-title="674-最长连续递增序列" class="article-share-link">Share</a>
       
       
       
@@ -533,7 +667,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://caizhichao.github.io/blog/2019/08/24/%E7%BC%96%E7%A8%8B%E5%93%B2%E5%AD%A6%E4%B8%80%E7%99%BE%E5%8F%A5/" data-id="cl6jc97ai0000xkwkb66kgtzs" data-title="编程哲学一百句" class="article-share-link">Compartir</a>
+      <a data-url="https://caizhichao.github.io/blog/2019/08/24/%E7%BC%96%E7%A8%8B%E5%93%B2%E5%AD%A6%E4%B8%80%E7%99%BE%E5%8F%A5/" data-id="cl6jc97ai0000xkwkb66kgtzs" data-title="编程哲学一百句" class="article-share-link">Share</a>
       
       
       
@@ -583,7 +717,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://caizhichao.github.io/blog/2019/08/24/leetcode/680-%E9%AA%8C%E8%AF%81%E5%9B%9E%E6%96%87%E5%AD%97%E7%AC%A6%E4%B8%B2-%E2%85%A1/" data-id="cl6jc97au0005xkwk7sb7b82s" data-title="680-验证回文字符串-Ⅱ" class="article-share-link">Compartir</a>
+      <a data-url="https://caizhichao.github.io/blog/2019/08/24/leetcode/680-%E9%AA%8C%E8%AF%81%E5%9B%9E%E6%96%87%E5%AD%97%E7%AC%A6%E4%B8%B2-%E2%85%A1/" data-id="cl6jc97au0005xkwk7sb7b82s" data-title="680-验证回文字符串-Ⅱ" class="article-share-link">Share</a>
       
       
       
@@ -632,117 +766,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://caizhichao.github.io/blog/2019/08/24/leetcode/840-%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E5%B9%BB%E6%96%B9/" data-id="cl6jc97b5000nxkwk61p18y2m" data-title="840-矩阵中的幻方" class="article-share-link">Compartir</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-leetcode/687-最长同值路径" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/blog/2019/08/24/leetcode/687-%E6%9C%80%E9%95%BF%E5%90%8C%E5%80%BC%E8%B7%AF%E5%BE%84/" class="article-date">
-  <time class="dt-published" datetime="2019-08-23T16:17:20.000Z" itemprop="datePublished">2019-08-24</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/blog/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2019/08/24/leetcode/687-%E6%9C%80%E9%95%BF%E5%90%8C%E5%80%BC%E8%B7%AF%E5%BE%84/">687-最长同值路径</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>给定一个二叉树，找到最长的路径，这个路径中的每个节点具有相同值。 这条路径可以经过也可以不经过根节点。<br>注意：两个节点之间的路径长度由它们之间的边数表示。</p>
-<h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1:"></a>示例 1:</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">              5          </span><br><span class="line">             / \      </span><br><span class="line">            4   5</span><br><span class="line">           / \   \   </span><br><span class="line">          1   1   5 </span><br><span class="line">输出:</span><br><span class="line">2 </span><br></pre></td></tr></table></figure>
-
-<h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2:"></a>示例 2:</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">              1</span><br><span class="line">             / \     </span><br><span class="line">            4   5   </span><br><span class="line">           / \   \  </span><br><span class="line">          4   4   5 </span><br><span class="line">输出:</span><br><span class="line">2 </span><br></pre></td></tr></table></figure>
-
-<h3 id="注意"><a href="#注意" class="headerlink" title="注意:"></a>注意:</h3><p> 给定的二叉树不超过10000个结点。 树的高度不超过1000。</p>
-<h3 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h3> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">longestUnivaluePath</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">res</span> <span class="operator">=</span> help(root.left, root.val) + help(root.right, root.val);</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> longestUnivaluePath(root.left);</span><br><span class="line">        <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> longestUnivaluePath(root.right);</span><br><span class="line">        <span class="type">int</span> <span class="variable">max</span> <span class="operator">=</span> res &gt; left ? res : left;  <span class="comment">// 注4</span></span><br><span class="line">        max = max &gt; right ? max : right;  <span class="comment">// 注4</span></span><br><span class="line">        <span class="keyword">return</span> max;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">help</span><span class="params">(TreeNode root, <span class="type">int</span> parent)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">res</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (root.val == parent)  <span class="comment">// 注1</span></span><br><span class="line">            res += <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;  <span class="comment">// 注3</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> help(root.left, parent);</span><br><span class="line">        <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> help(root.right, parent);</span><br><span class="line">        res += left &gt; right ? left : right; <span class="comment">// 注2</span></span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>这道题咋一看没思路,后面发现例题中三个节点相等时结果为2,也就是两条连接线.</p>
-<ul>
-<li>注1.而且节点的父节点值跟自己相等时,连接数应该+1.</li>
-<li>注2.这个路径同一个节点不能分叉,所以只能取其中一条分支的连接数累加上来.</li>
-<li>注3.并且为了保证是相连的,如果遇到和父节点值不一样的,直接return.</li>
-<li>注4.遍历所有节点,取最大值</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://caizhichao.github.io/blog/2019/08/24/leetcode/687-%E6%9C%80%E9%95%BF%E5%90%8C%E5%80%BC%E8%B7%AF%E5%BE%84/" data-id="cl6jc97aw0008xkwk6ndh6l10" data-title="687-最长同值路径" class="article-share-link">Compartir</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-leetcode/686-重复叠加字符串匹配" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/blog/2019/08/24/leetcode/686-%E9%87%8D%E5%A4%8D%E5%8F%A0%E5%8A%A0%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/" class="article-date">
-  <time class="dt-published" datetime="2019-08-23T16:15:02.000Z" itemprop="datePublished">2019-08-24</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/blog/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2019/08/24/leetcode/686-%E9%87%8D%E5%A4%8D%E5%8F%A0%E5%8A%A0%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/">686-重复叠加字符串匹配</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>给定两个字符串 A 和 B, 寻找重复叠加字符串A的最小次数，使得字符串B成为叠加后的字符串A的子串，如果不存在则返回 -1。<br>举个例子，A &#x3D; “abcd”，B &#x3D; “cdabcdab”。<br>答案为 3， 因为 A 重复叠加三遍后为 “abcdabcdabcd”，此时 B 是其子串；A 重复叠加两遍后为”abcdabcd”，B 并不是其子串。</p>
-<h3 id="注意"><a href="#注意" class="headerlink" title="注意:"></a>注意:</h3><p> A 与 B 字符串的长度在1和10000区间范围内。</p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">     <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">repeatedStringMatch</span><span class="params">(String A, String B)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (A.length() &gt;= B.length()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (A.contains(B))  <span class="comment">// 注释1</span></span><br><span class="line">                <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">s</span> <span class="operator">=</span> <span class="number">0</span>; s &lt; A.length(); s++) &#123; </span><br><span class="line">            <span class="keyword">if</span> (A.charAt(s) == B.charAt(<span class="number">0</span>)) &#123;  <span class="comment">// 注释2</span></span><br><span class="line">                <span class="type">int</span> <span class="variable">ret</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">                <span class="type">boolean</span> <span class="variable">flag</span> <span class="operator">=</span> <span class="literal">false</span>;</span><br><span class="line">                <span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> s;</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; B.length(); i++) &#123;  <span class="comment">// 注释3</span></span><br><span class="line">                    <span class="keyword">if</span> (index == A.length()) &#123;</span><br><span class="line">                        index = <span class="number">0</span>;</span><br><span class="line">                        ret += <span class="number">1</span>;  <span class="comment">// 注释5</span></span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (B.charAt(i) == A.charAt(index)) &#123;</span><br><span class="line">                        index++;</span><br><span class="line">                        <span class="keyword">continue</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    flag = <span class="literal">true</span>;  <span class="comment">// 注释4</span></span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (flag)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">return</span> ret;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="代码中注释对应语句"><a href="#代码中注释对应语句" class="headerlink" title="代码中注释对应语句"></a>代码中注释对应语句</h3><ul>
-<li>注释1.如果是子串直接返回1.</li>
-<li>注释2.遍历A字符串寻找与B字符串开头一致的字符.</li>
-<li>注释3.遍历B字符串,然后对位到A字符串.</li>
-<li>注释4.任意不一样,则该情况走不通.</li>
-<li>注释5.如果索引超过A字符串长度,则需要叠加数+1.</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://caizhichao.github.io/blog/2019/08/24/leetcode/686-%E9%87%8D%E5%A4%8D%E5%8F%A0%E5%8A%A0%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/" data-id="cl6jc97av0006xkwkh3lsh7d7" data-title="686-重复叠加字符串匹配" class="article-share-link">Compartir</a>
+      <a data-url="https://caizhichao.github.io/blog/2019/08/24/leetcode/840-%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E5%B9%BB%E6%96%B9/" data-id="cl6jc97b5000nxkwk61p18y2m" data-title="840-矩阵中的幻方" class="article-share-link">Share</a>
       
       
       
@@ -758,7 +782,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/blog/page/2/">&laquo; Previo</a><a class="page-number" href="/blog/">1</a><a class="page-number" href="/blog/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/blog/page/4/">4</a><a class="extend next" rel="next" href="/blog/page/4/">Siguiente &raquo;</a>
+    <a class="extend prev" rel="prev" href="/blog/page/2/">&laquo; Prev</a><a class="page-number" href="/blog/">1</a><a class="page-number" href="/blog/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/blog/page/4/">4</a><a class="extend next" rel="next" href="/blog/page/4/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -767,7 +791,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categorías</h3>
+    <h3 class="widget-title">Categories</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/leetcode/">leetcode</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/leetcode/2019%E6%98%A5%E5%AD%A3%E9%AB%98%E6%A0%A1%E8%B5%9B%E5%88%9D%E8%B5%9B/">2019春季高校赛初赛</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E5%A4%87%E5%BF%98%E5%BD%95/">备忘录</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E7%94%9F%E6%B4%BB/">生活</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E7%A8%8B%E5%BA%8F%E8%8B%B1%E8%AF%AD%E4%B9%A6/">程序英语书</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E7%A8%8B%E5%BA%8F%E8%8B%B1%E8%AF%AD%E4%B9%A6/Mastering-EMACS/">Mastering EMACS</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/">程海迷航</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E8%B5%84%E6%BA%90%E7%AB%99/">资源站</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E8%BD%AC%E8%BD%BD/">转载</a></li></ul>
     </div>
@@ -779,7 +803,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/express/" rel="tag">express</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/graphql/" rel="tag">graphql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/ip/" rel="tag">ip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/js/" rel="tag">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/nodejs/" rel="tag">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/proto/" rel="tag">proto</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/uniapp/" rel="tag">uniapp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%8F%8C%E5%87%BB%E6%94%BE%E5%A4%A7/" rel="tag">双击放大</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%9B%BE%E7%89%87%E9%A2%84%E8%A7%88%E5%99%A8/" rel="tag">图片预览器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%9C%89%E7%A9%B7%E8%87%AA%E5%8A%A8%E6%9C%BA/" rel="tag">有穷自动机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E7%A6%BB%E7%BA%BF%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">离线数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" rel="tag">编译原理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E8%BD%AC%E8%BD%BD/" rel="tag">转载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/" rel="tag">验证码识别</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/express/" rel="tag">express</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/graphql/" rel="tag">graphql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/ip/" rel="tag">ip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/js/" rel="tag">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/nodejs/" rel="tag">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/php/" rel="tag">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/proto/" rel="tag">proto</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/uniapp/" rel="tag">uniapp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%8F%8C%E5%87%BB%E6%94%BE%E5%A4%A7/" rel="tag">双击放大</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%9B%BE%E7%89%87%E9%A2%84%E8%A7%88%E5%99%A8/" rel="tag">图片预览器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%AD%A6%E6%9C%AF/" rel="tag">学术</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%B8%8C%E8%85%8A%E5%AD%97%E6%AF%8D/" rel="tag">希腊字母</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%96%87%E4%BB%B6%E5%A4%87%E4%BB%BD/" rel="tag">文件备份</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%9C%89%E7%A9%B7%E8%87%AA%E5%8A%A8%E6%9C%BA/" rel="tag">有穷自动机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E7%A6%BB%E7%BA%BF%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">离线数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" rel="tag">编译原理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E8%BD%AC%E8%BD%BD/" rel="tag">转载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/" rel="tag">验证码识别</a></li></ul>
     </div>
   </div>
 
@@ -787,16 +811,16 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Nube de Tags</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/blog/tags/express/" style="font-size: 10px;">express</a> <a href="/blog/tags/graphql/" style="font-size: 10px;">graphql</a> <a href="/blog/tags/ip/" style="font-size: 10px;">ip</a> <a href="/blog/tags/js/" style="font-size: 10px;">js</a> <a href="/blog/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/blog/tags/proto/" style="font-size: 10px;">proto</a> <a href="/blog/tags/python/" style="font-size: 10px;">python</a> <a href="/blog/tags/uniapp/" style="font-size: 10px;">uniapp</a> <a href="/blog/tags/%E5%8F%8C%E5%87%BB%E6%94%BE%E5%A4%A7/" style="font-size: 10px;">双击放大</a> <a href="/blog/tags/%E5%9B%BE%E7%89%87%E9%A2%84%E8%A7%88%E5%99%A8/" style="font-size: 10px;">图片预览器</a> <a href="/blog/tags/%E6%9C%89%E7%A9%B7%E8%87%AA%E5%8A%A8%E6%9C%BA/" style="font-size: 10px;">有穷自动机</a> <a href="/blog/tags/%E7%A6%BB%E7%BA%BF%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">离线数据库</a> <a href="/blog/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" style="font-size: 10px;">编译原理</a> <a href="/blog/tags/%E8%BD%AC%E8%BD%BD/" style="font-size: 20px;">转载</a> <a href="/blog/tags/%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/" style="font-size: 10px;">验证码识别</a>
+      <a href="/blog/tags/express/" style="font-size: 10px;">express</a> <a href="/blog/tags/graphql/" style="font-size: 10px;">graphql</a> <a href="/blog/tags/ip/" style="font-size: 10px;">ip</a> <a href="/blog/tags/js/" style="font-size: 10px;">js</a> <a href="/blog/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/blog/tags/php/" style="font-size: 10px;">php</a> <a href="/blog/tags/proto/" style="font-size: 10px;">proto</a> <a href="/blog/tags/python/" style="font-size: 10px;">python</a> <a href="/blog/tags/uniapp/" style="font-size: 10px;">uniapp</a> <a href="/blog/tags/%E5%8F%8C%E5%87%BB%E6%94%BE%E5%A4%A7/" style="font-size: 10px;">双击放大</a> <a href="/blog/tags/%E5%9B%BE%E7%89%87%E9%A2%84%E8%A7%88%E5%99%A8/" style="font-size: 10px;">图片预览器</a> <a href="/blog/tags/%E5%AD%A6%E6%9C%AF/" style="font-size: 10px;">学术</a> <a href="/blog/tags/%E5%B8%8C%E8%85%8A%E5%AD%97%E6%AF%8D/" style="font-size: 10px;">希腊字母</a> <a href="/blog/tags/%E6%96%87%E4%BB%B6%E5%A4%87%E4%BB%BD/" style="font-size: 10px;">文件备份</a> <a href="/blog/tags/%E6%9C%89%E7%A9%B7%E8%87%AA%E5%8A%A8%E6%9C%BA/" style="font-size: 10px;">有穷自动机</a> <a href="/blog/tags/%E7%A6%BB%E7%BA%BF%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">离线数据库</a> <a href="/blog/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" style="font-size: 10px;">编译原理</a> <a href="/blog/tags/%E8%BD%AC%E8%BD%BD/" style="font-size: 20px;">转载</a> <a href="/blog/tags/%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/" style="font-size: 10px;">验证码识别</a>
     </div>
   </div>
 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archivos</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/08/">August 2019</a></li></ul>
     </div>
@@ -806,9 +830,17 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Posts recientes</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/blog/2022/08/07/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/php%E5%A4%87%E4%BB%BD%E6%96%87%E4%BB%B6%E8%84%9A%E6%9C%AC/">php备份文件脚本</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2022/08/07/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/%E5%B8%8C%E8%85%8A%E5%AD%97%E6%AF%8D%E8%AF%BB%E6%B3%95/">希腊字母读法</a>
+          </li>
         
           <li>
             <a href="/blog/2022/08/07/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E6%9C%89%E7%A9%B7%E8%87%AA%E5%8A%A8%E6%9C%BA-%E5%AE%9E%E8%B7%B5/">编译原理-有穷自动机-实践</a>
@@ -820,14 +852,6 @@
         
           <li>
             <a href="/blog/2019/12/12/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/uniapp%E5%85%BC%E5%AE%B9%E6%89%8B%E6%9C%BA%E7%BD%91%E9%A1%B5%E7%9A%84%E5%9B%BE%E7%89%87%E9%A2%84%E8%A7%88%E4%BB%A3%E7%A0%81-%E5%8F%8C%E5%87%BB%E6%94%BE%E5%A4%A7/">uniapp兼容手机网页的图片预览代码-双击放大</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2019/10/30/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/graphql%E5%90%8E%E7%BC%80%E6%96%87%E4%BB%B6%E5%9C%A8express%E4%B8%AD%E4%BD%BF%E7%94%A8/">graphql后缀文件在express中使用</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2019/09/29/%E8%BD%AC%E8%BD%BD/%E4%B8%AD%E5%9B%BD%E4%BC%A0%E7%BB%9F%E9%A2%9C%E8%89%B2/">中国传统颜色</a>
           </li>
         
       </ul>
@@ -844,7 +868,7 @@
     <div id="footer-info" class="inner">
       
       &copy; 2022 蔡志超<br>
-      Construido por <a href="https://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>

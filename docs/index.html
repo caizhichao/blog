@@ -59,10 +59,10 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://caizhichao.github.io/blog"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://caizhichao.github.io/blog"></form>
       </div>
     </div>
   </div>
@@ -70,6 +70,66 @@
 
       <div class="outer">
         <section id="main">
+  
+    <article id="post-程海迷航/phpdbg实践笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2022/08/13/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/phpdbg%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time class="dt-published" datetime="2022-08-13T14:55:56.000Z" itemprop="datePublished">2022-08-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/">程海迷航</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/blog/2022/08/13/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/phpdbg%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0/">phpdbg实践笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><ul>
+<li>为了寻找在php发生死循环和内存泄漏的时候能够定位问题的方案,而尝试了phpdbg</li>
+</ul>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>window下通过phpstudy安装好php7.4.23后,phpdbg已经自带了</p>
+<h1 id="命令使用-网上的资料很不齐-开两个控制台一个操作一个翻help说明-也算用得过去"><a href="#命令使用-网上的资料很不齐-开两个控制台一个操作一个翻help说明-也算用得过去" class="headerlink" title="命令使用, 网上的资料很不齐, 开两个控制台一个操作一个翻help说明,也算用得过去"></a>命令使用, 网上的资料很不齐, 开两个控制台一个操作一个翻help说明,也算用得过去</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="variable">$a</span> = <span class="number">123</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> + <span class="variable">$a</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (<span class="literal">true</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="variable">$b</span> = <span class="number">5</span> + <span class="title function_ invoke__">test</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&gt; phpdbg debug.php</span><br><span class="line"></span><br><span class="line">[Welcome to phpdbg, the interactive PHP debugger, v7.4.3]</span><br><span class="line">To get help using phpdbg type &quot;help&quot; and press enter</span><br><span class="line">[Please report bugs to &lt;http://bugs.php.net/report.php&gt;]</span><br><span class="line">prompt&gt;</span><br><span class="line"></span><br><span class="line">// 这一步需要前面启动phpdbg时 参数带上debug.php run debug.php 才能正常执行</span><br><span class="line">prompt&gt; run debug.php</span><br><span class="line"></span><br><span class="line">// 然后按 ctrl+c 表示开始断点,此时断在哪是随机的,因为还没开始添加断点</span><br><span class="line">[Program received signal SIGINT]</span><br><span class="line">prompt&gt; </span><br><span class="line"></span><br><span class="line">// 打印当前堆栈的opcodes</span><br><span class="line">prompt&gt; p</span><br><span class="line">[Stack in C:\Users\Administrator\AppData\Roaming\JetBrains\IntelliJIdea2022.1\scratches\debug.php (7 ops)]</span><br><span class="line">L1-12 &#123;main&#125;() C:\Users\Administrator\AppData\Roaming\JetBrains\IntelliJIdea2022.1\scratches\debug.php - 0x262fc860</span><br><span class="line">500 + 7 ops</span><br><span class="line"> L8    #0     JMP                     J5</span><br><span class="line"> L10   #1     INIT_FCALL              128                  &quot;test&quot;</span><br><span class="line"> L10   #2     DO_FCALL                                                          @0</span><br><span class="line"> L10   #3     ADD                     5                    @0                   ~1</span><br><span class="line"> L10   #4     ASSIGN                  $b                   ~1</span><br><span class="line"> L8    #5     JMPNZ                   true                 J1</span><br><span class="line"> L12   #6     RETURN&lt;-1&gt;              1</span><br><span class="line"> </span><br><span class="line">// 打印当前所处的位置</span><br><span class="line">prompt&gt; back</span><br><span class="line">frame #0: &#123;main&#125; at C:\Users\Administrator\AppData\Roaming\JetBrains\IntelliJIdea2022.1\scratches\debug.php:10</span><br><span class="line">prompt&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>命令n 执行到下一行</li>
+<li>命令s 步入函数</li>
+<li>b 数字 添加断点到php源码的第几行</li>
+<li>c 继续运行</li>
+<li>ctrl+c 暂停运行</li>
+</ul>
+<p>例如调试一个有概率死循环的时程序, 一旦遇到, 可以结合上面的back p n等命令快速定位死循环原因</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://caizhichao.github.io/blog/2022/08/13/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/phpdbg%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0/" data-id="cl6rxv7kg00016wwk9n6n8g35" data-title="phpdbg实践笔记" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/php/" rel="tag">php</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/phpdbg/" rel="tag">phpdbg</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E6%BA%90%E7%A0%81%E4%B9%B1%E7%82%96/" rel="tag">源码乱炖</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
   
     <article id="post-程海迷航/php备份文件脚本" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
@@ -104,7 +164,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://caizhichao.github.io/blog/2022/08/07/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/php%E5%A4%87%E4%BB%BD%E6%96%87%E4%BB%B6%E8%84%9A%E6%9C%AC/" data-id="cl6jdrlst0000h4wkhpxmf64r" data-title="php备份文件脚本" class="article-share-link">Share</a>
+      <a data-url="https://caizhichao.github.io/blog/2022/08/07/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/php%E5%A4%87%E4%BB%BD%E6%96%87%E4%BB%B6%E8%84%9A%E6%9C%AC/" data-id="cl6jdrlst0000h4wkhpxmf64r" data-title="php备份文件脚本" class="article-share-link">Teilen</a>
       
       
       
@@ -378,7 +438,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://caizhichao.github.io/blog/2022/08/07/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/%E5%B8%8C%E8%85%8A%E5%AD%97%E6%AF%8D%E8%AF%BB%E6%B3%95/" data-id="cl6jdrlt70006h4wk2e2d1n4w" data-title="希腊字母读法" class="article-share-link">Share</a>
+      <a data-url="https://caizhichao.github.io/blog/2022/08/07/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/%E5%B8%8C%E8%85%8A%E5%AD%97%E6%AF%8D%E8%AF%BB%E6%B3%95/" data-id="cl6jdrlt70006h4wk2e2d1n4w" data-title="希腊字母读法" class="article-share-link">Teilen</a>
       
       
       
@@ -433,7 +493,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://caizhichao.github.io/blog/2022/08/07/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E6%9C%89%E7%A9%B7%E8%87%AA%E5%8A%A8%E6%9C%BA-%E5%AE%9E%E8%B7%B5/" data-id="cl6jcuy0a0000ckwk8d4n8gy5" data-title="编译原理-有穷自动机-实践" class="article-share-link">Share</a>
+      <a data-url="https://caizhichao.github.io/blog/2022/08/07/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E6%9C%89%E7%A9%B7%E8%87%AA%E5%8A%A8%E6%9C%BA-%E5%AE%9E%E8%B7%B5/" data-id="cl6jcuy0a0000ckwk8d4n8gy5" data-title="编译原理-有穷自动机-实践" class="article-share-link">Teilen</a>
       
       
       
@@ -485,7 +545,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://caizhichao.github.io/blog/2020/01/05/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/%E7%A6%BB%E7%BA%BF%E5%AE%9E%E7%8E%B0ip%E6%9F%A5%E8%AF%A2%E5%8A%9F%E8%83%BD/" data-id="cl6jc97bl001ixkwk8a10ek80" data-title="离线实现ip查询功能" class="article-share-link">Share</a>
+      <a data-url="https://caizhichao.github.io/blog/2020/01/05/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/%E7%A6%BB%E7%BA%BF%E5%AE%9E%E7%8E%B0ip%E6%9F%A5%E8%AF%A2%E5%8A%9F%E8%83%BD/" data-id="cl6jc97bl001ixkwk8a10ek80" data-title="离线实现ip查询功能" class="article-share-link">Teilen</a>
       
       
       
@@ -538,7 +598,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://caizhichao.github.io/blog/2019/12/12/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/uniapp%E5%85%BC%E5%AE%B9%E6%89%8B%E6%9C%BA%E7%BD%91%E9%A1%B5%E7%9A%84%E5%9B%BE%E7%89%87%E9%A2%84%E8%A7%88%E4%BB%A3%E7%A0%81-%E5%8F%8C%E5%87%BB%E6%94%BE%E5%A4%A7/" data-id="cl6jc97bh0019xkwkcsmr6xfh" data-title="uniapp兼容手机网页的图片预览代码-双击放大" class="article-share-link">Share</a>
+      <a data-url="https://caizhichao.github.io/blog/2019/12/12/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/uniapp%E5%85%BC%E5%AE%B9%E6%89%8B%E6%9C%BA%E7%BD%91%E9%A1%B5%E7%9A%84%E5%9B%BE%E7%89%87%E9%A2%84%E8%A7%88%E4%BB%A3%E7%A0%81-%E5%8F%8C%E5%87%BB%E6%94%BE%E5%A4%A7/" data-id="cl6jc97bh0019xkwkcsmr6xfh" data-title="uniapp兼容手机网页的图片预览代码-双击放大" class="article-share-link">Teilen</a>
       
       
       
@@ -591,7 +651,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://caizhichao.github.io/blog/2019/10/30/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/graphql%E5%90%8E%E7%BC%80%E6%96%87%E4%BB%B6%E5%9C%A8express%E4%B8%AD%E4%BD%BF%E7%94%A8/" data-id="cl6jc97bf0013xkwkbd5cgym1" data-title="graphql后缀文件在express中使用" class="article-share-link">Share</a>
+      <a data-url="https://caizhichao.github.io/blog/2019/10/30/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/graphql%E5%90%8E%E7%BC%80%E6%96%87%E4%BB%B6%E5%9C%A8express%E4%B8%AD%E4%BD%BF%E7%94%A8/" data-id="cl6jc97bf0013xkwkbd5cgym1" data-title="graphql后缀文件在express中使用" class="article-share-link">Teilen</a>
       
       
       
@@ -1686,7 +1746,7 @@ Y5）</span></font></td>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://caizhichao.github.io/blog/2019/09/29/%E8%BD%AC%E8%BD%BD/%E4%B8%AD%E5%9B%BD%E4%BC%A0%E7%BB%9F%E9%A2%9C%E8%89%B2/" data-id="cl6jc97ca003axkwkailhfg3n" data-title="中国传统颜色" class="article-share-link">Share</a>
+      <a data-url="https://caizhichao.github.io/blog/2019/09/29/%E8%BD%AC%E8%BD%BD/%E4%B8%AD%E5%9B%BD%E4%BC%A0%E7%BB%9F%E9%A2%9C%E8%89%B2/" data-id="cl6jc97ca003axkwkailhfg3n" data-title="中国传统颜色" class="article-share-link">Teilen</a>
       
       
       
@@ -1740,7 +1800,7 @@ Y5）</span></font></td>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://caizhichao.github.io/blog/2019/09/27/%E8%B5%84%E6%BA%90%E7%AB%99/%E5%B7%A5%E5%85%B7%E7%BD%91%E7%AB%99/" data-id="cl6jc97bo001rxkwkgq1sg5zb" data-title="工具网站" class="article-share-link">Share</a>
+      <a data-url="https://caizhichao.github.io/blog/2019/09/27/%E8%B5%84%E6%BA%90%E7%AB%99/%E5%B7%A5%E5%85%B7%E7%BD%91%E7%AB%99/" data-id="cl6jc97bo001rxkwkgq1sg5zb" data-title="工具网站" class="article-share-link">Teilen</a>
       
       
       
@@ -1790,77 +1850,7 @@ Y5）</span></font></td>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://caizhichao.github.io/blog/2019/09/27/%E8%B5%84%E6%BA%90%E7%AB%99/%E9%80%9A%E7%94%A8%E8%B5%84%E6%BA%90%E7%BD%91%E7%AB%99/" data-id="cl6jc97bq001wxkwka2ld488d" data-title="通用资源网站" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-资源站/编程学习资源" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/blog/2019/08/30/%E8%B5%84%E6%BA%90%E7%AB%99/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/" class="article-date">
-  <time class="dt-published" datetime="2019-08-30T05:50:00.000Z" itemprop="datePublished">2019-08-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/blog/categories/%E8%B5%84%E6%BA%90%E7%AB%99/">资源站</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2019/08/30/%E8%B5%84%E6%BA%90%E7%AB%99/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/">编程学习资源</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <ul>
-<li><p><a target="_blank" rel="noopener" href="http://arxiv.org/">http://arXiv.org</a><br>论文检索网站。搜各种论文比如机器学习</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://hellogithub.com/">https://hellogithub.com/</a><br>月刊,可以找到各种好的开源代码</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="http://aosabook.org/en/index.html">http://aosabook.org/en/index.html</a><br>开源代码搜索网站</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="http://www.blog.pythonlibrary.org/">http://www.blog.pythonlibrary.org/</a><br>有关python的新闻咨询（英语）</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.qimai.cn/">https://www.qimai.cn/</a><br>各种最新app数据，方便找灵感进行山寨（微创）</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="http://www.alloyteam.com/">http://www.alloyteam.com/</a><br>马哥（ponny马）的开源团队</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.algolia.com/ref/docsearch/">https://www.algolia.com/ref/docsearch/</a><br>摸鱼搜咨询用</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.lfd.uci.edu/~gohlke/pythonlibs/#twisted">https://www.lfd.uci.edu/~gohlke/pythonlibs/#twisted</a><br>python whl库文件大全（有些pip装不了的库只能来这了）</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="http://gen.lib.rus.ec/search.php">http://gen.lib.rus.ec/search.php</a><br>俄罗斯不吃版权这一套，海量电子书籍这里都可以下载</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://juejin.im/">https://juejin.im/</a><br>内容新</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/">https://www.cnblogs.com/</a><br>内容广</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.csdn.net/">https://www.csdn.net/</a><br>摸鱼好去处</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/">https://leetcode-cn.com/</a><br>程序员面试题库</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://caizhichao.github.io/blog/2019/08/30/%E8%B5%84%E6%BA%90%E7%AB%99/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/" data-id="cl6jc97bn001oxkwkgxi6gj1h" data-title="编程学习资源" class="article-share-link">Share</a>
+      <a data-url="https://caizhichao.github.io/blog/2019/09/27/%E8%B5%84%E6%BA%90%E7%AB%99/%E9%80%9A%E7%94%A8%E8%B5%84%E6%BA%90%E7%BD%91%E7%AB%99/" data-id="cl6jc97bq001wxkwka2ld488d" data-title="通用资源网站" class="article-share-link">Teilen</a>
       
       
       
@@ -1876,7 +1866,7 @@ Y5）</span></font></td>
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><a class="page-number" href="/blog/page/3/">3</a><a class="page-number" href="/blog/page/4/">4</a><a class="extend next" rel="next" href="/blog/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><a class="page-number" href="/blog/page/3/">3</a><a class="page-number" href="/blog/page/4/">4</a><a class="extend next" rel="next" href="/blog/page/2/">weiter &raquo;</a>
   </nav>
 
 </section>
@@ -1885,7 +1875,7 @@ Y5）</span></font></td>
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
+    <h3 class="widget-title">Kategorien</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/leetcode/">leetcode</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/leetcode/2019%E6%98%A5%E5%AD%A3%E9%AB%98%E6%A0%A1%E8%B5%9B%E5%88%9D%E8%B5%9B/">2019春季高校赛初赛</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E5%A4%87%E5%BF%98%E5%BD%95/">备忘录</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E7%94%9F%E6%B4%BB/">生活</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E7%A8%8B%E5%BA%8F%E8%8B%B1%E8%AF%AD%E4%B9%A6/">程序英语书</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E7%A8%8B%E5%BA%8F%E8%8B%B1%E8%AF%AD%E4%B9%A6/Mastering-EMACS/">Mastering EMACS</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/">程海迷航</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E8%B5%84%E6%BA%90%E7%AB%99/">资源站</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E8%BD%AC%E8%BD%BD/">转载</a></li></ul>
     </div>
@@ -1897,7 +1887,7 @@ Y5）</span></font></td>
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/express/" rel="tag">express</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/graphql/" rel="tag">graphql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/ip/" rel="tag">ip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/js/" rel="tag">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/nodejs/" rel="tag">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/php/" rel="tag">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/proto/" rel="tag">proto</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/uniapp/" rel="tag">uniapp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%8F%8C%E5%87%BB%E6%94%BE%E5%A4%A7/" rel="tag">双击放大</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%9B%BE%E7%89%87%E9%A2%84%E8%A7%88%E5%99%A8/" rel="tag">图片预览器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%AD%A6%E6%9C%AF/" rel="tag">学术</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%B8%8C%E8%85%8A%E5%AD%97%E6%AF%8D/" rel="tag">希腊字母</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%96%87%E4%BB%B6%E5%A4%87%E4%BB%BD/" rel="tag">文件备份</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%9C%89%E7%A9%B7%E8%87%AA%E5%8A%A8%E6%9C%BA/" rel="tag">有穷自动机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E7%A6%BB%E7%BA%BF%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">离线数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" rel="tag">编译原理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E8%BD%AC%E8%BD%BD/" rel="tag">转载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/" rel="tag">验证码识别</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/express/" rel="tag">express</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/graphql/" rel="tag">graphql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/ip/" rel="tag">ip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/js/" rel="tag">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/nodejs/" rel="tag">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/php/" rel="tag">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/phpdbg/" rel="tag">phpdbg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/proto/" rel="tag">proto</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/uniapp/" rel="tag">uniapp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%8F%8C%E5%87%BB%E6%94%BE%E5%A4%A7/" rel="tag">双击放大</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%9B%BE%E7%89%87%E9%A2%84%E8%A7%88%E5%99%A8/" rel="tag">图片预览器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%AD%A6%E6%9C%AF/" rel="tag">学术</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%B8%8C%E8%85%8A%E5%AD%97%E6%AF%8D/" rel="tag">希腊字母</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%96%87%E4%BB%B6%E5%A4%87%E4%BB%BD/" rel="tag">文件备份</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%9C%89%E7%A9%B7%E8%87%AA%E5%8A%A8%E6%9C%BA/" rel="tag">有穷自动机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%BA%90%E7%A0%81%E4%B9%B1%E7%82%96/" rel="tag">源码乱炖</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E7%A6%BB%E7%BA%BF%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">离线数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" rel="tag">编译原理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E8%BD%AC%E8%BD%BD/" rel="tag">转载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/" rel="tag">验证码识别</a></li></ul>
     </div>
   </div>
 
@@ -1907,14 +1897,14 @@ Y5）</span></font></td>
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/blog/tags/express/" style="font-size: 10px;">express</a> <a href="/blog/tags/graphql/" style="font-size: 10px;">graphql</a> <a href="/blog/tags/ip/" style="font-size: 10px;">ip</a> <a href="/blog/tags/js/" style="font-size: 10px;">js</a> <a href="/blog/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/blog/tags/php/" style="font-size: 10px;">php</a> <a href="/blog/tags/proto/" style="font-size: 10px;">proto</a> <a href="/blog/tags/python/" style="font-size: 10px;">python</a> <a href="/blog/tags/uniapp/" style="font-size: 10px;">uniapp</a> <a href="/blog/tags/%E5%8F%8C%E5%87%BB%E6%94%BE%E5%A4%A7/" style="font-size: 10px;">双击放大</a> <a href="/blog/tags/%E5%9B%BE%E7%89%87%E9%A2%84%E8%A7%88%E5%99%A8/" style="font-size: 10px;">图片预览器</a> <a href="/blog/tags/%E5%AD%A6%E6%9C%AF/" style="font-size: 10px;">学术</a> <a href="/blog/tags/%E5%B8%8C%E8%85%8A%E5%AD%97%E6%AF%8D/" style="font-size: 10px;">希腊字母</a> <a href="/blog/tags/%E6%96%87%E4%BB%B6%E5%A4%87%E4%BB%BD/" style="font-size: 10px;">文件备份</a> <a href="/blog/tags/%E6%9C%89%E7%A9%B7%E8%87%AA%E5%8A%A8%E6%9C%BA/" style="font-size: 10px;">有穷自动机</a> <a href="/blog/tags/%E7%A6%BB%E7%BA%BF%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">离线数据库</a> <a href="/blog/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" style="font-size: 10px;">编译原理</a> <a href="/blog/tags/%E8%BD%AC%E8%BD%BD/" style="font-size: 20px;">转载</a> <a href="/blog/tags/%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/" style="font-size: 10px;">验证码识别</a>
+      <a href="/blog/tags/express/" style="font-size: 10px;">express</a> <a href="/blog/tags/graphql/" style="font-size: 10px;">graphql</a> <a href="/blog/tags/ip/" style="font-size: 10px;">ip</a> <a href="/blog/tags/js/" style="font-size: 10px;">js</a> <a href="/blog/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/blog/tags/php/" style="font-size: 20px;">php</a> <a href="/blog/tags/phpdbg/" style="font-size: 10px;">phpdbg</a> <a href="/blog/tags/proto/" style="font-size: 10px;">proto</a> <a href="/blog/tags/python/" style="font-size: 10px;">python</a> <a href="/blog/tags/uniapp/" style="font-size: 10px;">uniapp</a> <a href="/blog/tags/%E5%8F%8C%E5%87%BB%E6%94%BE%E5%A4%A7/" style="font-size: 10px;">双击放大</a> <a href="/blog/tags/%E5%9B%BE%E7%89%87%E9%A2%84%E8%A7%88%E5%99%A8/" style="font-size: 10px;">图片预览器</a> <a href="/blog/tags/%E5%AD%A6%E6%9C%AF/" style="font-size: 10px;">学术</a> <a href="/blog/tags/%E5%B8%8C%E8%85%8A%E5%AD%97%E6%AF%8D/" style="font-size: 10px;">希腊字母</a> <a href="/blog/tags/%E6%96%87%E4%BB%B6%E5%A4%87%E4%BB%BD/" style="font-size: 10px;">文件备份</a> <a href="/blog/tags/%E6%9C%89%E7%A9%B7%E8%87%AA%E5%8A%A8%E6%9C%BA/" style="font-size: 10px;">有穷自动机</a> <a href="/blog/tags/%E6%BA%90%E7%A0%81%E4%B9%B1%E7%82%96/" style="font-size: 10px;">源码乱炖</a> <a href="/blog/tags/%E7%A6%BB%E7%BA%BF%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">离线数据库</a> <a href="/blog/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" style="font-size: 10px;">编译原理</a> <a href="/blog/tags/%E8%BD%AC%E8%BD%BD/" style="font-size: 20px;">转载</a> <a href="/blog/tags/%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/" style="font-size: 10px;">验证码识别</a>
     </div>
   </div>
 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archiv</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/08/">August 2019</a></li></ul>
     </div>
@@ -1924,9 +1914,13 @@ Y5）</span></font></td>
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/blog/2022/08/13/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/phpdbg%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0/">phpdbg实践笔记</a>
+          </li>
         
           <li>
             <a href="/blog/2022/08/07/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/php%E5%A4%87%E4%BB%BD%E6%96%87%E4%BB%B6%E8%84%9A%E6%9C%AC/">php备份文件脚本</a>
@@ -1942,10 +1936,6 @@ Y5）</span></font></td>
         
           <li>
             <a href="/blog/2020/01/05/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/%E7%A6%BB%E7%BA%BF%E5%AE%9E%E7%8E%B0ip%E6%9F%A5%E8%AF%A2%E5%8A%9F%E8%83%BD/">离线实现ip查询功能</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2019/12/12/%E7%A8%8B%E6%B5%B7%E8%BF%B7%E8%88%AA/uniapp%E5%85%BC%E5%AE%B9%E6%89%8B%E6%9C%BA%E7%BD%91%E9%A1%B5%E7%9A%84%E5%9B%BE%E7%89%87%E9%A2%84%E8%A7%88%E4%BB%A3%E7%A0%81-%E5%8F%8C%E5%87%BB%E6%94%BE%E5%A4%A7/">uniapp兼容手机网页的图片预览代码-双击放大</a>
           </li>
         
       </ul>
